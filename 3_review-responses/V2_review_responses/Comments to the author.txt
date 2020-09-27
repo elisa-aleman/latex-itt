@@ -1,0 +1,31 @@
+COMMENTS TO THE AUTHOR:
+
+[from Associate Editor: The comments from the Reviewers are valid and critical. Still, we can offer a chance to the authors to do another round of major revision. The authors, however, should be aware that there is no guarantee that the reviewers will be posiitve. As such, there is a high risk involved in making further revisions. Alternatively, the authors may choose to withdraw their submission].
+
+
+Reviewer #1: I found the authors revised this manuscript properly, addressing my previous comments. However, I believe this manuscript still has a room for further development. I found other reviewers have already commented on these issues, but, unfortunately, I don't think the authors fully answered to the issues in this revision:
+1. Comment #3 from Reviewer #3
+It is not a deal breaker. However, I am with Reviewer #3 that the hypotheses of this study bring much value to the body of our knowledge. In the sense that this study took an exploratory approach (i.e., data mining), hypothesis testing may not be ideal to achieve the research goal. 
+2. Comment #4 from Reviewer #3 & Comment #4 from Reviewer #5
+I don't think there is nothing that the authors can do about it. I recommend the authors acknowledge it as a study limitation.
+3. Comment #6 from Reviewer #5
+Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns. 
+4. Comment #7 from Reviewer #5
+I am still confused with internal and external attributes. While the "location" of the hotels is an external attribute, "big" rooms, bathtubs, and bath facilities are internal attributes. Both the location of the hotel and the size of rooms and facilities cannot be changed once the construction of the hotel is completed. The authors may want to recategorise/rename them (e.g., tangibles/intangibles; soft/hard).
+Look forward to it.
+
+
+Reviewer #5: Section 3.3 contains a lot of misleading and confusing information:
+1.   "In the past, tourist behavior analyzed from western samples was wrongly thought to be a representation of universal behavior across all cultures (Nielsen et al. 2017; Jones 2010; Gunaratne 2009; Hogan and Emler 1978)". This is a very strong sentence; can the authors show evident that these studies have say such a strong conclusion?
+2.   "both academic researchers and businesses have decided to study Chinese tourist behavior (Sun et al. 2017)." Chinese tourists' study did not start from 2017.
+3.  "cross-cultural studies and analyses for Asian and Western tourists are scarce." And "One thing to note with the above cross-culture analyses is that they were performed before the year 2000." If the authors use Google scholar to search, I believe they could find hundred thousand of researches, this topic is not special or scarce at all. If the authors want to refer to Chinese and non-Chinese study, please do not generalize it as cross-cultural study. 
+4.  "However, that boom could have created a difference in the expectations of tourists. In turn, that boom could have influenced their satisfaction factors when traveling." I cannot understand these two sentences. How can a boom or tourists create a different expectation of tourists? And how a boom can influence satisfaction?! 
+
+The authors responded that hotel class were not recorded during data collection so the data cannot be categorized according to the hotel ranking. In that case, I can accept the research design of this study is appropriate. If the research design has such big defect, the result can no longer explain the difference between Chinese and non-Chinese. The authors mentioned the hotel room rate ranged from 2000 to 188000 yen. So how can you expect a customer paying 2000 yen will have same expectation with a customer paying 188000 yen? The definition of Omotenashi refers to high level customized service. For a capsule hotel which costed 2000 yen, what's kind of Omotenashi service can they provide?
+I can see the authors had spend a lot of time to revise the paper and re-write the manuscript, however, if the research design is not correct, the result generated is meaningless. Therefore I will not comment the research findings and conclusion.
+
+Editorial: 
+Many in-text citations (e.g. Page 4 & 9) are not in standard format, please put them inside a bracket or change the sentence to mention the author name.
+Line 236, please spell out the number "3" to three.
+
+__

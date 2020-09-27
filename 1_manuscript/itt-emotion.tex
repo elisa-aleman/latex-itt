@@ -198,12 +198,19 @@
 
     Previous research has also focused on soft attributes that are controllable by the hotel managers and staff, i.e., hotel services, staff behavior, or facilities \cite[e.g.][]{shanka2004, choi2001}. However, little focus is put on hard factors that are uncontrollable by the hotel staff that can play a part in the customers' choice behavior and satisfaction. Examples of these factors include the surroundings of the hotel, location, language immersion of the country as a whole, or touristic destinations, as well as the integration of the hotel with tours available nearby, among other factors. 
 
-    This leads to another research question:
+    This leads to another couple of research questions:
 
+    \begin{subrsq}
     \begin{rsq}
     \label{rsq:hard_soft}
     To what degree does satisfaction and dissatisfaction stem from hard and soft attributes of the hotel.
     \end{rsq}
+    \begin{rsq}
+    \label{rsq:hard_soft_diff}
+    How differently do Chinese and Western customers perceive hard and soft attributes of the hotel?
+    \end{rsq}
+    
+    \end{subrsq}
 
     The resulting proportions of hard attributes to soft attributes for each population could serve as a measurement of how much the improvement of management in the hotel can increase future satisfaction in customers.
 
@@ -348,7 +355,7 @@
     % Data exploration
     Because the methodology for finding patterns in the data is automatic and statistical, it is both reliable and unpredictable. Reliable in that the algorithm will find a pattern by its nature. Unpredictable in that because it has no intervention from the researchers in making questionnaires, it can have different results from anything that the researchers could expect. These qualities determine why, much like actual mining, data mining is mostly exploratory. One can never be sure that one will find a specific something. However, we can make predictions and estimates about where to find knowledge, and what kind of knowledge we can uncover. The exploration of large opinion datasets with these methods is essential. The reason being we can discover knowledge that could be missed by looking at a localized sample rather than a holistic view of every users' opinion. In other words, a machine algorithm can find the needles in a haystack that we did not know were there from taking small bundles of hay at a time.
 
-    In this study, we can predict that several things might occur. Our data could show satisfaction and dissatisfaction factors that are universal, and it could also find strictly cultural factors. However, we expect that both of these options will present themselves. We can also assert that we could arrive at very similar results to previous literature if they are correct in their findings. However, we are using a database of several orders of magnitude larger. We can also expect that, because of the lack of questionnaire design and users' freedom to record their pleasures and grievances, we may discover patterns that researchers previously noticed.
+    In this study, we can predict that several things might occur. Our data could show satisfaction and dissatisfaction factors that are universal, and it could also find strictly cultural factors. However, we expect that both of these options will present themselves. We can also assert that we could arrive at very similar results to previous literature if they are correct in their findings. However, we are using a database of several orders of magnitude larger. We can also expect that, because of the lack of questionnaire design and users' freedom to record their pleasures and grievances, we may discover patterns that researchers previously hadn't noticed.
 
 
 \section{Methodology}\label{method}
@@ -370,7 +377,7 @@
 
     However, we needed to make the data and comparisons we draw from each of these datasets fair. For that purpose, we filtered both databases only to contain reviews from hotels in both datasets, using their English names to do a search match. We also filtered them to be in the same date range and cut off reviews outside of each other's date ranges. In addition, we selected only the hotels that had a pricing information available. We extracted the lowest price possible for a room or bed for one night, and the highest price possible for one night as well. The difference in pricing can be from better room settings, such as double or twin rooms, or suites of several classes depending on the hotel. Regardless of the reason, the highest priced room can be an indicator of the class of hotel indirectly, which can give us an insight into the kind of service that is offered. After filtering, we found that the number of hotels in common in the data collected was \num[group-separator={,}]{557}. The overlapping date range for reviews was from July 2014 to July 2017. Within these hotels, from \textit{Ctrip} there was \num[group-separator={,}]{48070} reviews comprised of \num[group-separator={,}]{101963} sentences, and from \textit{TripAdvisor} there was \num[group-separator={,}]{41137} reviews comprised of \num[group-separator={,}]{348039} sentences. We found that after filtering the data, the number of reviews was similar for both English and Chinese reviews, but that English reviews tend to be longer in general.
 
-    The price for a night in these hotels ranges from low priced capsule hotels at 2000 yen per night, to high-end hotels \num[group-separator={,}]{188000} yen a night as the far ends of the bell curve. Customers' expectations can vary greatly depending on the pricing of the hotel room they stay at. We therefore made observations on the distribution of pricing in the hotels of our database and binned the data by price ranges, decided by consideration of objective of stay. We show these distributions in Figure \ref{fig:price_dist}. The structure of the data after division by price is shown in Table \ref{tab:exp_notes}, which also includes the results of emotional classification after application of our SVC, as explained in \ref{sentimentanalysis}. 
+    The price for a night in these hotels ranges from low priced capsule hotels at 2000 yen per night, to high-end hotels \num[group-separator={,}]{188000} yen a night as the far ends of the bell curve. Customers' expectations can vary greatly depending on the pricing of the hotel room they stay at. We therefore made observations on the distribution of pricing in the hotels of our database and binned the data by price ranges, decided by consideration of objective of stay. We show these distributions in Figure \ref{fig:price_dist}. The structure of the data after division by price is shown in Table \ref{tab:exp_notes}, which also includes the results of emotional classification after application of our SVC, as explained in \ref{sentimentanalysis}. The first three price ranges (0 to 2500 yen, 2500 to 5000 yen, 5000 to 10,000 yen) would correspond to low class hotels or even hostels on the lower end, and cheap business hotels on the higher end. Further on there are business hotels in the next range (10,000 to 15,000 yen), and after that the stays could be at Japanese style \textit{ryokan} when traveling in groups, high class business hotels, luxury love hotels, or higher class hotels (15,000 to 20,000 yen, 20,000 to 30,000 yen). Further than that is more likely to be \textit{ryokan} or high class resorts or five-star hotels (30,000 to 50,000 yen, 50,000 to 100,000 yen, 100,000 to 200,000 yen). Note that because of choosing the highest price per one night in each hotel, the cheapest two price ranges (0 to 2500 yen, 2500 to 5000 yen) are empty, despite some rooms being priced at 2000 yen per night. Because of this, other tables will omit these two price ranges.
 
     \begin{figure}[h]
         \centering
@@ -448,20 +455,20 @@
 
     Chinese text, unlike English, does not have spaces between each word to separate them. In addition, we also needed to analyze the grammatical relationship between words, be it English or Chinese, in order to understand connections between adjectives and the noun they refer to. For all these processes we used the Stanford CoreNLP pipeline developed by the Natural Language Processing Group at Stanford University \cite[][]{manning-EtAl:2014:P14-5}. In order to separate Chinese words for analysis, we used the Stanford Word Segmenter \cite[][]{chang2008}. In the case of texts in English, however, only using spaces is not enough to correctly collect concepts. The English language is full of variations and conjugations of words depending on the context and tense. Thus, a better segmentation is achieved by using lemmatization, which returns the dictionary form of each word. For this purpose, we used the \textit{gensim} library with the English texts.
 
-    A dependency parser analyzes the grammatical structure of a sentence, detecting connections between words and describing the action and direction of those connections. We show an example of these dependencies in Figure \ref{fig:depparse}. In this study we use the Stanford NLP Dependency Parser, as described in \cite{chen-EMNLP:2014}. A list of dependencies used by this parser is detailed in \cite{marneffe_manning_2016_depparse_manual}. In our study, this step was necessary to extract adjective modifiers and their subject. We did that by parsing the entire database, and extracting instances of a few determined dependency codes. One of these dependency codes is `amod', which stands for adjectival modifier, where an adjective modifies a noun directly (e.g. A big apple). The other dependency code we used was `nsubj', or nominal subject, which is the syntactic subject of a class. We used this one for cases where the adjective is modifying the noun indirectly through other words (e.g. The apple is big). This dependency does not necessarily only include a combination of adjectives and nouns, but it can also be connected with copular verbs, nouns, or other adjectives. For this reason we saw necessary to also perform a Part of Speech (POS) tagging of these clauses.
+    A dependency parser analyzes the grammatical structure of a sentence, detecting connections between words and describing the action and direction of those connections. We show an example of these dependencies in Figure \ref{fig:depparse}. In this study we use the Stanford NLP Dependency Parser, as described in \cite{chen-EMNLP:2014}. A list of dependencies used by this parser is detailed by \cite{marneffe_manning_2016_depparse_manual}. In more recent versions, they use an updated dependency tag list from Universal Dependencies \cite[][]{zeman2018conll}. In our study, this step was necessary to extract adjective modifiers and their subject. We did that by parsing the entire database, and extracting instances of a few determined dependency codes. One of these dependency codes is ``amod'', which stands for adjectival modifier, where an adjective modifies a noun directly (e.g. A big apple). The other dependency code we used was ``nsubj'', or nominal subject, which is the syntactic subject of a class. We used this one for cases where the adjective is modifying the noun indirectly through other words (e.g. The apple is big). This dependency does not necessarily only include a combination of adjectives and nouns, but it can also be connected with copular verbs, nouns, or other adjectives. For this reason we saw necessary to also perform a Part of Speech (POS) tagging of these clauses.
 
     \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{depparse.png}
+    \includegraphics[width=0.6\textwidth]{depparse.png}
     \caption{Example of dependency parsing.}
     \label{fig:depparse}
     \end{figure}
 
-    A Part of Speech (POS) tagger is a program that assigns word tokens with tags identifying the part of speech. An example is shown in Figure \ref{fig:postag}. A Part of Speech is a category of lexical items that serve similar grammatical purposes; for example, nouns, adjectives, verbs, conjunctions, and so on. In our study, we used the Stanford NLP POS tagger software, described in \cite{toutanova2000enriching, toutanova2003feature}, which uses the Penn Chinese Treebank tags \cite[][]{xia_penntreebank}.  
+    A Part of Speech (POS) tagger is a program that assigns word tokens with tags identifying the part of speech. An example is shown in Figure \ref{fig:postag}. A Part of Speech is a category of lexical items that serve similar grammatical purposes; for example, nouns, adjectives, verbs, conjunctions, and so on. In our study, we used the Stanford NLP POS tagger software, described by \cite{toutanova2000enriching} and \cite{toutanova2003feature}, which uses the Penn Chinese Treebank tags \cite[][]{xia_penntreebank}.
 
     \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{postag.png}
+    \includegraphics[width=0.6\textwidth]{postag.png}
     \caption{Example of POS tagging with the Penn Treebank tags.}
     \label{fig:postag}
     \end{figure}
@@ -474,6 +481,7 @@
       \centering
       \caption{Target Parts of Speech for extraction and pairing.}
       \label{tab:target_postag}
+      \resizebox{\textwidth}{!}{%
       \begin{tabular}{|c|c|l|l|}
         \hline
         \textbf{Language}                    & \textbf{POS Tag} & \multicolumn{1}{c|}{\textbf{Part of Speech}} & \multicolumn{1}{c|}{\textbf{Examples}}     \\ \hline
@@ -490,7 +498,8 @@
                                              & VBP & Verb (single present)              & take                                           \\ \cline{2-4} 
                                              & VBN & Verb (past participle)             & taken                                          \\ \cline{2-4} 
                                              & VBG & Verb (gerund / present participle) & taking                                         \\ \hline
-      \end{tabular}
+        \end{tabular}%
+        }
     \end{table}
 
     % Please add the following required packages to your document preamble:
@@ -499,6 +508,7 @@
       \centering
       \caption{Filtered out Parts of Speech to aid pairing.}
       \label{tab:filter_postag}
+      \resizebox{\textwidth}{!}{%
       \begin{tabular}{|c|l|l|l|}
         \hline
         \textbf{Language} &
@@ -526,14 +536,15 @@
         \multirow{3}{*}{English target tags}    & NNP   & Noun (proper noun) & Japan                                      \\ \cline{2-4} 
                                                 & PRP\$ & Possessive Pronoun & My, your, her, his                         \\ \cline{2-4} 
                                                 & WP    & Wh-pronoun         & What, who                                  \\ \hline
-      \end{tabular}
+        \end{tabular}%
+        }
     \end{table}
 
     Once we had these adjective + noun or verb + noun pairs, we could determine what the customers are referring to in their reviews, and with what frequency they use those pairings positively or negatively.
 
-  \subsection{Sentiment analysis}\label{sentimentanalysis}
+  \subsection{Sentiment analysis using a Support Vector Classifier}\label{sentimentanalysis}
 
-    The sentiment analysis was performed using the methodology described in \cite{Aleman2018ICAROB}. Keywords are determined by a comparison of Shannon's entropy \cite[][]{shannon1948} between two classes by a factor of \(\alpha\) for one class and \(\alpha'\) for the other, and then they are used in an SVM \cite[][]{cortes1995}, optimizing keywords to select the best performing classifier using the \(F_1\)-measure \cite{powers2011}. The selected SVM keywords would then clearly represent the user driving factors leading to positive and negative emotions. We also performed experiments to choose the best value of the parameter C used in the SVM. C is a constant that affects the optimization process when minimizing the error of the separating hyperplane. Low values of C give some freedom of error, which minimizes false positives. However, depending on the data, it can increase false negatives. Inversely, high values of C will likely result in minimal false negatives, but a possibility of false positives. SVM performance results are displayed in  Tables \ref{tab:svm_f1_zh} and \ref{tab:svm_f1_en}. Examples of tagged sentences are shown in Table \ref{tab:training_examples}. 
+    The sentiment analysis was performed using the methodology described by \cite{Aleman2018ICAROB}. Keywords are determined by a comparison of Shannon's entropy \cite[][]{shannon1948} between two classes by a factor of \(\alpha\) for one class and \(\alpha'\) for the other, and then they are used in an SVM \cite[][]{cortes1995}, optimizing keywords to select the best performing classifier using the \(F_1\)-measure \cite{powers2011}. The selected SVM keywords would then clearly represent the user driving factors leading to positive and negative emotions. We also performed experiments to choose the best value of the parameter C used in the SVM. C is a constant that affects the optimization process when minimizing the error of the separating hyperplane. Low values of C give some freedom of error, which minimizes false positives. However, depending on the data, it can increase false negatives. Inversely, high values of C will likely result in minimal false negatives, but a possibility of false positives. SVM performance results are displayed in  Tables \ref{tab:svm_f1_zh} and \ref{tab:svm_f1_en}. Examples of tagged sentences are shown in Table \ref{tab:training_examples}. 
 
     % Please add the following required packages to your document preamble:
     % \usepackage{graphicx}
@@ -652,9 +663,216 @@
 
     To understand the satisfaction and dissatisfaction factors of Chinese tourists and English-speaking tourists when lodging in Japan, we study both the frequency of the words they use. Following that, to know the relevance of a keyword as a preference for each group, we observed the frequencies of each entropy-based keyword in our complete data set and in each price range subsequently. The frequency of the keywords in the database shows the level of priority it has for customers.
 
-    We observed the top 10 words with the highest frequencies for keywords that were linked by entropy to satisfaction and dissatisfaction in emotionally positive and negative statements to study. The keywords are the quantitative rank of the needs of Chinese and English speaking customers. We show the top 10 positive keywords for each price range comparing English and Chinese in Table \ref{tab:freq_res_pos}. For the negative keywords, we show the results in Table \ref{tab:freq_res_neg}
+    We observed the top 10 words with the highest frequencies for keywords that were linked by entropy to satisfaction and dissatisfaction in emotionally positive and negative statements to study. The keywords are the quantitative rank of the needs of Chinese and English speaking customers. We show the top 10 positive keywords for each price range comparing English and Chinese in Table \ref{tab:freq_res_pos}. For the negative keywords, we show the results in Table \ref{tab:freq_res_neg}.
+
+    We can observe that the most used keywords for most price ranges in the same language are similar to each other, with a few changes in priority for the keywords involved. For example, in Chinese, we can see that the customers praise cleanliness first in cheaper hotels, whereas the size of the room or bed is praised more in hotels of higher class. Another example is that in negative English reviews, complaints about price appear only after 10,000 yen hotels, and it climbs in importance following the increase in price of the hotel.
+
+
+    % Please add the following required packages to your document preamble:
+    % \usepackage{multirow}
+    % \usepackage{graphicx}
+    % \usepackage[normalem]{ulem}
+    % \useunder{\uline}{\ul}{}
+    \begin{table}[]
+    \centering
+    \caption{English and Chinese comparison of the top 10 positive keywords per price range.}
+    \label{tab:freq_res_pos}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|lr|lr|}
+    \hline
+    \textbf{Price range} &
+      \multicolumn{1}{c|}{\textbf{Chinese keyword}} &
+      \multicolumn{1}{c|}{\textbf{Counts in Ctrip}} &
+      \multicolumn{1}{c|}{\textbf{English keyword}} &
+      \multicolumn{1}{c|}{\textbf{Counts in Tripadvisor}} \\ \hline
+    \multirow{10}{*}{\textbf{0: All Prices}}             & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 12892 & good        & 19148 \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 9844  & staff       & 16289 \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 6665  & great       & 16127 \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 6560  & location    & 11838 \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 5605  & nice        & 11615 \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 5181  & clean       & 9064  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 4321  & helpful     & 5846  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 4101  & excellent   & 5661  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}推荐\end{CJK} (recommend)       & 3281  & comfortable & 5625  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}环境\end{CJK} (surroundings)    & 3258  & friendly    & 5606  \\ \hline
+    \multirow{10}{*}{\textbf{3: 5000 to 10,000 yen}}     & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 139   & good        & 206   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 114   & staff       & 181   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 112   & clean       & 174   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 76    & nice        & 166   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 72    & great       & 143   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 66    & location    & 91    \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 55    & comfortable & 79    \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁站\end{CJK} (subway station) & 51    & helpful     & 70    \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}远\end{CJK} (far)              & 41    & friendly    & 64    \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}附近\end{CJK} (nearby)          & 34    & recommend   & 59    \\ \hline
+    \multirow{10}{*}{\textbf{4: 10,000 to 15,000 yen}}   & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 601   & good        & 1399  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 455   & staff       & 1165  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 348   & great       & 961   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 323   & nice        & 808   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 270   & location    & 800   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}卫生\end{CJK} (health)          & 201   & clean       & 656   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 196   & excellent   & 412   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 164   & friendly    & 400   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}远\end{CJK} (far)              & 158   & helpful     & 393   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}附近\end{CJK} (nearby)          & 150   & comfortable & 391   \\ \hline
+    \multirow{10}{*}{\textbf{5: 15,000 to 20,000 yen}}   & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 1925  & good        & 2242  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 1348  & staff       & 1674  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 1277  & great       & 1414  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 1058  & clean       & 1204  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 1016  & nice        & 1175  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 801   & location    & 1109  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 777   & comfortable & 621   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁站\end{CJK} (subway station) & 639   & friendly    & 615   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}附近\end{CJK} (nearby)          & 572   & free        & 581   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 516   & helpful     & 552   \\ \hline
+    \multirow{10}{*}{\textbf{6: 20,000 to 30,000 yen}}   & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 3110  & good        & 6550  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 2245  & staff       & 5348  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 1990  & great       & 5074  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 1940  & location    & 4414  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 1433  & nice        & 3451  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 1073  & clean       & 3364  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 1007  & shopping    & 1992  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 979   & helpful     & 1970  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}周边\end{CJK} (surroundings)    & 837   & comfortable & 1941  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}附近\end{CJK} (nearby)          & 825   & friendly    & 1915  \\ \hline
+    \multirow{10}{*}{\textbf{7: 30,000 to 50,000 yen}}   & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 2291  & good        & 3407  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 1913  & staff       & 2867  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 1159  & great       & 2620  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 1105  & location    & 2186  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 935   & nice        & 2160  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 846   & clean       & 1750  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}推荐\end{CJK} (recommend)       & 638   & helpful     & 1147  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 636   & train       & 1040  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}周边\end{CJK} (surroundings)    & 552   & subway      & 1034  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}环境\end{CJK} (surroundings)    & 541   & friendly    & 1001  \\ \hline
+    \multirow{10}{*}{\textbf{8: 50,000 to 100,000 yen}}  & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 4451  & great       & 4425  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 3670  & good        & 4350  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 2422  & staff       & 3777  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 2012  & nice        & 2991  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 1764  & location    & 2439  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new)              & 1634  & clean       & 1655  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great)            & 1626  & excellent   & 1555  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & 1604  & helpful     & 1313  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & 1577  & comfortable & 1246  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & 1354  & friendly    & 1238  \\ \hline
+    \multirow{10}{*}{\textbf{9: 100,000 to 200,000 yen}} & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & 375   & great       & 1488  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & 315   & staff       & 1277  \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great)            & 189   & good        & 994   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & 171   & nice        & 864   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}环境\end{CJK} (surroundings)    & 157   & location    & 799   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & 127   & excellent   & 631   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}选择\end{CJK} (select)          & 112   & beautiful   & 455   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}推荐\end{CJK} (recommend)       & 109   & large       & 404   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}赞\end{CJK} (awesome)          & 101   & helpful     & 401   \\  
+                                                         & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & 98    & wonderful   & 372   \\ \hline
+    \end{tabular}%
+    }
+    \end{table}
+
+
+    % Please add the following required packages to your document preamble:
+    % \usepackage{multirow}
+    % \usepackage{graphicx}
+    \begin{table}[]
+      \centering
+      \caption{English and Chinese comparison of the top 10 negative keywords per price range.}
+      \label{tab:freq_res_neg}
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{|c|lr|lr|}
+        \hline
+        \textbf{Price range} &
+          \multicolumn{1}{c|}{\textbf{Chinese keyword}} &
+          \multicolumn{1}{c|}{\textbf{Counts in Ctrip}} &
+          \multicolumn{1}{c|}{\textbf{English keyword}} &
+          \multicolumn{1}{c|}{\textbf{Counts in Tripadvisor}} \\ \hline
+        \multirow{10}{*}{\textbf{0: All Prices}}             & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 1838 & pricey         & 462 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 1713 & poor           & 460 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 733  & dated          & 431 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 691  & disappointing  & 376 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 434  & worst          & 327 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 319  & minor          & 258 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 297  & uncomfortable  & 253 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}华人\end{CJK} (Chinese)   & 15   & carpet         & 240 \\  
+                                                             &                                                &      & annoying       & 220 \\  
+                                                             &                                                &      & sense          & 220 \\ \hline
+        \multirow{10}{*}{\textbf{3: 5000 to 10,000 yen}}     & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 31   & worst          & 6   \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 28   & walkway        & 5   \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 11   & unable         & 4   \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 10   & worse          & 4   \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 9    & annoying       & 3   \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 2    & dirty          & 3   \\  
+                                                             &                                                &      & funny smell    & 3   \\  
+                                                             &                                                &      & poor           & 3   \\  
+                                                             &                                                &      & renovation     & 3   \\  
+                                                             &                                                &      & carpet         & 2   \\ \hline
+        \multirow{10}{*}{\textbf{4: 10,000 to 15,000 yen}}   & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 98   & dated          & 40  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 91   & poor           & 29  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 43   & disappointing  & 26  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 34   & worst          & 24  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 31   & uncomfortable  & 23  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 30   & cigarette      & 22  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 26   & pricey         & 22  \\  
+                                                             &                                                &      & minor          & 21  \\  
+                                                             &                                                &      & paper          & 19  \\  
+                                                             &                                                &      & unable         & 19  \\ \hline
+        \multirow{10}{*}{\textbf{5: 15,000 to 20,000 yen}}   & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 296  & poor           & 57  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 218  & dated          & 41  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 125  & disappointing  & 38  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 93   & annoying       & 36  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 84   & worst          & 36  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 43   & cigarette      & 31  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 26   & rude           & 28  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}华人\end{CJK} (Chinese)   & 3    & uncomfortable  & 26  \\  
+                                                             &                                                &      & paper          & 25  \\  
+                                                             &                                                &      & pricey         & 24  \\ \hline
+        \multirow{10}{*}{\textbf{6: 20,000 to 30,000 yen}}   & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 504  & poor           & 136 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 472  & dated          & 131 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 164  & pricey         & 120 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 155  & disappointing  & 112 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 116  & uncomfortable  & 103 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 75   & minor          & 93  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 55   & smallest       & 88  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}华人\end{CJK} (Chinese)   & 2    & worst          & 86  \\  
+                                                             &                                                &      & cigarette      & 79  \\  
+                                                             &                                                &      & annoying       & 70  \\ \hline
+        \multirow{10}{*}{\textbf{7: 30,000 to 50,000 yen}}   & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 326  & poor           & 92  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 311  & pricey         & 92  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 110  & dated          & 65  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 94   & worst          & 64  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 71   & carpet         & 55  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 68   & uncomfortable  & 55  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 45   & dirty          & 51  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}华人\end{CJK} (Chinese)   & 2    & disappointing  & 50  \\  
+                                                             &                                                &      & cigarette      & 46  \\  
+                                                             &                                                &      & unable         & 43  \\ \hline
+        \multirow{10}{*}{\textbf{8: 50,000 to 100,000 yen}} &
+                                                               \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 561  & pricey         & 163 \\ 
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 510  & dated          & 150 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 337  & disappointing  & 129 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 239  & poor           & 124 \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 134  & worst          & 98  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 97   & walkway        & 82  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 90   & carpet         & 71  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}华人\end{CJK} (Chinese)   & 8    & minor          & 63  \\  
+                                                             &                                                &      & sense          & 63  \\  
+                                                             &                                                &      & outdated       & 58  \\ \hline
+        \multirow{10}{*}{\textbf{9: 100,000 to 200,000 yen}} & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)     & 54   & pricey         & 40  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)   & 51   & sense          & 34  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)   & 19   & minor          & 33  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)  & 15   & lighting       & 20  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography) & 12   & disappointing  & 19  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)  & 6    & poor           & 19  \\  
+                                                             & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)        & 5    & annoying       & 16  \\  
+                                                             &                                                &      & mixed          & 15  \\  
+                                                             &                                                &      & disappointment & 14  \\  
+                                                             &                                                &      & paper          & 14  \\ \hline
+        \end{tabular}%
+        }
+    \end{table}
 
   \subsection{Frequently used adjectives and their pairs}\label{adjresults}
+
+    Some keywords in these lists are adjectives, such as the word ``\begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)'' mentioned before. In order to understand those, we performed the dependency parsing and part of speech tagging explained in section \ref{textprocessing}. While there were many of these connections, we only considered the top 4 used keyword connections per adjective per price range. We show the most used Chinese adjectives in positive keywords in Table \ref{tab:adj_zh_pos}, and for negative Chinese adjective keywords in Table \ref{tab:adj_zh_neg}. Similarly, for English adjectives used in positive sentences we show the most common examples in Table \ref{tab:adj_en_pos}, and for adjectives used in negative sentences in Table \ref{tab:adj_en_neg}.
 
     %%%%%%%%%%%%% POSITIVE CHINESE ADJECTIVE PAIRS
     % Please add the following required packages to your document preamble:
@@ -662,264 +880,304 @@
     % \usepackage{graphicx}
     % \usepackage{lscape}
     \begin{landscape}
-    \begin{table}[p]
+    \begin{table}[]
       \centering
-      \caption{Top 4 words related to the mainly used adjectives in positive texts.}
+      \caption{Top 4 words related to the mainly used adjectives in positive Chinese texts.}
       \label{tab:adj_zh_pos}
       \resizebox{\linewidth}{!}{%
-      \begin{tabular}{|c|l|l|l|l|l|}
+      \begin{tabular}{|c|l|l|l|l|l|l|}
         \hline
-        \multicolumn{1}{|l|}{\textbf{Price range}} &
+        \textbf{Price range} &
           \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)}} &
           \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)}} &
           \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)}} &
           \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)}} &
-          \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}新\end{CJK} (new)}} \\ \hline
+          \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}新\end{CJK} (new)}} &
+          \multicolumn{1}{c|}{\textbf{\begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great)}} \\ \hline
         \multirow{5}{*}{\textbf{0: All Prices}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 12892 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 9844 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 6665 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 5181 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 2775 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 2775 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 3028 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 1462 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 3197 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 1224 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 453 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 363 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 363 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 463 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 1426 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 772 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 737 &
           \begin{CJK}{UTF8}{gbsn}近 桥\end{CJK} (near bridge) : 144 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 246 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 246 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 218 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 869 &
           \begin{CJK}{UTF8}{gbsn}大 酒店\end{CJK} (big hotel) : 379 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 464 &
           \begin{CJK}{UTF8}{gbsn}近 地铁站\end{CJK} (near subway station) : 122 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 116 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 116 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 168 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 环境\end{CJK} (nice environment) : 714 &
           \begin{CJK}{UTF8}{gbsn}大 超市\end{CJK} (big supermarket) : 232 &
           \begin{CJK}{UTF8}{gbsn}干净 环境\end{CJK} (clean environment) : 61 &
           \begin{CJK}{UTF8}{gbsn}近 站\end{CJK} (near station) : 108 &
-          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 53 \\ \hline
-        \multirow{5}{*}{\textbf{3: 5000 to 10,000 yen}} &
+          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 53 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 164 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}3: 5000 to\\  10,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 139 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 76 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 114 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 55 &
-           \\
+           &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 11 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 17 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 11 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 21 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 4 &
-           \\
+           &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 2 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 16 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 10 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 10 &
           \begin{CJK}{UTF8}{gbsn}近 地铁\end{CJK} (near subway) : 2 &
+           &
            \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 早餐\end{CJK} (nice breakfast) : 12 &
           \begin{CJK}{UTF8}{gbsn}大 超市\end{CJK} (big supermarket) : 5 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 6 &
-          \begin{CJK}{UTF8}{gbsn}不错 附近\end{CJK} (not bad nearby) : 0 &
+           &
+           &
            \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 8 &
           \begin{CJK}{UTF8}{gbsn}大 商场\end{CJK} (big market) : 3 &
           \begin{CJK}{UTF8}{gbsn}干净 总体\end{CJK} (clean overall) : 4 &
-          \begin{CJK}{UTF8}{gbsn}便利 附 近\end{CJK} (convenient nearby) : 0 &
+           &
+           &
            \\ \hline
-        \multirow{5}{*}{\textbf{4: 10,000 to 15,000 yen}} &
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}4: 10,000 to\\  15,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 601 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 348 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 455 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 323 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 37 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 37 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 73 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 72 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 76 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 66 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 27 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 9 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 9 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 6 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 37 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 30 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 52 &
           \begin{CJK}{UTF8}{gbsn}近 站\end{CJK} (near station) : 14 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 2 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 2 &
+          \begin{CJK}{UTF8}{gbsn}棒 房间\end{CJK} (great room) : 3 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 34 &
           \begin{CJK}{UTF8}{gbsn}大 社\end{CJK} (big club) : 26 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 48 &
           \begin{CJK}{UTF8}{gbsn}近 地铁\end{CJK} (near subway) : 12 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 2 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 2 &
+          \begin{CJK}{UTF8}{gbsn}棒 水平\end{CJK} (great level) : 3 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 早餐\end{CJK} (nice breakfast) : 26 &
           \begin{CJK}{UTF8}{gbsn}大 空间\end{CJK} (big space) : 16 &
           \begin{CJK}{UTF8}{gbsn}干净 打扫\end{CJK} (clean up) : 9 &
           \begin{CJK}{UTF8}{gbsn}近 车站\end{CJK} (near the station) : 10 &
-           \\ \hline
-        \multirow{5}{*}{\textbf{5: 15,000 to 20,000 yen}} &
+           &
+          \begin{CJK}{UTF8}{gbsn}棒 温泉\end{CJK} (great hot spring) : 3 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}5: 15,000 to\\  20,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 1925 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 1277 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 1348 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 1016 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 234 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 234 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 241 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 207 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 316 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 234 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 82 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 47 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 47 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 33 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 168 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 140 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 161 &
           \begin{CJK}{UTF8}{gbsn}近 站\end{CJK} (near station) : 35 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 25 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 25 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 25 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 131 &
           \begin{CJK}{UTF8}{gbsn}大 超市\end{CJK} (big supermarket) : 73 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 92 &
           \begin{CJK}{UTF8}{gbsn}近 地铁站\end{CJK} (near subway station) : 34 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 15 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 15 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 22 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 早餐\end{CJK} (nice breakfast) : 109 &
           \begin{CJK}{UTF8}{gbsn}大 酒店\end{CJK} (big hotel) : 49 &
           \begin{CJK}{UTF8}{gbsn}干净 设施\end{CJK} (clean facilities) : 19 &
           \begin{CJK}{UTF8}{gbsn}近 桥\end{CJK} (near bridge) : 29 &
-          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 10 \\ \hline
-        \multirow{5}{*}{\textbf{6: 20,000 to 30,000 yen}} &
+          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 10 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 8 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}6: 20,000 to\\  30,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 3110 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 2245 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 1940 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 1433 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 517 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 517 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 440 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 409 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 680 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 360 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 164 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 89 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 89 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 51 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 326 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 198 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 203 &
           \begin{CJK}{UTF8}{gbsn}近 地铁\end{CJK} (near subway) : 34 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 51 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 51 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 45 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 206 &
           \begin{CJK}{UTF8}{gbsn}大 酒店\end{CJK} (big hotel) : 102 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 137 &
           \begin{CJK}{UTF8}{gbsn}近 地铁站\end{CJK} (near subway station) : 31 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 24 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 24 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 23 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 环境\end{CJK} (nice environment) : 183 &
           \begin{CJK}{UTF8}{gbsn}大 空间\end{CJK} (big space) : 64 &
           \begin{CJK}{UTF8}{gbsn}干净 环境\end{CJK} (clean environment) : 21 &
           \begin{CJK}{UTF8}{gbsn}近 车站\end{CJK} (near the station) : 27 &
-          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 10 \\ \hline
-        \multirow{5}{*}{\textbf{7: 30,000 to 50,000 yen}} &
+          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 10 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 20 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}7: 30,000 to\\  50,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 2291 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 1913 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 1159 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 935 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 260 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 260 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 448 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 277 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 643 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 224 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 80 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 63 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 63 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 68 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 274 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 141 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 146 &
           \begin{CJK}{UTF8}{gbsn}近 站\end{CJK} (near station) : 24 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 25 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 25 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 34 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 140 &
           \begin{CJK}{UTF8}{gbsn}大 超市\end{CJK} (big supermarket) : 74 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 71 &
           \begin{CJK}{UTF8}{gbsn}近 桥\end{CJK} (near bridge) : 20 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 15 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 15 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 24 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 环境\end{CJK} (nice environment) : 140 &
           \begin{CJK}{UTF8}{gbsn}大 酒店\end{CJK} (big hotel) : 66 &
           \begin{CJK}{UTF8}{gbsn}干净 环境\end{CJK} (clean environment) : 16 &
           \begin{CJK}{UTF8}{gbsn}近 山\end{CJK} (near mountain) : 12 &
-          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 11 \\ \hline
-        \multirow{5}{*}{\textbf{8: 50,000 to 100,000}} &
+          \begin{CJK}{UTF8}{gbsn}新 房间\end{CJK} (new room) : 11 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 14 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}8: 50,000 to\\  100,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 4451 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 3670 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 1577 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 1354 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 1634 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 1634 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 1626 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 587 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 1340 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 310 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 88 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 141 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 141 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 281 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 415 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 238 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 161 &
           \begin{CJK}{UTF8}{gbsn}近 桥\end{CJK} (near bridge) : 76 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 123 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 123 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 112 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 328 &
           \begin{CJK}{UTF8}{gbsn}大 酒店\end{CJK} (big hotel) : 144 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 101 &
           \begin{CJK}{UTF8}{gbsn}近 地铁站\end{CJK} (near subway station) : 35 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 57 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 57 &
+          \begin{CJK}{UTF8}{gbsn}棒 位置\end{CJK} (great position) : 96 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 早餐\end{CJK} (nice breakfast) : 251 &
           \begin{CJK}{UTF8}{gbsn}大 商场\end{CJK} (big market) : 88 &
           \begin{CJK}{UTF8}{gbsn}干净 服务\end{CJK} (clean service) : 13 &
           \begin{CJK}{UTF8}{gbsn}近 铁\end{CJK} (Kintetsu) : 24 &
-          \begin{CJK}{UTF8}{gbsn}新 斋\end{CJK} (new) : 22 \\ \hline
-        \multirow{5}{*}{\textbf{9: 100,000 to 200,000}} &
+          \begin{CJK}{UTF8}{gbsn}新 斋\end{CJK} (new) : 22 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 86 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}9: 100,000 to\\  200,000 yen\end{tabular}}} &
           \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad) : 375 &
           \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big) : 315 &
           \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean) : 72 &
           \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near) : 65 &
-          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 77 \\
+          \begin{CJK}{UTF8}{gbsn}新\end{CJK} (new) : 77 &
+          \begin{CJK}{UTF8}{gbsn}棒\end{CJK} (great) : 189 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 酒店\end{CJK} (nice hotel) : 53 &
           \begin{CJK}{UTF8}{gbsn}大 房间\end{CJK} (big room) : 131 &
           \begin{CJK}{UTF8}{gbsn}干净 房间\end{CJK} (clean room) : 9 &
           \begin{CJK}{UTF8}{gbsn}近 酒店\end{CJK} (near hotel) : 8 &
-          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 19 \\
+          \begin{CJK}{UTF8}{gbsn}新 酒店\end{CJK} (new hotel) : 19 &
+          \begin{CJK}{UTF8}{gbsn}棒 酒店\end{CJK} (great hotel) : 36 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 位置\end{CJK} (nice location) : 30 &
           \begin{CJK}{UTF8}{gbsn}大 面积\end{CJK} (large area) : 19 &
           \begin{CJK}{UTF8}{gbsn}干净 酒店\end{CJK} (clean hotel) : 8 &
           \begin{CJK}{UTF8}{gbsn}近 地铁站\end{CJK} (near subway station) : 3 &
-          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 13 \\
+          \begin{CJK}{UTF8}{gbsn}新 设施\end{CJK} (new facility) : 13 &
+          \begin{CJK}{UTF8}{gbsn}棒 体验\end{CJK} (great experience) : 10 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 环境\end{CJK} (nice environment) : 27 &
           \begin{CJK}{UTF8}{gbsn}大 床\end{CJK} (big bed) : 15 &
           \begin{CJK}{UTF8}{gbsn}干净 卫生\end{CJK} (clean and hygienic) : 5 &
           \begin{CJK}{UTF8}{gbsn}近 市场\end{CJK} (near market) : 3 &
-          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 3 \\
+          \begin{CJK}{UTF8}{gbsn}新 装修\end{CJK} (new decoration) : 3 &
+          \begin{CJK}{UTF8}{gbsn}棒 服务\end{CJK} (great service) : 10 \\
          &
           \begin{CJK}{UTF8}{gbsn}不错 服务\end{CJK} (nice service) : 22 &
           \begin{CJK}{UTF8}{gbsn}大 卫生间\end{CJK} (big toilet) : 13 &
-          \begin{CJK}{UTF8}{gbsn}干净 一如既往\end{CJK} (clean as always) : 0 &
-          \begin{CJK}{UTF8}{gbsn}不错 附近\end{CJK} (not bad nearby) : 0 &
-          \begin{CJK}{UTF8}{gbsn}新 位置\end{CJK} (new location) : 2 \\ \hline
+           &
+           &
+          \begin{CJK}{UTF8}{gbsn}新 位置\end{CJK} (new location) : 2 &
+          \begin{CJK}{UTF8}{gbsn}棒 早餐\end{CJK} (great breakfast) : 8 \\ \hline
         \end{tabular}%
         }
-      \end{table}
+    \end{table}
     \end{landscape}
-
 
     %%%%%%%%%%%%% NEGATIVE CHINESE ADJECTIVE PAIRS
     % Please add the following required packages to your document preamble:
@@ -931,7 +1189,7 @@
       \centering
       \caption{Top 4 words related to the mainly used adjectives in negative texts.}
       \label{tab:adj_zh_neg}
-      \resizebox{\linewidth}{!}{%
+      \resizebox{0.7\linewidth}{!}{%
       \begin{tabular}{|c|l|l|l|}
         \hline
         \multicolumn{1}{|l|}{\textbf{Price range}} &
@@ -1103,108 +1361,850 @@
     \end{table}
     \end{landscape}
 
+
+    %%%%%%%%%%%%% POSITIVE ENGLISH ADJECTIVE PAIRS
+    % Please add the following required packages to your document preamble:
+    % \usepackage{multirow}
+    % \usepackage{graphicx}
+    % \usepackage[normalem]{ulem}
+    % \useunder{\uline}{\ul}{}
+    % \usepackage{lscape}
+    \begin{landscape}
+    \begin{table}[p]
+      \centering
+      \caption{Top 4 words related to the mainly used adjectives in positive English texts.}
+      \label{tab:adj_en_pos}
+      \resizebox{\linewidth}{!}{%
+      \begin{tabular}{|c|l|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{Price range} &
+          \multicolumn{1}{c|}{\textbf{good}} &
+          \multicolumn{1}{c|}{\textbf{clean}} &
+          \multicolumn{1}{c|}{\textbf{comfortable}} &
+          \multicolumn{1}{c|}{\textbf{helpful}} &
+          \multicolumn{1}{c|}{\textbf{free}} &
+          \multicolumn{1}{c|}{\textbf{large}} &
+          \multicolumn{1}{c|}{\textbf{firendly}} &
+          \multicolumn{1}{c|}{\textbf{great}} \\ \hline
+        \multirow{5}{*}{\textbf{0: All Prices}} &
+          good : 19148 &
+          clean : 9064 &
+          comfortable : 5625 &
+          helpful : 5846 &
+          free : 4318 &
+          large : 4104 &
+          friendly : 5606 &
+          great : 16127 \\
+         &
+          good location : 1985 &
+          clean room : 3596 &
+          comfortable bed : 1919 &
+          helpful staff : 2927 &
+          free wifi : 773 &
+          large room : 1256 &
+          friendly staff : 3819 &
+          great location : 2313 \\
+         &
+          good service : 1042 &
+          clean hotel : 969 &
+          comfortable room : 1098 &
+          helpful concierge : 304 &
+          free shuttle : 286 &
+          large hotel : 268 &
+          friendly service : 169 &
+          great view : 1099 \\
+         &
+          good breakfast : 942 &
+          clean bathroom : 282 &
+          comfortable stay : 272 &
+          helpful desk : 110 &
+          free drink : 234 &
+          large bathroom : 202 &
+          friendly hotel : 73 &
+          great service : 841 \\
+         &
+          good hotel : 874 &
+          clean everything : 200 &
+          comfortable hotel : 238 &
+          helpful service : 74 &
+          free bus : 225 &
+          larger room : 192 &
+          friendly person : 63 &
+          great hotel : 802 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}3: 5000 to\\ 10,000 yen\end{tabular}}} &
+          good : 206 &
+          clean : 174 &
+          comfortable : 79 &
+          helpful : 70 &
+          free : 35 &
+          large : 31 &
+          friendly : 64 &
+          great : 143 \\
+         &
+          good location : 30 &
+          clean room : 55 &
+          comfortable bed : 21 &
+          helpful staff : 36 &
+          free wifi : 10 &
+          large room : 7 &
+          friendly staff : 53 &
+          great location : 21 \\
+         &
+          good value : 19 &
+          clean bathroom : 14 &
+          comfortable room : 9 &
+           &
+          free tea : 4 &
+          large area : 2 &
+          friendly everyone : 2 &
+          great view : 14 \\
+         &
+          good english : 10 &
+          clean place : 12 &
+          comfortable futon : 8 &
+           &
+          free raman : 2 &
+          large size : 2 &
+          friendly service : 2 &
+          great place : 13 \\
+         &
+          good place : 7 &
+          clean hotel : 6 &
+          comfortable stay : 3 &
+           &
+          free toothbrush : 2 &
+           &
+           &
+          great experience : 5 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}4: 10,000 to\\  15,000 yen\end{tabular}}} &
+          good : 1399 &
+          clean : 656 &
+          comfortable : 391 &
+          helpful : 393 &
+          free : 271 &
+          large : 250 &
+          friendly : 400 &
+          great : 961 \\
+         &
+          good location : 159 &
+          clean room : 247 &
+          comfortable bed : 123 &
+          helpful staff : 206 &
+          free wifi : 53 &
+          large room : 84 &
+          friendly staff : 292 &
+          great location : 158 \\
+         &
+          good breakfast : 87 &
+          clean hotel : 74 &
+          comfortable room : 90 &
+          helpful concierge : 20 &
+          free breakfast : 15 &
+          large bathroom : 20 &
+          friendly service : 15 &
+          great service : 51 \\
+         &
+          good hotel : 71 &
+          clean bathroom : 20 &
+          comfortable hotel : 26 &
+          helpful desk : 10 &
+          free service : 12 &
+          larger room : 12 &
+          friendly hotel : 7 &
+          great hotel : 43 \\
+         &
+          good service : 67 &
+          clean everything : 14 &
+          comfortable stay : 20 &
+          helpful service : 4 &
+          free drink : 11 &
+          large hotel : 10 &
+          friendly person : 6 &
+          great place : 35 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}5: 15,000 to\\  20,000 yen\end{tabular}}} &
+          good : 2242 &
+          clean : 1204 &
+          comfortable : 621 &
+          helpful : 552 &
+          free : 581 &
+          large : 349 &
+          friendly : 615 &
+          great : 1414 \\
+         &
+          good location : 242 &
+          clean room : 440 &
+          comfortable bed : 219 &
+          helpful staff : 301 &
+          free wifi : 109 &
+          large room : 85 &
+          friendly staff : 444 &
+          great location : 199 \\
+         &
+          good hotel : 116 &
+          clean hotel : 133 &
+          comfortable room : 99 &
+          helpful desk : 11 &
+          free shuttle : 35 &
+          large suitcase : 18 &
+          friendly hotel : 12 &
+          great view : 81 \\
+         &
+          good breakfast : 113 &
+          clean bathroom : 38 &
+          comfortable stay : 30 &
+          helpful concierge : 9 &
+          free bus : 30 &
+          larger room : 18 &
+          friendly service : 8 &
+          great hotel : 68 \\
+         &
+          good service : 108 &
+          clean everything : 26 &
+          comfortable hotel : 20 &
+          helpful reception : 5 &
+          free breakfast : 27 &
+          large hotel : 17 &
+          friendly most : 7 &
+          great place : 61 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}6: 20,000 to\\  30,000 yen\end{tabular}}} &
+          good : 6550 &
+          clean : 3364 &
+          comfortable : 1941 &
+          helpful : 1970 &
+          free : 1186 &
+          large : 1257 &
+          friendly : 1915 &
+          great : 5074 \\
+         &
+          good location : 703 &
+          clean room : 1379 &
+          comfortable bed : 658 &
+          helpful staff : 1019 &
+          free wifi : 269 &
+          large room : 329 &
+          friendly staff : 1311 &
+          great location : 881 \\
+         &
+          good service : 331 &
+          clean hotel : 379 &
+          comfortable room : 359 &
+          helpful concierge : 79 &
+          free breakfast : 68 &
+          large hotel : 87 &
+          friendly service : 51 &
+          great service : 249 \\
+         &
+          good english : 304 &
+          clean bathroom : 95 &
+          comfortable stay : 100 &
+          helpful desk : 42 &
+          free coffee : 57 &
+          larger room : 81 &
+          friendly person : 21 &
+          great hotel : 232 \\
+         &
+          good breakfast : 303 &
+          clean everything : 77 &
+          comfortable hotel : 82 &
+          helpful receptionist : 17 &
+          free drink : 38 &
+          large bed : 43 &
+          friendly hotel : 19 &
+          great view : 220 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}7: 30,000 to\\  50,000 yen\end{tabular}}} &
+          good : 3407 &
+          clean : 1750 &
+          comfortable : 1000 &
+          helpful : 1147 &
+          free : 933 &
+          large : 580 &
+          friendly : 1001 &
+          great : 2620 \\
+         &
+          good location : 380 &
+          clean room : 725 &
+          comfortable bed : 345 &
+          helpful staff : 607 &
+          free drink : 145 &
+          large room : 174 &
+          friendly staff : 715 &
+          great location : 393 \\
+         &
+          good breakfast : 191 &
+          clean hotel : 197 &
+          comfortable room : 193 &
+          helpful concierge : 53 &
+          free wifi : 129 &
+          larger room : 32 &
+          friendly service : 24 &
+          great view : 162 \\
+         &
+          good service : 182 &
+          clean bathroom : 61 &
+          comfortable hotel : 49 &
+          helpful service : 20 &
+          free coffee : 45 &
+          large hotel : 30 &
+          friendly hotel : 13 &
+          great hotel : 134 \\
+         &
+          good english : 155 &
+          clean everything : 36 &
+          comfortable stay : 47 &
+          helpful desk : 17 &
+          free bus : 38 &
+          large bed : 28 &
+          friendly person : 13 &
+          great service : 114 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}8: 50,000 to\\  100,000 yen\end{tabular}}} &
+          good : 4350 &
+          clean : 1655 &
+          comfortable : 1246 &
+          helpful : 1313 &
+          free : 1072 &
+          large : 1233 &
+          friendly : 1238 &
+          great : 4425 \\
+         &
+          good location : 406 &
+          clean room : 648 &
+          comfortable bed : 425 &
+          helpful staff : 589 &
+          free shuttle : 181 &
+          large room : 442 &
+          friendly staff : 810 &
+          great location : 506 \\
+         &
+          good service : 296 &
+          clean hotel : 156 &
+          comfortable room : 266 &
+          helpful concierge : 108 &
+          free wifi : 172 &
+          large hotel : 109 &
+          friendly service : 51 &
+          great view : 436 \\
+         &
+          good hotel : 196 &
+          clean bathroom : 48 &
+          comfortable stay : 56 &
+          helpful service : 28 &
+          free bus : 127 &
+          large bathroom : 58 &
+          friendly hotel : 20 &
+          great service : 267 \\
+         &
+          good breakfast : 191 &
+          cleanliness : 40 &
+          comfortable hotel : 51 &
+          helpful desk : 26 &
+          free service : 65 &
+          larger room : 38 &
+          friendly person : 12 &
+          great hotel : 241 \\ \hline
+        \multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}9: 100,000 to\\  200,000 yen\end{tabular}}} &
+          good : 994 &
+          clean : 261 &
+          comfortable : 347 &
+          helpful : 401 &
+          free : 240 &
+          large : 404 &
+          friendly : 370 &
+          great : 1488 \\
+         &
+          good location : 65 &
+          clean room : 102 &
+          comfortable bed : 128 &
+          helpful staff : 169 &
+          free wifi : 31 &
+          large room : 135 &
+          friendly staff : 194 &
+          great location : 155 \\
+         &
+          good service : 56 &
+          clean hotel : 24 &
+          comfortable room : 82 &
+          helpful concierge : 35 &
+          free breakfast : 19 &
+          large bathroom : 38 &
+          friendly service : 18 &
+          great view : 155 \\
+         &
+          good breakfast : 53 &
+          cleanliness : 8 &
+          comfortable stay : 16 &
+          helpful everyone : 7 &
+          free drink : 16 &
+          large hotel : 15 &
+          friendly everyone : 7 &
+          great service : 101 \\
+         &
+          good hotel : 40 &
+          clean place : 7 &
+          comfortable hotel : 10 &
+          helpful team : 5 &
+          free bus : 14 &
+          large bed : 12 &
+          friendly person : 4 &
+          great hotel : 80 \\ \hline
+        \end{tabular}%
+        }
+    \end{table}
+    \end{landscape}
+
+    %%%%%%%%%%%%% NEGATIVE ENGLISH ADJECTIVE PAIRS
+    % Please add the following required packages to your document preamble:
+    % \usepackage{multirow}
+    % \usepackage{graphicx}
+    % \usepackage{lscape}
+    \begin{landscape}
+    \begin{table}[]
+      \centering
+      \caption{Top 4 words related to the mainly used adjectives in negative English texts.}
+      \label{tab:adj_en_neg}
+      \resizebox{0.8\linewidth}{!}{%
+      \begin{tabular}{|c|l|l|l|l|l|}
+        \hline
+        \textbf{Price range} &
+          \multicolumn{1}{c|}{\textbf{poor}} &
+          \multicolumn{1}{c|}{\textbf{dated}} &
+          \multicolumn{1}{c|}{\textbf{worst}} &
+          \multicolumn{1}{c|}{\textbf{dirty}} &
+          \multicolumn{1}{c|}{\textbf{uncomfortable}} \\ \hline
+        \multirow{5}{*}{\textbf{0: All Prices}} &
+          poor : 460 &
+          dated : 431 &
+          worst : 327 &
+          dirty : 188 &
+          uncomfortable : 253 \\
+         &
+          poor service : 55 &
+          outdated : 128 &
+          worst hotel : 43 &
+          dirty carpet : 34 &
+          uncomfortable bed : 63 \\
+         &
+          poor breakfast : 41 &
+          outdated room : 20 &
+          worst experience : 18 &
+          dirty room : 23 &
+          uncomfortable pillow : 20 \\
+         &
+          poor quality : 27 &
+          outdated hotel : 10 &
+          worst part : 15 &
+          not dirty : 7 &
+          uncomfortable mattress : 8 \\
+         &
+          poor english : 24 &
+          outdated bathroom : 7 &
+          worst service : 10 &
+          dirty bathroom : 6 &
+          uncomfortable night : 8 \\ \hline
+        \multirow{5}{*}{\textbf{3: 5000 to 10,000 yen}} &
+          poor : 3 &
+           &
+          worst : 6 &
+          dirty : 3 &
+          uncomfortable : 2 \\
+         &
+           &
+           &
+          worst room : 2 &
+           &
+           \\
+         &
+           &
+           &
+           &
+           &
+           \\
+         &
+           &
+           &
+           &
+           &
+           \\
+         &
+           &
+           &
+           &
+           &
+           \\ \hline
+        \multirow{5}{*}{\textbf{4: 10,000 to 15,000 yen}} &
+          poor : 29 &
+          dated : 40 &
+          worst : 24 &
+          dirty : 11 &
+          uncomfortable : 23 \\
+         &
+          poor breakfast : 3 &
+          outdated : 11 &
+          worst hotel : 4 &
+          dirty floor : 2 &
+          uncomfortable bed : 4 \\
+         &
+          poor service : 3 &
+          outdated decor : 2 &
+          worst experience : 2 &
+           &
+          not uncomfortable : 2 \\
+         &
+          poor conditioning : 2 &
+          outdated room : 2 &
+           &
+           &
+          uncomfortable night : 2 \\
+         &
+          poor view : 2 &
+           &
+           &
+           &
+          uncomfortable pillow : 2 \\ \hline
+        \multirow{5}{*}{\textbf{5: 15,000 to 20,000 yen}} &
+          poor : 57 &
+          dated : 41 &
+          worst : 36 &
+          dirty : 14 &
+          uncomfortable : 26 \\
+         &
+          poor service : 10 &
+          outdated : 8 &
+          worst hotel : 8 &
+          dirty room : 2 &
+          uncomfortable bed : 7 \\
+         &
+          poor breakfast : 6 &
+           &
+          worst experience : 3 &
+           &
+          uncomfortable pillow : 2 \\
+         &
+          poor hotel : 5 &
+           &
+          worst part : 2 &
+           &
+           \\
+         &
+          poor experience : 3 &
+           &
+          worst service : 2 &
+           &
+           \\ \hline
+        \multirow{5}{*}{\textbf{6: 20,000 to 30,000 yen}} &
+          poor : 136 &
+          dated : 131 &
+          worst : 86 &
+          dirty : 67 &
+          uncomfortable : 103 \\
+         &
+          poor breakfast : 15 &
+          outdated : 31 &
+          worst hotel : 11 &
+          dirty room : 10 &
+          uncomfortable bed : 24 \\
+         &
+          poor service : 14 &
+          outdated room : 6 &
+          worst part : 7 &
+          dirty carpet : 8 &
+          uncomfortable pillow : 11 \\
+         &
+          poor english : 9 &
+          outdated hotel : 2 &
+          worst breakfast : 5 &
+          dirty bathroom : 3 &
+          uncomfortable night : 4 \\
+         &
+          poor quality : 9 &
+           &
+          worst experience : 5 &
+          dirty chair : 2 &
+          uncomfortable experience : 3 \\ \hline
+        \multirow{5}{*}{\textbf{7: 30,000 to 50,000 yen}} &
+          poor : 92 &
+          dated : 65 &
+          worst : 64 &
+          dirty : 51 &
+          uncomfortable : 55 \\
+         &
+          poor service : 8 &
+          outdated : 17 &
+          worst hotel : 10 &
+          dirty carpet : 11 &
+          uncomfortable bed : 20 \\
+         &
+          poor breakfast : 7 &
+          outdated hotel : 4 &
+          worst room : 3 &
+          dirty room : 7 &
+          uncomfortable mattress : 6 \\
+         &
+          poor english : 7 &
+          outdated bathroom : 2 &
+          worst service : 3 &
+          dirty clothe : 2 &
+          uncomfortable pillow : 5 \\
+         &
+          poor connection : 5 &
+          outdated decor : 2 &
+          worst part : 2 &
+          dirty luggage : 2 &
+          uncomfortable room : 5 \\ \hline
+        \multirow{5}{*}{\textbf{8: 50,000 to 100,000 yen}} &
+          poor : 124 &
+          dated : 150 &
+          worst : 98 &
+          dirty : 36 &
+          uncomfortable : 33 \\
+         &
+          poor service : 16 &
+          outdated : 58 &
+          worst hotel : 9 &
+          dirty carpet : 12 &
+          uncomfortable bed : 7 \\
+         &
+          poor breakfast : 9 &
+          outdated room : 9 &
+          worst experience : 5 &
+          dirty room : 3 &
+           \\
+         &
+          poor quality : 9 &
+          outdated furniture : 6 &
+          worst part : 3 &
+          dirty cup : 2 &
+           \\
+         &
+          poor english : 6 &
+          outdated hotel : 4 &
+           &
+          dirty rug : 2 &
+           \\ \hline
+        \multirow{5}{*}{\textbf{9: 100,000 to 200,000 yen}} &
+          poor : 19 &
+          dated : 3 &
+          worst : 12 &
+          dirty : 6 &
+          uncomfortable : 8 \\
+         &
+          poor service : 4 &
+          outdated : 2 &
+          worst experience : 2 &
+           &
+          little uncomfortable : 2 \\
+         &
+          poor choice : 2 &
+           &
+           &
+           &
+           \\
+         &
+          poor experience : 2 &
+           &
+           &
+           &
+           \\
+         &
+           &
+           &
+           &
+           &
+           \\ \hline
+      \end{tabular}%
+      }
+    \end{table}
+    \end{landscape}
+
+  \subsection{Determining hard and soft attribute usage}\label{det_hard_soft}
+
+  In order to further understand the differences in satisfaction and dissatisfaction in Chinese and Western customers of Japanese hotels, we classified these factors as either hard or soft attributes of a hotel. We define these by the feasibility with which a hotel management might make an improvement on this end to satisfy the customer further. We define hard attributes as matters that would be impossible for the hotel to change, such as the surroundings and location of the hotel, or impractical and expensive to change, such as matters requiring construction costs, which are possible but of high investment and risk. Soft attributes, on the other hand, are attributes of the hotel which are easily changeable if small investments are made. For example, an improvement in the services of the hotel or the cleanliness of the rooms is a soft attribute. We can thus observe the top 10 satisfaction and dissatisfaction keywords and determine whether they are soft attributes that the hotel management can easily change, or hard attributes that the hotel management cannot change without changing infrastructure or location.
+
+  We manually labeled the top keywords of each language into either hard or soft by considering how the word would be used when writing a review. If the word is describing factors that are unchangeable by the staff or management, we consider them hard. If the word implies an issue that could be solved or managed by the hotel staff or management, we consider it soft. For adjectives, we looked at the top 4 adjective and noun pairings used in the entire dataset, and counted the percentage of usage in each context. If it is not clear from the word or the pairing alone, we declare it undefined. Then, we added the counts of these words in each category, where a single word with no pairing is always 100\% in the category it corresponds to, and we add the partial percentages for each category when an adjective includes various contexts. The interpretation of these keywords is shown in the Tables \ref{tab:zh_hard_soft_keywords} and \ref{tab:en_hard_soft_keywords}. We can see the summarized results for the hard and soft percentages of positive and negative Chinese keywords in Figure \ref{fig:hard_soft_zh}. For the English keywords, see Figure \ref{fig:hard_soft_en}.
+
+  % Please add the following required packages to your document preamble:
+  % \usepackage{multirow}
+  % \usepackage{graphicx}
+  \begin{table}[]
+    \centering
+    \caption{Determination of hard and soft attributes for Chinese keywords. }
+    \label{tab:zh_hard_soft_keywords}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|l|l|}
+      \hline
+      \textbf{Keyword Emotion}                     & \multicolumn{1}{c|}{\textbf{Keyword}} & \multicolumn{1}{c|}{\textbf{Attribute Category}} \\ \hline
+      \multirow{19}{*}{\textbf{Positive Keywords}} & \begin{CJK}{UTF8}{gbsn}不错\end{CJK}    & 50\% hard, 25\% soft, 25\% undefined             \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}大\end{CJK}   & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}干净\end{CJK}  & 25\% hard, 75\% soft                 \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK}  & 100\% soft                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}交通\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}棒\end{CJK}   & 25\% hard, 50\% soft, 25\% undefined \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}近\end{CJK}   & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}购物\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}环境\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}卫生\end{CJK}  & 100\% soft                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}新\end{CJK}   & 50\% hard, 25\% soft, 25\% undefined \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}推荐\end{CJK}  & 100\% undefined                      \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}选择\end{CJK}  & 100\% undefined                      \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}地铁站\end{CJK} & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}远\end{CJK}   & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}附近\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}周边\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}赞\end{CJK}   & 100\% undefined                      \\ \hline
+      \multirow{8}{*}{\textbf{Negative Keywords}}  & \begin{CJK}{UTF8}{gbsn}价格\end{CJK}    & 100\% soft                                       \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}一般\end{CJK}  & 50\% hard, 50\% soft                 \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}中文\end{CJK}  & 100\% soft                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}距离\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}地理\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK}  & 100\% hard                           \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}老\end{CJK}   & 75\% hard, 25\% soft                 \\ \cline{2-3} 
+       & \begin{CJK}{UTF8}{gbsn}华人\end{CJK}  & 100\% soft                           \\ \hline
+      \end{tabular}%
+      }
+  \end{table}
+
+  \begin{figure}[h]
+      \centering
+      \begin{subfigure}[b]{0.45\textwidth}
+          \includegraphics[width=\textwidth]{hard_soft_attr_zh_pos.png}
+          \caption{Positive keywords}
+      \end{subfigure}
+      \begin{subfigure}[b]{0.45\textwidth}
+          \includegraphics[width=\textwidth]{hard_soft_attr_zh_neg.png}
+          \caption{Negative keywords}
+      \end{subfigure}
+  \caption{Hard and soft attributes from the top Chinese keywords for all price ranges}
+  \label{fig:hard_soft_zh}
+  \end{figure}
+
+  % Please add the following required packages to your document preamble:
+  % \usepackage{multirow}
+  % \usepackage{graphicx}
+  % \usepackage[normalem]{ulem}
+  % \useunder{\uline}{\ul}{}
+  \begin{table}[]
+    \centering
+    \caption{Determination of hard and soft attributes for English keywords. }
+    \label{tab:en_hard_soft_keywords}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|l|l|}
+      \hline
+      \textbf{Keyword Emotion}                     & \multicolumn{1}{c|}{\textbf{Keyword}} & \multicolumn{1}{c|}{\textbf{Attribute Category}} \\ \hline
+      \multirow{18}{*}{\textbf{Positive Keywords}} & good                                  & 25\% hard, 50\% soft, 25\% undefined             \\ \cline{2-3} 
+       & great          & 50\% hard, 25\% soft, 25\% undefined \\ \cline{2-3} 
+       & staff          & 100\% soft                           \\ \cline{2-3} 
+       & clean          & 100\% soft                           \\ \cline{2-3} 
+       & location       & 100\% hard                           \\ \cline{2-3} 
+       & nice           & 50\% hard, 25\% soft, 25\% undefined \\ \cline{2-3} 
+       & excellent      & 25\% hard, 50\% soft, 25\% undefined \\ \cline{2-3} 
+       & helpful        & 100\% soft                           \\ \cline{2-3} 
+       & comfortable    & 25\% hard, 50\% soft, 25\% undefined \\ \cline{2-3} 
+       & shopping       & 100\% hard                           \\ \cline{2-3} 
+       & beautiful      & 25\% hard, 75\% soft                 \\ \cline{2-3} 
+       & friendly       & 100\% soft                           \\ \cline{2-3} 
+       & train          & 100\% hard                           \\ \cline{2-3} 
+       & large          & 100\% hard                           \\ \cline{2-3} 
+       & free           & 100\% soft                           \\ \cline{2-3} 
+       & subway         & 100\% hard                           \\ \cline{2-3} 
+       & recommend      & 100\% undefined                      \\ \cline{2-3} 
+       & wonderful      & 50\% soft, 50\% undefined            \\ \hline
+      \multirow{24}{*}{\textbf{Negative Keywords}} & pricey                                & 100\% soft                                       \\ \cline{2-3} 
+       & worst          & 25\% hard, 50\% soft, 25\% undefined \\ \cline{2-3} 
+       & dated          & 75\% hard, 25\% undefined            \\ \cline{2-3} 
+       & poor           & 100\% soft                           \\ \cline{2-3} 
+       & walkway        & 100\% hard                           \\ \cline{2-3} 
+       & sense          & 100\% undefined                      \\ \cline{2-3} 
+       & unable         & 100\% soft                           \\ \cline{2-3} 
+       & disappointing  & 50\% soft, 50\% undefined            \\ \cline{2-3} 
+       & minor          & 100\% undefined                      \\ \cline{2-3} 
+       & worse          & 100\% undefined                      \\ \cline{2-3} 
+       & annoying       & 75\% hard, 25\% undefined            \\ \cline{2-3} 
+       & lighting       & 100\% soft                           \\ \cline{2-3} 
+       & uncomfortable  & 100\% soft                           \\ \cline{2-3} 
+       & carpet         & 100\% soft                           \\ \cline{2-3} 
+       & dirty          & 75\% soft, 25\% undefined            \\ \cline{2-3} 
+       & cigarette      & 100\% soft                           \\ \cline{2-3} 
+       & funny smell    & 100\% soft                           \\ \cline{2-3} 
+       & rude           & 100\% soft                           \\ \cline{2-3} 
+       & smallest       & 75\% hard, 25\% undefined            \\ \cline{2-3} 
+       & mixed          & 100\% undefined                      \\ \cline{2-3} 
+       & renovation     & 100\% hard                           \\ \cline{2-3} 
+       & paper          & 100\% undefined                      \\ \cline{2-3} 
+       & disappointment & 100\% undefined                      \\ \cline{2-3} 
+       & outdated       & 75\% hard, 25\% undefined            \\ \hline
+      \end{tabular}%
+      }
+  \end{table}
+
+  \begin{figure}[h]
+      \centering
+      \begin{subfigure}[b]{0.45\textwidth}
+          \includegraphics[width=\textwidth]{hard_soft_attr_en_pos.png}
+          \caption{Positive keywords}
+      \end{subfigure}
+      \begin{subfigure}[b]{0.45\textwidth}
+          \includegraphics[width=\textwidth]{hard_soft_attr_en_neg.png}
+          \caption{Negative keywords}
+      \end{subfigure}
+  \caption{Hard and soft attributes from the top English keywords for all price ranges}
+  \label{fig:hard_soft_en}
+  \end{figure}
+
+
 \section{Results}\label{results}
 
   \subsection{Experiment results and answering research questions}
 
-    From the observation of the top-ranking subjects for Chinese tourists, we can assert that keywords relating to service and staff friendliness are not on the top 10 satisfaction factors. Besides, there are complaints about a Chinese friendly environment. This brings insight onto our research question \ref{rsq:omotenashi_zh}. 
+    Our research questions were about two things. In research questions \ref{rsq:omotenashi} and \ref{rsq:omotenashi_both}, we decide as the objective of this study to determine how Chinese and Western tourists interact with the service and hospitality in Japan, \textit{omotenashi}, and how are they different in their perceptions in this matter. From the observation of the top-ranking positive factors for Chinese tourists across different price ranges in Table \ref{tab:freq_res_pos}, and specifically the word ``\begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)'' and its pairings in Table \ref{tab:adj_zh_pos}, that while service, cleanliness and breakfast are praised in most hotels, location is usually placed above it in importance on the pairings. When we see the rest of the factors lower on the list, we see that across different price ranges, the list is more populated with hard attributes like location and transportation availability. From the negative keyword usages in Table \ref{tab:freq_res_neg}, there are complaints about lack of a Chinese friendly environment, although most complaints are also about hard attributes such as the age of the building and the distance from other convenient spots. The most complained about aspect, however, is the price of the hotel. It is surprising to note that all of the price ranges have this negative keyword at the top of the list, suggesting that it is a main concern to Chinese customers with different purposes of travel.
 
-    % On the other hand, the word ``staff'' tops the list of satisfaction factors in English-written reviews, followed by a few other keywords lower in the top 10 list, such as ``helpful'' or ``friendly''. This confirms our hypothesis \ref{hyp:omotenashi_en}. Since we found that these two populations are different in their satisfaction with Japanese hospitality, our hypothesis \ref{hyp:omotenashi_both} is confirmed.
+    On the other hand, the word ``staff'' is the second or third in the lists of satisfaction factors in English-written reviews in all the price ranges, followed by a few other keywords lower in the top 10 list, such as ``helpful'' or ``friendly''. When we look at the adjectival pairing of the top-ranked keyword ``good'' in Table \ref{tab:adj_en_pos}, we find that mostly, they praise either the location, the service, breakfast, or English availability. When we look at the negative keyword ``poor'' and its pairings in Table \ref{tab:adj_en_neg}, we see that it is also service related concepts that the Western tourists are disappointed with when they react negatively. With these results, we can observe that both Chinese and English-speaking tourists in Japan have different priorities. However, both populations consider the location of the hotel and the availability of transport (subways and trains) nearby, as secondary but still essential points in their satisfaction with a hotel. The Chinese customers are primarily satisfied with the room quality in spaciousness and cleanliness, as well as the service of breakfast. In contrast, the English-speaking customers are easily upset by any lack of cleanliness and smoke smell from cigarettes. It is surprising that the cigarette smell is an issue even in middle to high class hotels above 30,000 yen per night, although above 50,000 yen per night this problem seems to disappear from the list of top 10 concerns. Old and dated buildings seem to be a concern for both populations. On the positive side, for all price ranges considered, English-speaking tourists value staff friendliness over room quality when considering their satisfaction, while Chinese tourists consider location and transportation more often.
 
-    % Both Chinese and English-speaking tourists in Japan have different priorities. However, both populations consider the location of the hotel and the availability of transport (subways and trains) nearby, as secondary but still essential points in their satisfaction with a hotel. The Chinese customers are primarily satisfied with the room quality in spaciousness and cleanliness. In contrast, the English-speaking customers are easily upset by any lack of cleanliness and smoke smell from cigarettes. English-speaking tourists, on the other hand, value staff friendliness over room quality when considering their satisfaction. 
+    We also can observe some keywords that are not considered by their counterparts. For example, English-speaking customers mentioned tobacco smell in many reviews, while it wasn’t statistically identified as a problem at all for their Chinese counterparts. On the other hand, while it appears in both English and Chinese lists, references to ``shopping'' are more common in the Chinese lists across hotels of 15,000 yen to 200,000 yen per night. Meanwhile, the term ``shopping'' only appears in the 20,000 to 30,000 yen per night top 10
+    positive keywords list for English-speakers.
 
-    % We also can observe some keywords that are not considered by their counterparts. For example, mainland Chinese tourists are very satisfied with breakfast inclusion. At the same time, English-speaking customers are satisfied with the staff and service. On the other hand, English-speaking customers mentioned tobacco smell in many reviews, while it wasn't statistically identified as a problem at all for their Chinese counterparts.
+    In our research questions \ref{rsq:hard_soft} and \ref{rsq:hard_soft_diff}, we ponder how customers of both cultural backgrounds react to hard and soft attributes of the hotel, and how they differ in those reactions. Here we define hard attributes as those that are impossible or impractical to change for the hotel management, for example matters like the surroundings, view or location convenience. On the other hand, soft attributes are those that the hotel could easily and practically change without much limitations except for small financial investments, for example, improvement on the services of the hotel via training or hiring specialized staff. In our study, we find that that mostly Chinese tourists are positively reacting more to hard attributes of the hotel, and in negative sentences, there is a slightly hard leaning (53\%) concern with hard attributes, albeit it is more uniform in this instance. English-speaking tourists on the other hand, are both positively and negatively more responsive to soft attributes, and in the case of negative keywords, tourists are overwhelmingly more concerned with soft attributes of the hotel dissatisfying them somehow.
 
-    We can observe the top 10 satisfaction and dissatisfaction keywords and determine whether they are soft attributes that the hotel management can easily change, or hard attributes that the hotel management cannot change without changing infrastructure or location. This is to answer our research question \ref{rsq:hard_soft}
+    One factor that both populations have in common is, when perceiving the hotel negatively, ``old'' or ``outdated'', or ``obsolete'' aspects of the room or the hotel are being criticized across, surprisingly, most price ranges. This is, however, a hard attribute, and is unlikely to change for most hotels.
+    
+  \subsection{Chinese tourists - A big and clean space}\label{disc:zh}
 
-    We manually labeled the top keywords of each language into either hard or soft by considering how the word would be used when writing a review. If the word is describing factors that are unchangeable by the staff or management, we consider them hard. If the word implies an issue that could be solved or managed by the hotel staff or management, we consider it soft. For adjectives, we looked at the top 4 adjective and noun pairings and counted the majority of uses in each context. If there is a draw or it is not clear, we declare it undefined. The interpretation of these keywords is shown in the Tables \ref{tab:zh_hard_soft_keywords} and \ref{tab:en_hard_soft_keywords}.
+    We found that mainland Chinese tourists are satisfied mostly by a big and clean space provided by the Japanese hotels. From the adjectival pairings that we extracted with dependency parsing and POS tagging in Table \ref{tab:adj_zh_pos}, we can observe that mostly they mean big and clean rooms. Other mentions are also big markets nearby, or a big bed. We can observe that across different price ranges, the usage of the word ``big'' increases as the hotel increases in price, but that still they react positively in a significant manner in cheaper hotels. Inspecting closer by taking random samples of the pairs of ``big space'' or ``large area'', we can see that there are also many references to the public bathing facilities in the hotel. In Japan, there is what is called \textit{sent\=o}, which are artificially made public bathing facilities, on occasions including saunas and baths with unique qualities. On the other hand, there are natural hot springs, called \textit{onsen}. They can either be bathing in the natural source of the water or using the hot springs in artificially made bath facilities. It is a Japanese custom and culture that all customers use the facilities after cleaning themselves in a shower and go into the baths without any clothes. It can be a cultural shock for many tourists, but this is a fundamental attraction for many. 
 
-    % Please add the following required packages to your document preamble:
-    % \usepackage{multirow}
-    \begin{table}[]
-      \centering
-      \caption{Determination of hard and soft attributes for Chinese keywords.}
-      \label{tab:zh_hard_soft_keywords}
-      \begin{tabular}{|c|l|l|}
-        \hline
-        \textbf{Keyword emotion category}            & \multicolumn{1}{c|}{\textbf{Keyword}}                & \textbf{Attribute category} \\ \hline
-        \multirow{13}{*}{\textbf{Positive Keywords}} & \begin{CJK}{UTF8}{gbsn}不错\end{CJK} (not bad)         & undefined                   \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)              & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}干净\end{CJK} (clean)           & soft                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}交通\end{CJK} (traffic)         & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}早餐\end{CJK} (breakfast)       & soft                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}近\end{CJK} (near)             & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}地铁\end{CJK} (subway)          & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}购物\end{CJK} (shopping)        & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}推荐\end{CJK} (recommend)       & undefined                   \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}环境\end{CJK} (surroundings)    & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}地铁站\end{CJK} (subway station) & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}远\end{CJK} (far)              & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}周边\end{CJK} (surroundings)    & hard                        \\ \hline
-        \multirow{7}{*}{\textbf{Negative Keywords}}  & \begin{CJK}{UTF8}{gbsn}价格\end{CJK} (price)           & soft                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}一般\end{CJK} (general)         & undefined                   \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}中文\end{CJK} (Chinese)         & soft                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}地理\end{CJK} (geography)       & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}距离\end{CJK} (distance)        & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)        & hard                        \\ \cline{2-3} 
-                                                     & \begin{CJK}{UTF8}{gbsn}老\end{CJK} (old)              & hard                        \\ \hline
-      \end{tabular}
-    \end{table}
+    However, size of the room or the bed is a hard attribute, and without considering rebuilding the hotel, is quite difficult to improve on. Cleanliness, on the other hand, is mostly relating to soft attributes when we observe its adjectival pairings. We can observe pairs such as ``clean room'' at the top rank of all price ranges, and then variably ``clean hotel'', ``clean overall'', ``clean environment'', and ``clean facilities'', among other examples. In negative reviews, there is a mention of criticizing the ``general hygiene'' of the hotel, although it’s an uncommon pair. We can therefore assert that cleanliness is an important soft attribute for Chinese customers, and that they are mostly pleased, with their expectations being met. 
 
-    % This is confirmed for all but one list. The exception is the English-speaking tourists' top 10 dissatisfaction factors, which are all managerial. However, this is only regarding the top 10 items on the list. Lower on the list, we can observe some environmental factors. 
+    One key component we found in Chinese customer satisfaction soft factors is the inclusion of breakfast within the hotel. While other food-related words were extracted, most of them were general, like ``food'' or ``eating,'' and in a lower ranking. In contrast, the word ``breakfast'' refers possibly to its inclusion in the hotel commodities, was frequently used in positive texts compared to other food-related words. The word ``breakfast'' is also observed across all price ranges, although at different priorities in each of them. However we assert that it is an important factor. Observing word pairs from the positive Chinese keywords in Table \ref{tab:adj_zh_pos}, we can also see that ``not bad'' is paired with ``breakfast'' in four of the seven price ranges that had reviews available as part of the top 4 pairings, and only slightly lower on other categories, although it is not shown on the table. Thus we consider that a recommended strategy for hotel management is to invest in the inclusion or betterment of hotel breakfast as a strategy to increase good reviews.
 
-    We can see the summarized results for the positive and negative Chinese keywords in Figure \ref{fig:zh_hard_soft}. For the English keywords, see Figure \ref{fig:en_hard_soft}.
+  \subsection{Western tourists - A friendly face, and absolutely clean}\label{disc:en}
 
-    \begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-            \includegraphics[width=\textwidth]{hard_soft_attr_zh_pos.png}
-            \caption{Positive keywords}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-            \includegraphics[width=\textwidth]{hard_soft_attr_zh_neg.png}
-            \caption{Negative keywords}
-        \end{subfigure}
-    \caption{Percentages of hard and soft attributes of the top Chinese keywords for all price ranges}
-    \label{fig:zh_hard_soft}
-    \end{figure}
+    From the satisfaction factors of English-speaking tourists, we can see that at least three words relate directly to staff friendliness and services, being ``staff'',``helpful'' and ``friendliness'' in the general database. The word ``staff'' is the second most frequently used word for satisfied customers across most price ranges, and only third in one of them. Adding to that, ``helpful'' and ``friendly'' follow it lower in the list in most price ranges. The word ``good'' is mostly about the location, the service, breakfast, or English availability in Table \ref{tab:adj_en_pos}. Similar to Chinese customers, Western customers also seem to be enjoying the included breakfasts when it comes to their satisfaction keyword pairings, although the word doesn’t appear directly in the top 10 list as in their Chinese counterparts. The words ``helpful'' and ``friendly'' are mostly paired with ``staff'', ``concierge'', ``desk'', and ``service''. When we look at the negative keyword ‘poor’ and its pairings in Table \ref{tab:adj_en_neg}, we see that it is also service related concepts that the Western tourists are disappointed with when they react negatively. The word ``great'', which is also high in most price ranges, and the top keyword in the highest priced hotels, is also accompanied by mostly soft attributes, in pairings such as ``great location : 2313'', ``great view : 1099'' and ``great service : 841'', if we include the counts from all the price ranges together. Japanese high standards in hospitality very likely influenced this result. 
+
+    Another soft attribute that is high on the list for most of the price ranges is the word ``clean''. Since it is an adjective, we have explored the word pairings as well. Customers are mostly praising ``clean rooms'' and ``clean bathrooms'', while also just referring to the hotel in general. It seems as well that when observing the negative keyword frequencies for English-speakers, we can find words such as ``dirty'', ``carpet'', and from the word pairings ``dirty carpet'', ``dirty room'', and ``dirty bathroom''. Along with complaints about off-putting smells, we can conclude that Western tourists have high expectations about cleanliness when traveling in Japan.
+
+    An interesting detail of the keyword ranking is that the word ``comfortable'' is high on the list of satisfaction factors and ``uncomfortable'' high on the dissatisfaction factors. The words are paired with nouns like ``bed'', or ``room'', ``pillow'' or ``mattress'', generally referring to their sleep conditions in the hotel.
+    It seems that in general, western tourists are highly sensitive to comfort levels in the hotels and whether it reaches their expectations. The ranking for the negative keyword ``uncomfortable'' is similar across most price ranges, except the two most expensive ones, where this keyword disappears from the top 10 list.
+
+    While less high in priority, the price range of 15,000 to 20,000 yen hotels also mention ``free'' as one of the top 10 positive keywords, which is paired mostly with ``wifi''. This price range is mostly for business hotels, which can be where users would be expecting this feature the most.ern tourists are highly sensitive to comfort levels in the hotels and whether it reaches their expectations.
 
 
-% \subsection{Chinese tourists - A big and clean space}\label{disc:zh}
+  \subsection{Tobacco, what's that smell?}\label{disc:tobacco}
 
-% We found that mainland Chinese tourists are satisfied mostly by a big and clean space provided by the Japanese hotels. From inspecting random samples, we also find that this is mostly relating to the rooms. There are also many references to the public bathing facilities in the hotel. In Japan, there is what is called \textit{sent\=o}, which are artificially made public bathing facilities, on occasions including saunas and baths with unique qualities. On the other hand, there are natural hot springs, called \textit{onsen}. They can either be bathing in the natural source of the water or using the hot springs in artificially made bath facilities. It is a Japanese custom and culture that all customers use the facilities after cleaning themselves in a shower and go into the baths without any clothes. It can be a cultural shock for many tourists, but this is a fundamental attraction for many.
+    A concern for Western tourists was the smell of tobacco in their room. This can be considered a soft attribute. Not only as a standalone word of ``cigarette'', but also confirming with word pairs in Table \ref{tab:adj_en_neg}, we can find other related word pairs such as ``funny smell''. Upon manual inspection of a sample of reviews with this keyword, we found that the room was often advertised as non- smoking, yet, the smell permeated the room and curtains. Another common complaint was that there were no non-smoking facilities available at all in the first place. The smell of smoke can completely ruin some customers’ stay and give a bad impression to review writers, which can lower the number of future customers.
 
-% From these two first ranking keywords (``big" and ``clean"), we can assert that room quality is the most critical satisfaction factor for Chinese customers. However, the word ``big" is widespread in the language and could be used in different contexts to point out positive and negative aspects. Since we are interested in how the word is a keyword of positive sentences, we took a small sample of the positively classified sentences that contained the word ``big" in Chinese. A team of Chinese speaking lab members then pointed out the usage of the word. Generally speaking, it was used for the spaciousness of rooms, bathtubs, and communal bath facilities. 
+    However, in comparison, Chinese customers seem not to be bothered by this at all. We consulted studies involving the use of tobacco in different countries. Previous research states that 49 - 60\% of Chinese men (and 2.0 - 2.8\% of women) currently smoke or have smoked before, taken from a sample of 170,000 Chinese adults in 2013-2014, which is high compared to many English-speaking countries \cite[][]{zhang2019tobacco,who2015tobacco}.
 
-% One key component we found in Chinese customer satisfaction factors is the inclusion of breakfast within the hotel. While other food-related words were extracted, most of them were general, like “food” or “eating,” and in a lower ranking. In contrast, the word “breakfast” refers possibly to its inclusion in the hotel commodities, was frequently used in positive texts compared to other food-related words. A recommended strategy for hotel management is to invest in the inclusion or betterment of hotel breakfast. 
-
-% \subsection{Western tourists - A friendly face, and absolutely clean}\label{disc:en}
-
-% From the satisfaction factors of English-speaking tourists, we can see that at least three words relate to staff friendliness and services. The word ``staff" is the most frequently used word for satisfied customers, while ``helpful" and ``friendly" follow it lower in the list at the fourth and fifth place. Japanese high standards in hospitality very likely influenced this result.
-
-% Aside from cleanliness, we can also observe the word ``working" is written higher on the list, as well as the word ``paper." We observed the samples, and it is often used with the expression ``paper-thin walls", which could mean the customers can easily hear their neighbors. Regarding the word ``working,'' we also took a sample of the texts to see its context. It seems to be related mostly to construction work near or at the facilities. Some cities in Japan (e.g., Osaka) are currently undergoing a large number of renovations, which are also extending to the hotel facilities. Customers staying in places in renovation or near a construction site can be expected to wake up to construction noises, have their view obstructed by metal bars, and other unpleasant experiences. Another keyword there is ``slow", which upon inspection of example reviews, we concluded that it reflects the speed of the Internet connection in the hotel rooms.
-
-% An interesting detail of the keyword ranking is that the word ``comfortable" is high on the list of satisfaction factors and ``uncomfortable" high on the dissatisfaction factors. It seems that in general, western tourists are highly sensitive to comfort levels in the hotels and whether it reaches their expectations.
+    Japan itself has a polarized view on smoking, and despite being one of the world’s largest tobacco markets, its use has been decreasing in recent years. Smoking in public spaces is prohibited in some wards of Tokyo (namely Chiyoda, Shinjuku, and Shibuya). However, it is generally only urged and not mandatory to have smoking restrictions in restaurants, bars, hotels, and public areas. However, there are many places where ``smoking rooms'' are available to keep the smoke to an enclosed area and avoid bothering others. Despite this, businesses, especially those who cater to certain kinds of customers, will generally be discouraged from having smoking restrictions if they want to keep their clientele. If Japanese hotels want to cater to all kinds of customers, Western and Asian alike, they must provide spaces without tobacco smell. After all, even if it does not bother a few customers, the lack of smell would
+    make it an appropriate space for all kinds of customers.
 
 
-% \subsection{Tobacco, what's that smell?}\label{disc:tobacco}
+  \subsection{Location, location, location}\label{disc:location}
 
-% A concern for Western tourists was the smell of tobacco in their room. Upon manual inspection of a sample of reviews with this keyword, we found that the room was often advertised as non-smoking, yet, the smell permeated the room and curtains. Another common complaint was that there were no non-smoking facilities available at all. The smell of smoke can completely ruin some customers' stay and give a bad impression to review writers, which can lower the number of future customers. 
+    The location of the hotel, closeness to the subway and public transport, and availability of nearby shops were observed to be of importance to both Chinese and English-speaking tourists. In positive word pairings Tables \ref{tab:adj_zh_pos} and \ref{tab:adj_en_pos}, we can find pairs such as ``nice location'', ``near subway station'', ``near subway'' in Chinese texts and ``good location'', ``great location'', and ``great view'', as well as single keywords ``location'' and ``shopping'' for English-speakers, and ``traffic'', ``shopping'', ``subway'', and ``surroundings'' for Chinese speakers. All of these keywords, as well as their location in the priorities of each population across the price ranges, signal that while it was not the priority for either of them, the hotel’s location is a secondary but still important point in the hotel’s satisfaction. However, since this is a hard attribute, unchangeable to the management of the hotel, it is not often considered in the literature. Upon inspection of examples from the data, we found that most customers were satisfied if the hotel was near to at least two other subjects: subway, train, and convenience stores. 
 
-% However, in comparison, Chinese customers seem not to be bothered by this at all. We consulted studies involving the use of tobacco in different countries. Previous research states that 49 - 60\% of Chinese men (and 2.0 - 2.8\% of women) currently smoke or have smoked before, taken from a sample of \num[group-separator={,}]{170000} Chinese adults in 2013-2014, which is high compared to many English-speaking countries \cite[][]{zhang2019tobacco, who2015tobacco}.
+    Japan is a country with a peculiar public transport system. The rush hour makes for a subway filled to the brim with people in suits making their commute, and trains and subway stations in Tokyo create a confusing public transport map for a visitor. Buses are also available, although less used than the rail systems in the big cities. These three are unusually affordable in price. Then there are the more expensive transports, such as the bullet train \textit{shinkansen} for traveling across the country, and taxis. Taxis in Japan are a luxury compared to other countries. Where in less developed countries the taxi is the cheap method of transport of choice, in Japan, taxis are made to provide a high-quality experience, with a matching price. This means that for tourists, subway availability and maps or GPS applications, as well as a plan to travel the city, are of utmost necessity. 
 
-% Japan itself has a polarized view on smoking, and despite being one of the world's largest tobacco markets, its use has been decreasing in recent years. Smoking in public spaces is prohibited in some wards of Tokyo (namely Chiyoda, Shinjuku, and Shibuya). However, it is generally only urged and not mandatory to have smoking restrictions in restaurants, bars, hotels, and public areas. However, there are many places where ``smoking rooms" are available to keep the smoke to an enclosed area and avoid bothering others. Despite this, businesses, especially those who cater to certain kinds of customers, will generally be discouraged from having smoking restrictions if they want to keep their clientele. If Japanese hotels want to cater to all kinds of customers, Western and Asian alike, they must provide spaces without tobacco smell. After all, even if it does not bother a few customers, the lack of smell would make it an appropriate space for all kinds of customers. 
+    Japanese convenience stores, on the other hand, are also famous worldwide. Japanese convenience stores are a haven for the traveler in need. It offers anything, from drinks and snacks to full meals, copy and scanning machines, alcohol, cleaning supplies, personal hygiene items, underwear, towels, international ATMs, and so on. If some trouble occurred, or a traveler forgot to pack a particular item, it is almost sure that they can find it. 
 
-
-% \subsection{Location, location, location}\label{disc:location}
-
-% The location of the hotel, closeness to the subway and public transport, and availability of nearby shops were observed to be of importance to both Chinese and English-speaking tourists. While it was not the priority for either of them, we can assert that the hotel's location is a secondary but still important point in the hotel's satisfaction. However, since this is an external factor to the management of the hotel, it is not often considered in the literature. Upon inspection of examples from the data, we found that most customers were satisfied if the hotel was near to at least two other subjects: subway, train, and convenience stores. 
-
-% Japan is a country with a peculiar public transport system. The rush hour makes for a subway filled to the brim with people in suits making their commute, and trains and subway stations in Tokyo create a confusing public transport map for a visitor. Buses are also available, although less used than the rail systems in the big cities. These three are unusually affordable in price. Then there are the more expensive transports, such as the bullet train \textit{shinkansen} for traveling across the country, and taxis. Taxis in Japan are a luxury compared to other countries. Where in less developed countries the taxi is the cheap method of transport of choice, in Japan, taxis are made to provide a high-quality experience, with a matching price. This means that for tourists, subway availability and maps or GPS applications, as well as a plan to travel the city, are of utmost necessity.
-
-% Japanese convenience stores, on the other hand, are also famous worldwide. Japanese convenience stores are a haven for the traveler in need. It offers anything, from drinks and snacks to full meals, copy and scanning machines, alcohol, cleaning supplies, personal hygiene items, underwear, towels, international ATMs, and so on. If some trouble occurred, or a traveler forgot to pack a particular item, it is almost sure that they can find it.
-
-% Therefore, considering that both transport systems and nearby shops are points of interest for Chinese and Western tourists, Japanese hotels have to carefully choose their location from the moment they are constructed. While not a top priority, this is a universal factor for both customer groups, and it can be an instant way to generate positive reviews.
+    Therefore, considering that both transport systems and nearby shops are points of interest for Chinese and Western tourists, Japanese hotels have to carefully choose their location from the moment they are constructed. While not a top priority, this is a universal factor for both customer groups, and it can be an instant way to generate positive reviews.
 
 
 
@@ -1260,17 +2260,17 @@
 
     % It is left to the managers to consider their business model for the next strategy. One option could be attracting more Chinese customers in number with their observed low budgeting. Another could be attracting more high budget Western customers is on par with their business model. For example, investing more on cleanliness could improve on Western customers looking for high-quality lodging, even though the price per night would increase.
 
-% \section{Limitations and Future Work}\label{limitations}
+\section{Limitations and Future Work}\label{limitations}
 
-  % This paper is not without its limitations. We analyzed keywords of satisfaction and dissatisfaction statistically based on whether they appeared on satisfied reviews or dissatisfied ones. Following that, we attempted to understand the context that these words were being used in by using a dependency parser and observing the related nouns. However, the study is limited in that it only analyzes the words directly related to each keyword, and doesn't follow the upstream or downstream path down further connections. This means that if the words are used in combination with other keywords we did not trace the effects of multiple contradicting statements. For example, in the sentence "The room is good but the food is lacking", we would extract "good food" and "lacking food", but do not consider the fact that both occurred in the same sentence.
+  This paper is not without its limitations. We analyzed keywords of satisfaction and dissatisfaction statistically based on whether they appeared on satisfied reviews or dissatisfied ones. Following that, we attempted to understand the context that these words were being used in by using a dependency parser and observing the related nouns. However, the study is limited in that it only analyzes the words directly related to each keyword, and doesn’t follow the upstream or downstream path down further connections. This means that if the words are used in combination with other keywords we did not trace the effects of multiple contradicting statements. For example, in the sentence ``The room is good but the food is lacking'', we would extract ``good food'' and ``lacking food'', but do not consider the fact that both occurred in the same sentence.
 
-  % In this study, we analyzed the differences in customers expectations at different levels of \textit{Omotenashi} by dividing our data into price ranges. However, in the same price range, say the high expenses ones, we can find both a western style five stars resort as well as a high end Japanese style \textit{Ryokan}. Services offered in these hotels are very high quality, although very different in nature. However, most of our database is focused on the middle range priced hotels, which is comparably less varied in service, although still there is a divide between western and Japanese style hotels.
+  In this study, we analyzed the differences in customers expectations at different levels of \textit{omotenashi} by dividing our data into price ranges. However, in the same price range, say the high expenses ones, we can find both a western style five stars resort as well as a high end Japanese style \textit{ryokan}. Services offered in these hotels are very high quality, although very different in nature. However, most of our database is focused on the middle range priced hotels, which is comparably less varied in service, although still there is a divide between western and Japanese style hotels.
 
-  % Another limitation is that a large portion of the Asian tourists coming to Japan is Taiwanese and Korean. We could not analyze these populations because our team members do not know those languages. Aside from that, because of the nature of the data collected, further typology analysis could not be made (for example, Chinese men and women of different ages or their Westerner counterparts).
+  Another limitation is that a large portion of the Asian tourists coming to Japan is Taiwanese and Korean. We could not analyze these populations because our team members do not know those languages. Aside from that, because of the nature of the data collected, further typology analysis could not be made (for example, Chinese men and women of different ages or their Westerner counterparts).
 
-  % In future work, we plan to investigate further into this topic. We plan to extend our data to research for different trends for different regions of Japan and in different kinds of hotels, as well as between customers traveling alone or in groups, for fun or work. Another point of interest in the future of this study is to use word clusters with similar meanings instead of single words. 
+  In future work, we plan to investigate further into this topic. We plan to extend our data to research for different trends for different regions of Japan and in different kinds of hotels, as well as between customers traveling alone or in groups, for fun or work. Another point of interest in the future of this study is to use word clusters with similar meanings instead of single words. 
 
-% \section{Conclusion}\label{conclusion}
+\section{Conclusion}\label{conclusion}
 
   % In this study, our objective was to analyze the differences in satisfaction and dissatisfaction between Chinese and English-speaking customers of Japanese hotels. We extracted keywords from their online reviews uploaded to the portal sites \textit{Ctrip} and \textit{TripAdvisor} using Shannon's entropy calculations. We used these keywords for sentiment classification via an SVC. 
 

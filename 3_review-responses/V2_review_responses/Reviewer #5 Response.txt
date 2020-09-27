@@ -1,0 +1,39 @@
+Reviewer #5 Response
+
+Reviewer #5:
+
+------------
+Section 3.3 contains a lot of misleading and confusing information:
+
+1.   "In the past, tourist behavior analyzed from western samples was wrongly thought to be a representation of universal behavior across all cultures (Nielsen et al. 2017; Jones 2010; Gunaratne 2009; Hogan and Emler 1978)". This is a very strong sentence; can the authors show evident that these studies have say such a strong conclusion?
+------------
+
+------------
+2.   "both academic researchers and businesses have decided to study Chinese tourist behavior (Sun et al. 2017)." Chinese tourists' study did not start from 2017.
+------------
+
+
+------------
+3.  "cross-cultural studies and analyses for Asian and Western tourists are scarce." And "One thing to note with the above cross-culture analyses is that they were performed before the year 2000." If the authors use Google scholar to search, I believe they could find hundred thousand of researches, this topic is not special or scarce at all. If the authors want to refer to Chinese and non-Chinese study, please do not generalize it as cross-cultural study. 
+------------
+
+
+------------
+4.  "However, that boom could have created a difference in the expectations of tourists. In turn, that boom could have influenced their satisfaction factors when traveling." I cannot understand these two sentences. How can a boom or tourists create a different expectation of tourists? And how a boom can influence satisfaction?!
+------------
+
+
+
+
+------------
+The authors responded that hotel class were not recorded during data collection so the data cannot be categorized according to the hotel ranking. In that case, I can accept the research design of this study is appropriate. If the research design has such big defect, the result can no longer explain the difference between Chinese and non-Chinese. The authors mentioned the hotel room rate ranged from 2000 to 188000 yen. So how can you expect a customer paying 2000 yen will have same expectation with a customer paying 188000 yen? The definition of Omotenashi refers to high level customized service. For a capsule hotel which costed 2000 yen, what's kind of Omotenashi service can they provide?
+I can see the authors had spend a lot of time to revise the paper and re-write the manuscript, however, if the research design is not correct, the result generated is meaningless. Therefore I will not comment the research findings and conclusion.
+------------
+
+------------
+Editorial: 
+Many in-text citations (e.g. Page 4 & 9) are not in standard format, please put them inside a bracket or change the sentence to mention the author name.
+Line 236, please spell out the number "3" to three.
+------------
+
+We changed the spelling of lone numbers in the text. We also checked the in-text citations throughout the paper.
