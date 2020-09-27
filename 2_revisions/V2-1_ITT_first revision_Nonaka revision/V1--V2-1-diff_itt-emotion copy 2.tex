@@ -1,0 +1,1817 @@
+\RequirePackage{fix-cm}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL itt-emotion_V1.tex     Thu Oct 24 14:22:55 2019
+%DIF ADD itt-emotion_V2-1.tex   Thu May 21 23:07:51 2020
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended,natbib]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+
+% For the ORCID icon
+\usepackage{scalerel}
+\usepackage{tikz}
+\usetikzlibrary{svg.path}
+
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\tikzset{
+  orcidlogo/.pic={
+    \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+    \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                 svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                 svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+  }
+}
+
+\newcommand\orcidicon[1]{\href{https://orcid.org/#1}{\mbox{\scalerel*{
+\begin{tikzpicture}[yscale=-1,transform shape]
+\pic{orcidlogo};
+\end{tikzpicture}
+}{|}}}}
+
+\usepackage{lineno, hyperref}
+% \usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{array, pbox}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{graphicx}
+
+% To use chinese characters
+\usepackage{CJKutf8}
+
+% To add an appendix page
+\usepackage[page, title]{appendix}
+
+% Stick footnotes to bottom of the page
+\usepackage[bottom]{footmisc}
+
+% To insert commas into large numbers automatically
+\usepackage{siunitx}
+
+% To add hypothesis theorem
+\usepackage{ntheorem}
+\theoremseparator{:}
+\newtheorem{hyp}{Hypothesis}
+
+%DIF 55a55-74
+% To add subhypothesis theorems %DIF > 
+\makeatletter %DIF > 
+\newcounter{subhyp}  %DIF > 
+\let\savedc@hyp\c@hyp %DIF > 
+\newenvironment{subhyp} %DIF > 
+ {% %DIF > 
+  \setcounter{subhyp}{0}% %DIF > 
+  \stepcounter{hyp}% %DIF > 
+  \edef\saved@hyp{\thehyp}% Save the current value of hyp %DIF > 
+  \let\c@hyp\c@subhyp     % Now hyp is subhyp %DIF > 
+  \renewcommand{\thehyp}{\saved@hyp\alph{hyp}}% %DIF > 
+ } %DIF > 
+ {} %DIF > 
+\newcommand{\normhyp}{% %DIF > 
+  \let\c@hyp\savedc@hyp % revert to the old one %DIF > 
+  \renewcommand\thehyp{\arabic{hyp}}% %DIF > 
+}  %DIF > 
+\makeatother %DIF > 
+ %DIF > 
+ %DIF > 
+%DIF -------
+% To add the envelope symbol in Corresponding Author using % \Letter
+\usepackage{marvosym}
+
+% to add superscripts to mark the institute of authors
+% patch \maketitle:
+\newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
+\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+
+% For table formatting
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+%DIF 67a87-89
+ %DIF > 
+% For landscape tables %DIF > 
+\usepackage{lscape} %DIF > 
+%DIF -------
+
+\modulolinenumbers[5]
+
+\journalname{Information Technology \& Tourism}
+
+\bibliographystyle{spbasic}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\title{\DIFdelbegin \DIFdel{Analyzing }\DIFdelend \DIFaddbegin \DIFadd{Cross-culture }\DIFaddend differences in \DIFaddbegin \DIFadd{tourists faced with Japanese hospitality: A text mining and rank-biased overlap measure study of }\DIFaddend satisfaction and dissatisfaction \DIFdelbegin \DIFdel{between }\DIFdelend \DIFaddbegin \DIFadd{factors in }\DIFaddend Chinese and \DIFdelbegin \DIFdel{English-speaking customers of Japanese hotels with machine learning}\DIFdelend \DIFaddbegin \DIFadd{Western cultures}\DIFaddend }
+
+\DIFdelbegin %DIFDELCMD < \titlerunning{Analyzing differences in satisfaction and dissatisfaction between Chinese and ...}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \titlerunning{Cross-culture differences in tourists faced with Japanese hospitality: A text ...}
+\DIFaddend 
+
+\author{Elisa Claire Alem\'an Carre\'on \protect\affmark[1] \orcidicon{0000-0002-6437-0866} \and
+        Hugo Alberto Mendoza Espa\~na                                   \protect\affmark[1] \and
+        Hirofumi Nonaka                                                 \protect\affmark[1] \and
+        Toru Hiraoka                                                    \protect\affmark[2]
+}
+
+\authorrunning{E. Alemán Carreón et al.}
+
+\institute{\Letter \hspace*{0.16em} Elisa Claire Alem\'an Carre\'on  \at
+            % Nagaoka University of Technology, Nagaoka, Japan \\
+            \hspace*{1em} \email{elisa.claire.aleman.carreon@gmail.com} \\
+            \hspace*{1em} ORCID: 0000-0002-6437-0866 %\\
+            % Corresponding Author %  \\
+            % \emph{Present address:P.C. 940-2033, Ribbon Nagaoka B104, 1128-3 Kaminozoki-machi, Nagaoka, Niigata, Japan}
+        \and
+            \hspace*{1em} Hugo Alberto Mendoza Espa\~na \at
+            % Nagaoka University of Technology, Nagaoka, Japan \\
+            \hspace*{1em} \email{mendoza.espana@gmail.com}
+        \and
+            \hspace*{1em} Hirofumi Nonaka \at
+            % Nagaoka University of Technology, Nagaoka, Japan \\
+            \hspace*{1em} \email{nonaka@kjs.nagaokaut.ac.jp}
+        \and
+            \hspace*{1em} Toru Hiraoka \at
+            % University of Nagasaki, Nagasaki, Japan \\
+            \hspace*{1em} \email{hiraoka@sun.ac.jp}
+        \and
+            \at \affaddr{\affmark[1] \hspace*{0.15em} Nagaoka University of Technology, Nagaoka, Japan}
+        \and
+            \at \affaddr{\affmark[2] \hspace*{0.15em} University of Nagasaki, Nagasaki, Japan}
+}
+
+%DIF <  Corresponding author%: \\
+%DIF <  % Elisa Claire Alemán Carreón \\
+%DIF <  % Mailing Address: P.C. 940-2033, Ribbon Nagaoka B104, 1128-3 Kaminozoki-machi, Nagaoka, Niigata, Japan \\
+%DIF <  % Cell Phone: 080-9869-4756 \\
+%DIF <  % ORCID: 0000-0002-6437-0866
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+\maketitle
+
+\begin{abstract}
+
+\DIFdelbegin \DIFdel{Up until recently, }\DIFdelend \DIFaddbegin \DIFadd{The Japanese spirit of hospitality and service, }\textit{\DIFadd{Omotenashi}}\DIFadd{, is known worldwide for its excellence. Recent years show a steady increase in international tourists coming to Japan. Chinese tourists, especially, have been steadily increasing. However, before the shift that has brought in a global perspective in recent years, }\DIFaddend most studies in tourist behavior \DIFdelbegin \DIFdel{have been }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend biased for the Western world. \DIFdelbegin \DIFdel{With the increase of Chinese outbound tourists to other countries, academic interest for this group has risen. Increasing variation amongst clients means that managing hotels in a way that caters to their different tastes becomes more important. Despite this, }\DIFdelend \DIFaddbegin \DIFadd{Previous research shows that different cultural backgrounds result in different expectations and, arguably, different satisfaction factors. Knowing this, a }\DIFaddend cross-cultural \DIFdelbegin \DIFdel{studies }\DIFdelend \DIFaddbegin \DIFadd{study }\DIFaddend of differences between Asian and Western cultures \DIFdelbegin \DIFdel{are scarce and predate }\DIFdelend \DIFaddbegin \DIFadd{after }\DIFaddend the current boom in the Chinese economy \DIFdelbegin \DIFdel{. This economical boom could change their expectations and experiences of Chinese customers, which would, in turn, influence their }\DIFdelend \DIFaddbegin \DIFadd{in the environment of the high standard Japanese hospitality is fascinating. Will the top-grade hospitality of Japan influence both populations equally, or will their cultural differences set them apart? Will they be satisfied with the hotel's purely managerial attributes or be more concerned with environmental factors that hotel management cannot change? We bring light to these questions and the differences in each population's }\DIFaddend satisfaction and dissatisfaction \DIFdelbegin \DIFdel{with hotels}\DIFdelend \DIFaddbegin \DIFadd{factors}\DIFaddend . Taking advantage of Web 2.0, we \DIFdelbegin \DIFdel{can apply }\DIFdelend \DIFaddbegin \DIFadd{applied }\DIFaddend Shannon's entropy to \DIFdelbegin \DIFdel{automatically extract the satisfaction and dissatisfaction factors from very large data samples of online reviews without interfering with the decision process of customers. This means that we can measure how important are certain attributes of the hotel to customers, and whether those are managerial or environmental for the hotel. In our study, we performed a sentiment analysis using an SVM classifier and }\DIFdelend \DIFaddbegin \DIFadd{extract these factors automatically and then use them in an SVM to classify a more extensive data set. We }\DIFaddend then measured the similarity value for \DIFdelbegin \DIFdel{satisfaction and dissatisfaction keyword frequency ranking }\DIFdelend \DIFaddbegin \DIFadd{the frequency in ranked keyword }\DIFaddend lists using the Rank-biased Overlap measure\DIFdelbegin \DIFdel{, which }\DIFdelend \DIFaddbegin \DIFadd{. It }\DIFaddend is used for top-weighted ranked lists with different elements and lengths. We found that Chinese \DIFdelbegin \DIFdel{customers prefer big and clean spaces, and that Western customers are satisfied with friendly staff members}\DIFdelend \DIFaddbegin \DIFadd{tourists are less concerned with hospitality and more with room quality, in contrast with Western tourists, who were delighted by the staff behavior}\DIFaddend . We also found that Chinese tourists are \DIFdelbegin \DIFdel{unsatisfied with }\DIFdelend \DIFaddbegin \DIFadd{concerned with the }\DIFaddend lack of a Chinese friendly environment, and \DIFdelbegin \DIFdel{that }\DIFdelend Western customers are unsatisfied with dirty rooms \DIFdelbegin \DIFdel{, }\DIFdelend or the smell of \DIFdelbegin \DIFdel{cigarette}\DIFdelend \DIFaddbegin \DIFadd{cigarettes}\DIFaddend .
+
+%DIF <  \medskip
+%DIF <  \noindent\it{Highlights}
+%DIF <  \begin{itemize}
+%DIF <      \item Chinese customers tend to prefer big and clean spaces but are unsatisfied with Chinese-friendliness.
+%DIF <      \item English-speaking customers are satisfied with friendly staff, but dislike rooms that are dirty or smell of cigarette.
+%DIF <      \item Both customer groups value the location of the hotel as a secondary factor for satisfaction.
+%DIF <      \item Both customer groups have concerns about the pricing of hotels (value for money).
+%DIF <      \item Satisfaction and dissatisfaction of customers come from managerial and environmental attributes of the hotel.
+%DIF <  \end{itemize}
+\DIFaddbegin \keywords{Sentiment Analysis\and Hotels and Lodging\and Text Mining\and Chinese\and English\and Satisfaction and Dissatisfaction Factors}
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \keywords{Sentiment Analysis\and Hotels and Lodging\and Machine Learning\and Chinese\and English\and Preferences}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \end{abstract}
+
+\linenumbers
+
+\section{Introduction}\label{intro}
+
+\DIFaddbegin \DIFadd{Japan has been known historically for its hospitality being the highest grade. The spirit of Japanese hospitality is celebrated around the world in a single Japanese word: }\textit{\DIFadd{Omotenashi}}\DIFadd{. With roots in Japanese history and tea ceremony, their hospitality is famous around the world \mbox{%DIFAUXCMD
+\cite{al2015characteristics}}\hspace{0pt}%DIFAUXCMD
+. Therefore it would stand to reason that tourists visiting Japan would have this hospitality as their first and foremost satisfaction factor. However, it is known that customers from different countries and cultures hold different expectations \mbox{%DIFAUXCMD
+\cite{engel1990}}\hspace{0pt}%DIFAUXCMD
+. Thus, it could be theorized that their satisfaction factors should be different. How will different cultures react and perceive hotels and their hospitality in this context? Our study attempts to bring light to this with two essential tourist populations that differ in culture to Japan: Chinese and Western tourists. 
+}
+
+\DIFaddend In the last couple of decades, the Japanese economy has been more and more affected by an increase in inbound international tourism \cite[][]{jones2009} with a Year-on-Year Growth Rate of 19.3\% in 2017, with a total of \num[group-separator={,}]{28691073} inbound tourists that year \cite[][]{jnto2003-2019}. From this total, the tourist population was mostly Asian (86.14\%), and approximately a fourth of the total (25.63\%) came from China. Western countries, counting English-speaking countries \DIFdelbegin \DIFdel{in addition to }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend the whole of Europe\DIFaddbegin \DIFadd{, }\DIFaddend make for 11.4\% of the total, with a 7.23\% of the total being countries where English is the official or the de facto national language. \DIFdelbegin \DIFdel{Specifically for Chinese tourists , the effect }\DIFdelend \DIFaddbegin \DIFadd{The effect of Chinese tourists }\DIFaddend on international economies \DIFdelbegin \DIFdel{as well as }\DIFdelend \DIFaddbegin \DIFadd{is increasing. From that, }\DIFaddend the number of researchers interested in this phenomenon has been increasing as well\DIFaddbegin \DIFadd{. }\DIFaddend \cite[][]{sun2017}. With these and other multicultural \DIFdelbegin \DIFdel{tourists }\DIFdelend \DIFaddbegin \DIFadd{tourist }\DIFaddend populations, the tourist market is more and more diverse. Diversity in customers' cultural backgrounds means that their expectations when staying at a hotel will also be varied. Hotel management\DIFdelbegin \DIFdel{therefore }\DIFdelend \DIFaddbegin \DIFadd{, therefore, }\DIFaddend needs to cater to these \DIFdelbegin \DIFdel{different }\DIFdelend needs and expectations to increase \DIFdelbegin \DIFdel{their customers' }\DIFdelend \DIFaddbegin \DIFadd{customer }\DIFaddend satisfaction, maintain a good reputation, and \DIFdelbegin \DIFdel{, therefore, }\DIFdelend generate positive word-of-mouth.
+
+However, recent studies on social sciences, \DIFdelbegin \DIFdel{which includes }\DIFdelend \DIFaddbegin \DIFadd{and thus, on }\DIFaddend tourist behavior, have been performed using surveys on populations that could be culturally biased for the western world \cite[][]{nielsen2017, jones2010WEIRD, guaratne2009, hogan1978biases}. Those that do include Asian populations in their analysis, most commonly study Chinese tourist behavior \cite[e.g.][]{liu2019, chang2010, dongyang2015}\DIFdelbegin \DIFdel{, and a }\DIFdelend \DIFaddbegin \DIFadd{.  The }\DIFaddend few that compare Asian to western tourist behavior \cite[e.g.][]{choi2000} \DIFdelbegin \DIFdel{, }\DIFdelend are commonly survey or interview-based studies with small samples, which\DIFdelbegin \DIFdel{while valid }\DIFdelend \DIFaddbegin \DIFadd{, while valid, }\DIFaddend can have its limitations. This \DIFaddbegin \DIFadd{gap in research }\DIFaddend creates a need for cross-cultural studies for the increasing Asian and Western tourist populations. It could be said that Westerners make for a smaller portion of the tourist population compared to Asians\DIFdelbegin \DIFdel{; however}\DIFdelend \DIFaddbegin \DIFadd{. However}\DIFaddend , according to \cite{choi2000}, Westerners are known as ``long-haul" customers, spending more than 45\% of their budget on hotel lodging\DIFdelbegin \DIFdel{, compared to }\DIFdelend \DIFaddbegin \DIFadd{. In comparison, }\DIFaddend their Asian counterparts only \DIFdelbegin \DIFdel{spending }\DIFdelend \DIFaddbegin \DIFadd{spend }\DIFaddend 25\% of their budget on hotels. \DIFdelbegin \DIFdel{It is therefore important }\DIFdelend \DIFaddbegin \DIFadd{Therefore, it is essential }\DIFaddend to study both Asian and Western tourist populations, their differences, and contrast the results with existing literature. 
+
+With the advent of Web 2.0 and customer review websites, researchers realized the benefits of online reviews for research, and their importance for sales  \cite[][]{ye2009, basuroy2003}, customer consideration \cite[][]{vermeulen2009} and perception of services and products \cite[][]{browning2013}, among other effects of online interactions between customers \cite[e.g.][]{xiang2010, ren2019}. Consequentially, tourism research also began to use information collected online for data mining analysis, such as opinion mining \cite[e.g.][]{hu2017436}, predicting hotel demand from online traffic \cite[][]{yang2014}, recommender systems \cite[e.g.][]{loh2003}, and more. Data mining, machine learning, and big data methodologies can increase the number of manageable samples \DIFaddbegin \DIFadd{per study. The increase can be }\DIFaddend from the hundred \DIFdelbegin \DIFdel{or so }\DIFdelend samples manually analyzed by researchers to the hundreds of thousands that are automatically analyzed by machines. This \DIFaddbegin \DIFadd{technology }\DIFaddend can not only help confirm existing theories but also lead to finding new patterns and to knowledge discovery \cite[][]{fayyad1996data}. 
+
+In this study, we take advantage of the availability of enormous amounts of online reviews of Japanese hotels by both \DIFdelbegin \DIFdel{Chinese }\DIFdelend \DIFaddbegin \DIFadd{Mainland Chinese tourists posting in }\textit{\DIFadd{Ctrip}}\footnote{\label{ctrip}\DIFadd{Ctrip: }\href {\DIFadd{www.ctrip.com/}}{\path{www.ctrip.com/}}} \DIFaddend and Western English-speaking tourists populations \DIFaddbegin \DIFadd{posting in }\textit{\DIFadd{TripAdvisor}}\footnote{\label{tripadvisor}\DIFadd{TripAdvisor: }\href {\DIFadd{www.tripadvisor.com/}}{\path{www.tripadvisor.com/}}}\DIFaddend . With this data, we can \DIFdelbegin \DIFdel{both }\DIFdelend confirm existing theories about their differences in behavior, as well as perform an exploration of the data to discover factors that could have been overlooked in the past. \DIFdelbegin \DIFdel{For thispurpose}\DIFdelend \DIFaddbegin \DIFadd{In order to do this}\DIFaddend , we use machine learning to automatically classify review sentences as positive or negative opinions of the hotel\DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{. We then }\DIFaddend perform a statistical extraction of the topics that \DIFaddbegin \DIFadd{concerns }\DIFaddend the customers of each population \DIFdelbegin \DIFdel{are mostconcerned about}\DIFdelend \DIFaddbegin \DIFadd{the most}\DIFaddend .
+
+\section{Research objective}\label{research_objective}
+
+\DIFdelbegin \DIFdel{The objective of this study}\DIFdelend \DIFaddbegin \DIFadd{This study's objective }\DIFaddend is to determine the difference in \DIFdelbegin \DIFdel{preferences between Chinese-speaking }\DIFdelend \DIFaddbegin \DIFadd{factors driving satisfaction and dissatisfaction between Chinese }\DIFaddend and English-speaking \DIFdelbegin \DIFdel{customers of }\DIFdelend \DIFaddbegin \DIFadd{tourists in the context of high-grade hospitality of }\DIFaddend Japanese hotels using text-mining techniques. We aim to determine a quantitative measure of similarity \DIFdelbegin \DIFdel{(and therefore, difference) }\DIFdelend between the satisfaction and dissatisfaction factors of both customer groups using a Rank-biased Overlap measure\DIFdelbegin \DIFdel{. Furthermore, we will measure if both customer groups have differences in priorities for the factors that are common to both groups. In addition}\DIFdelend , \DIFaddbegin \DIFadd{both in general and only considering their common factors. More importantly, }\DIFaddend we also \DIFdelbegin \DIFdel{measure how }\DIFdelend \DIFaddbegin \DIFadd{intend to measure how managerial and environmental attributes influence }\DIFaddend much satisfaction and dissatisfaction of both customer groups\DIFdelbegin \DIFdel{are influenced by managerial attributes (internal }\DIFdelend \DIFaddbegin \DIFadd{. We define managerial attributes as those internal and modifiable }\DIFaddend to the hotel\DIFdelbegin \DIFdel{), as well as environmental attributes (external to the hotel )}\DIFdelend \DIFaddbegin \DIFadd{. In contrast, environmental attributes are external and unmodifiable, short of moving the hotel building in its entirety}\DIFaddend .
+
+\DIFdelbegin \DIFdel{Furthermore, our }\DIFdelend \DIFaddbegin \DIFadd{Our }\DIFaddend proposal includes the use of large scale data from online hotel reviews in Chinese and English to study their differences in a statistical manner. In the past, survey-based studies have provided a theoretical background for a few specific tourist populations of a single culture or that travel with a single purpose\DIFdelbegin \DIFdel{; this }\DIFdelend \DIFaddbegin \DIFadd{. The short scope of those studies }\DIFaddend means that cultural and language differences often cannot be observed in a single study. 
+
+\DIFdelbegin \DIFdel{The difference in preferences that our study uncovers }\DIFdelend \DIFaddbegin \DIFadd{Our study attempts to uncover the difference in satisfaction and dissatisfaction factors between cultures. These factors }\DIFaddend can become the focal point for making improvements in \DIFaddbegin \DIFadd{the }\DIFaddend tourism and service industries \DIFdelbegin \DIFdel{, increase the satisfactionof customers , and influence them to write more satisfied }\DIFdelend \DIFaddbegin \DIFadd{and increase customer satisfaction. Satisfied customers will then write more positive }\DIFaddend online reviews that will\DIFdelbegin \DIFdel{in turn }\DIFdelend \DIFaddbegin \DIFadd{, in turn, }\DIFaddend increase sales and attract new customers. 
+
+\section{Theoretical background and hypothesis development}\label{theory_hypothesis}
+
+\DIFaddbegin \subsection{\DIFadd{Japanese hospitality: }\textit{\DIFadd{Omotenashi}}}\label{theory_omotenashi}
+
+\DIFadd{The spirit of Japanese hospitality, or }\textit{\DIFadd{Omotenashi}}\DIFadd{, has roots in the countries history. However, to this day, it is regarded as the highest standard \mbox{%DIFAUXCMD
+\cite{ikeda2013omotenashi, al2015characteristics}}\hspace{0pt}%DIFAUXCMD
+. There is even a famous phrase in customer service in Japan: }\textit{\DIFadd{okyaku-sama wa kami-sama desu}}\DIFadd{, or translated ``The customer is god''. Some say that }\textit{\DIFadd{Omotenashi}} \DIFadd{originated from the old Japanese art of the tea ceremony in the 16th century. However, other scholars found that its roots come from even earlier, in the form of formal banquets in the 7th century \mbox{%DIFAUXCMD
+\cite{aishima2015origin}}\hspace{0pt}%DIFAUXCMD
+. The practice of high standards in hospitality has survived throughout the years. Today, it permeates all business practices in Japan, from the cheapest convenience stores to the most expensive ones. Manners, service, and respect towards the customer are taught to workers in their training, and high standards are always followed as to not fall behind in the competition. In Japanese businesses, hotels included, staff members are trained to speak in }\textit{\DIFadd{sonkeigo}}\DIFadd{, or ``respectful language", one of the most formal of the Japanese formality syntaxes. They are also trained to bow with different depths depending on the situation, where a light bow could be used to say: ``Please, allow me to guide you". Deep bows are also used to apologize for any inconvenience the customer could have, followed by a very respectful apology as well. In fact, despite the word }\textit{\DIFadd{omotenashi}} \DIFadd{being translated directly as ``hospitality'', it includes both the concepts of hospitality and service \mbox{%DIFAUXCMD
+\cite{Kuboyama2020}}\hspace{0pt}%DIFAUXCMD
+. 
+}
+
+\DIFadd{It stands to reason that this high level of hospitality would be a positive aspect that would be at the top of satisfaction for any customer. However, in Japan, every business has this high level of hospitality, in differing levels of success. A simple convenience shop around the corner could be more hospitable if hotel management falls behind. Businesses have to strive to be the most hospitable, and hotels are not allowed to lag in this competition. Because of this, other factors such as proximity to a convenience store, or transport availability, or perhaps room quality might be more critical to a customer. Customers can always achieve satisfaction from hospitality elsewhere, so hotels need to be competitive in their hospitality. 
+}
+
+\DIFadd{Therefore we pose two hypotheses for our study:
+}
+
+\begin{subhyp}
+\begin{hyp}
+\label{hyp:omotenashi_zh}
+\DIFadd{Chinese tourists are most satisfied with Japanese }\textit{\DIFadd{Omotenashi}} \DIFadd{factors such as staff behavior or service.
+}\end{hyp}
+
+\begin{hyp}
+\label{hyp:omotenashi_en}
+\DIFadd{Western tourists are most satisfied with Japanese }\textit{\DIFadd{Omotenashi}} \DIFadd{factors such as staff behavior or service.
+}\end{hyp}
+
+\DIFadd{However, Japanese hospitality comes from Japanese culture. Different cultures interacting with it could have a different reaction. While some might be impressed by it, some might consider other factors more important to their stay in a hotel. This point leads us to a derivative of the above hypothesis:
+}
+
+\begin{hyp}
+\label{hyp:omotenashi_both}
+\DIFadd{Western and Chinese tourists have a different reaction to Japanese }\textit{\DIFadd{Omotenashi}} \DIFadd{factors such as staff behavior or service.
+}\end{hyp}
+\end{subhyp}
+
+\DIFaddend \subsection{Customer satisfaction and dissatisfaction during hotel lodging}\label{theory_satisfaction}
+
+Customer satisfaction in tourism has been analyzed since decades past, \cite{hunt1975} having defining customer satisfaction as the realization or overcoming of expectations towards the service. \cite{oliver1981} defined it as an emotional response to the provided services in retail and other contexts, and \cite{oh1996} reviewed the psychological processes of customer satisfaction for the hospitality industry. It is generally agreed upon that satisfaction and dissatisfaction stem from the individual expectations of the customer\DIFdelbegin \DIFdel{, and as }\DIFdelend \DIFaddbegin \DIFadd{. As }\DIFaddend such, \cite{engel1990} \DIFdelbegin \DIFdel{state that satisfaction and dissatisfaction are therefore influenced by }\DIFdelend \DIFaddbegin \DIFadd{states that }\DIFaddend each customer's background\DIFdelbegin \DIFdel{. This is why Western and Asian, specifically Chinese , customers can }\DIFdelend \DIFaddbegin \DIFadd{, therefore, influences satisfaction and dissatisfaction. Western and Chinese customers can then }\DIFaddend have very different factors of satisfaction and dissatisfaction since they have different backgrounds and cultures. These varying backgrounds will lead to varying expectations of the \DIFdelbegin \DIFdel{services that a hotel can provide for them}\DIFdelend \DIFaddbegin \DIFadd{hotel services}\DIFaddend , the experiences they want to have while staying at a hotel, and the level of comfort that they will have\DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{. These expectations will be there }\DIFaddend from the moment that they choose the hotel throughout their stay. These \DIFdelbegin \DIFdel{contrasting }\DIFdelend \DIFaddbegin \DIFadd{different }\DIFaddend expectations, in turn, will determine the \DIFdelbegin \DIFdel{contrasting }\DIFdelend \DIFaddbegin \DIFadd{distinct }\DIFaddend factors of satisfaction and dissatisfaction for each kind of customer, as well as the order in which they prioritize them. 
+\DIFaddbegin 
+
+\DIFaddend Therefore we propose\DIFdelbegin \DIFdel{our first and second hypothesis}\DIFdelend :
+
+\DIFaddbegin \begin{subhyp}
+\DIFaddend \begin{hyp}
+\DIFdelbegin %DIFDELCMD < \label{hyp:1}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{hyp:diff_all}
+\DIFaddend Chinese and Western tourists have different priorities in hotel attributes that lead to their satisfaction and dissatisfaction.
+\end{hyp}
+
+\DIFaddbegin \DIFadd{Because of their different origins, expectations, and cultures, it stands to reason Chinese and Western tourists could have completely different factors to one another. Therefore, it could be that some factors do not appear in the other reviews at all. For example, between different cultures, it can be that a single word can express some concept that would take more words in the other language. So we must measure their differences or similarities at their common ground as well. For this, we prepare the following hypothesis:
+}
+
+\DIFaddend \begin{hyp}
+\DIFdelbegin %DIFDELCMD < \label{hyp:2}
+%DIFDELCMD < %%%
+\DIFdel{The common satisfaction and dissatisfaction }\DIFdelend \DIFaddbegin \label{hyp:diff_com}
+\DIFadd{The common }\DIFaddend factors identified for both Chinese and Western tourists will be placed at a different priority for each group.
+\end{hyp}
+\DIFaddbegin \end{subhyp}
+\DIFaddend 
+
+Studies on customer satisfaction \cite[e.g.][]{truong2009, romao2014, wu2009} commonly use the Likert scale \cite[][]{likert1932technique} (e.g. 1 to 5 scale from strongly dissatisfied to strongly satisfied) to perform statistical analysis of which factors relate most to satisfaction on the same dimension as dissatisfaction \cite[e.g.][]{chan201518, choi2000}. \DIFdelbegin \DIFdel{This }\DIFdelend \DIFaddbegin \DIFadd{The use of the Likert scale }\DIFaddend leads to correlation analyses \DIFdelbegin \DIFdel{(either multivariate or single variable ones) }\DIFdelend where one factor can lead to satisfaction, \DIFdelbegin \DIFdel{while it is implied }\DIFdelend \DIFaddbegin \DIFadd{implying }\DIFaddend that the lack of it can lead to dissatisfaction. However, a binary distinction (satisfied or dissatisfied) could allow us to analyze the factors that \DIFdelbegin \DIFdel{solely }\DIFdelend correlate to satisfaction \DIFdelbegin \DIFdel{, as well as exploring factors which }\DIFdelend \DIFaddbegin \DIFadd{and explore factors that }\DIFaddend are solely linked to dissatisfaction. There are fewer examples of this approach, but studies have done this in the past \cite[e.g.][]{zhou2014}. \DIFdelbegin \DIFdel{While it is true that this method can }\DIFdelend \DIFaddbegin \DIFadd{This method can indeed }\DIFaddend decrease the extent to which we can analyze degrees of satisfaction or dissatisfaction\DIFaddbegin \DIFadd{. However}\DIFaddend , it has the benefit that it can be applied to a large sample of text data via automatic sentiment detection techniques using artificial intelligence. 
+
+Previous research has also focused on factors that are controllable by the hotel managers and staff, i.e.\DIFaddbegin \DIFadd{, }\DIFaddend hotel services, staff behavior, or facilities \cite[e.g.][]{shanka2004, choi2001}\DIFdelbegin \DIFdel{, without focusing }\DIFdelend \DIFaddbegin \DIFadd{. However, little focus is put }\DIFaddend on factors that are uncontrollable by the hotel staff \DIFdelbegin \DIFdel{, such as surroundings }\DIFdelend \DIFaddbegin \DIFadd{that can play a part in the customers' choice behavior and satisfaction. Examples of these factors include the surroundings of the hotel}\DIFaddend , location, language immersion of the country as a whole, or \DIFdelbegin \DIFdel{of }\DIFdelend touristic destinations, as well as \DIFaddbegin \DIFadd{the }\DIFaddend integration of the hotel with tours available nearby, among other factors\DIFdelbegin \DIFdel{that can play a part in the customers choice behavior and satisfaction. 
+}\DIFdelend \DIFaddbegin \DIFadd{. 
+}
+
+\DIFaddend This leads to \DIFdelbegin \DIFdel{our third }\DIFdelend \DIFaddbegin \DIFadd{the next }\DIFaddend hypothesis:
+
+\begin{hyp}
+\DIFdelbegin %DIFDELCMD < \label{hyp:3}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{hyp:man_env}
+\DIFaddend Satisfaction and dissatisfaction \DIFdelbegin \DIFdel{stems }\DIFdelend \DIFaddbegin \DIFadd{stem }\DIFaddend from both internal (managerial) and external (environmental) attributes of the hotel.
+\end{hyp}
+
+\DIFaddbegin \DIFadd{The resulting proportions of managerial attributes to environmental attributes for each population could serve as a measurement of how much the improvement of management in the hotel can increase future satisfaction in customers.
+}
+
+\DIFaddend \subsection{Chinese and Western tourist behavior}\label{theory_zh_en}
+
+%DIF <  Asians vs Western behavior
+%DIF >  Asians vs. Western behavior
+In the past, tourist behavior analyzed from western samples \DIFdelbegin \DIFdel{and surveys }\DIFdelend was wrongly thought to be a representation of universal behavior across all cultures \cite[][]{nielsen2017, jones2010WEIRD, guaratne2009, hogan1978biases}. Recently, however, with the rise of Chinese outbound tourism, both academic researchers and businesses have decided to study Chinese tourist behavior \cite[][]{sun2017}. This \DIFdelbegin \DIFdel{results }\DIFdelend \DIFaddbegin \DIFadd{increase resulted }\DIFaddend in several studies focusing on only the behavior of this subset of tourists. To this day, cross-cultural studies and analyses for Asian and Western tourists are scarce. \DIFdelbegin \DIFdel{A few examples are }\DIFdelend \DIFaddbegin \DIFadd{One example is }\DIFaddend \cite{choi2000}, where it was found that Western tourists visiting Hong Kong are satisfied more with room quality while Asians are satisfied with value for money\DIFdelbegin \DIFdel{; }\DIFdelend \DIFaddbegin \DIFadd{. Another is  }\DIFaddend \cite{bauer1993changing}, where Westerners prefer the hotel health facilities while the Asian tourists were more inclined to enjoy the Karaoke facilities of hotels, and both groups tend to have high expectations about the overall facilities\DIFdelbegin \DIFdel{; as well as }\DIFdelend \DIFaddbegin \DIFadd{. Another example is }\DIFaddend \cite{kim2000}, where American tourists were found to be individualistic and motivated by novelty, while Japanese tourists were found to be collectivist and motivated by prestige and family, with \DIFaddbegin \DIFadd{an }\DIFaddend escape from routine and an increase in knowledge as a common motivator. 
+
+One thing to note with the above cross-culture analyses is that they were performed before the year 2000. The current Chinese economy boom is making an increase in the influx of tourists\DIFdelbegin \DIFdel{, but the question that could be posed is whether that boom }\DIFdelend \DIFaddbegin \DIFadd{. However, that boom could have }\DIFaddend created a difference in the expectations of tourists\DIFdelbegin \DIFdel{, and, as such, in their satisfactions and dissatisfactions }\DIFdelend \DIFaddbegin \DIFadd{. In turn, that boom could have influenced their satisfaction factors }\DIFaddend when traveling. Another note is that these studies were performed with questionnaires in places where it would be easy to locate tourists, i.e.\DIFaddbegin \DIFadd{, }\DIFaddend airports. However, our study of online reviews takes the data that the hotel customers uploaded themselves.
+
+\DIFaddbegin \DIFadd{More recent studies have surfaced as well. A cross-country study \mbox{%DIFAUXCMD
+\cite{FRANCESCO201924} }\hspace{0pt}%DIFAUXCMD
+using posts from U.S.A. citizens, Italians and Chinese tourists, determined using a text link analysis that customers from different countries indeed have a different perception and emphasis of a few predefined hotel attributes. According to their results, it appears that U.S.A. customers perceive cleanliness and quietness most positively and that Chinese customers perceive budget and restaurant above other attributes. Another couple of studies \mbox{%DIFAUXCMD
+\cite{JIA2020104071, HUANG2017117} }\hspace{0pt}%DIFAUXCMD
+analyze differences between Chinese and U.S. tourists using text mining techniques and more massive datasets, although in a restaurant context. 
+}
+
+\DIFadd{These last three articles focus on U.S.A. culture, while our study focuses on Western culture. Another difference with our study is that of the context of the study. The first study \mbox{%DIFAUXCMD
+\cite{FRANCESCO201924} }\hspace{0pt}%DIFAUXCMD
+has the context of tourists from 3 countries staying in hotels across the world, the second choosing restaurant reviews from the U.S.A. and Chinese tourists eating in 3 countries in Europe, and the third analyzing reviews of restaurants in Bejing. Our study, on the other hand, focuses on Western culture, instead of a single Western country, and Chinese culture clashing with the hospitality environment in Japan, specifically. The importance of Japan in this analysis comes from the unique environment of high-grade hospitality that the country presents. In this environment, do customers hold their satisfaction to this hospitality regardless of their culture, or are other factors are more important to the customers overall? Our study measures this at a large scale across different hotels in Japan. 
+}
+
+\DIFaddend % Universal behavior
+Other \DIFdelbegin \DIFdel{more recent }\DIFdelend studies, perhaps recognizing that samples being comprised of people from Western industrialized countries \DIFdelbegin \DIFdel{aren't }\DIFdelend \DIFaddbegin \DIFadd{are not }\DIFaddend representative, have gone further and studied people from many countries in their samples, and performed a more universal and holistic (not cross-culture) analysis. \cite{choi2001}, for example, analyzed hotel guest satisfaction determinants in Hong Kong with surveys in English, Chinese and Japanese translations, with people from many countries in their sample. \cite{choi2001} found that staff service quality, room quality, and value for money were the top satisfaction determinants. As another example, \cite{Uzama2012} produced a typology for foreigners coming to Japan for tourism, without making distinctions for their culture, but their motivation in traveling in Japan. In another study, \cite{zhou2014} analyzed hotel satisfaction using English and Mandarin online reviews from guests staying in Hangzhou, China coming from many different countries. The general satisfaction score was noticed to be different in those countries\DIFdelbegin \DIFdel{, but a deeper }\DIFdelend \DIFaddbegin \DIFadd{. However, a more in-depth }\DIFaddend cross-cultural analysis of the satisfaction factors wasn't performed. As a result of their research, \cite{zhou2014} thus found that customers are universally satisfied by welcome extras, dining environments, and special food services. 
+
+% Western behavior 
+Regarding Western tourist behavior, a few examples can tell us what to expect when analyzing our data. \cite{kozak2002} found that British and German tourists' satisfaction determinants while visiting Spain and Turkey were hygiene and cleanliness, hospitality, the availability of facilities and activities, and accommodation services. \cite{shanka2004} found that English-speaking tourists in Perth, Australia were most satisfied with staff friendliness, \DIFaddbegin \DIFadd{the }\DIFaddend efficiency of check-in and check-out, restaurant and bar facilities\DIFaddbegin \DIFadd{, }\DIFaddend and lobby ambiance. 
+
+% Chinese behavior
+Regarding outbound Chinese tourists, academic studies about Chinese tourists have increased \cite[][]{sun2017}. Different researchers have found that Chinese tourist populations have several specific attributes. According to \cite{ryan2001} and their study of Chinese tourists in New Zealand, Chinese tourists prefer nature, cleanliness, and scenery in contrast to experiences and activities. \DIFdelbegin \DIFdel{With some overlap, }\DIFdelend \cite{dongyang2015} studied Chinese tourists in the Kansai region of Japan and found that Chinese tourists are satisfied mostly with exploring the food culture of their destination, cleanliness, and staff. Studying Chinese tourists in Vietnam, \cite{truong2009} found that Chinese tourists are highly concerned with value for money. According to \cite{liu2019}, Chinese tourists tend to have harsher criticism when compared with other international tourists. \DIFdelbegin \DIFdel{And }\DIFdelend \DIFaddbegin \DIFadd{Moreover, }\DIFaddend as stated by \cite{gao2017chinese}, who analyzed different generations of Chinese tourists and their connection to nature while traveling, Chinese tourists prefer nature overall\DIFdelbegin \DIFdel{, but }\DIFdelend \DIFaddbegin \DIFadd{. However, }\DIFaddend the younger generations seem to do so less than their older counterparts. 
+
+% Studies are not universal.
+Although the studies focusing only on Chinese tourists or only on Western tourists have a narrow view, their theoretical contributions are valuable. We can see that depending on the study and the design of questionnaires, as well as the destinations\DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{; }\DIFaddend the results can vary greatly. Not only that, but while there seems to be some overlap in most studies, some factors are completely ignored in one study but not in the other. \DIFdelbegin \DIFdel{However, since }\DIFdelend \DIFaddbegin \DIFadd{Since }\DIFaddend our study uses data mining, the definition of each \DIFdelbegin \DIFdel{subject or }\DIFdelend factor is left for \DIFdelbegin \DIFdel{the }\DIFdelend hotel customers to decide en masse via their reviews\DIFdelbegin \DIFdel{(instead of being defined by the questionnaire)}\DIFdelend . This means that the factors will be selected through statistical methods alone\DIFdelbegin \DIFdel{. This opened opportunities }\DIFdelend \DIFaddbegin \DIFadd{, instead of being defined by the questionnaire. Our method allows us }\DIFaddend to find factors that \DIFdelbegin \DIFdel{the writers of this study }\DIFdelend \DIFaddbegin \DIFadd{we }\DIFaddend would not have contemplated\DIFdelbegin \DIFdel{, or avoid }\DIFdelend \DIFaddbegin \DIFadd{. It also avoids }\DIFaddend enforcing a factor on the mind of \DIFdelbegin \DIFdel{reviewers }\DIFdelend \DIFaddbegin \DIFadd{study subjects }\DIFaddend by presenting them with a question that they \DIFdelbegin \DIFdel{didn't }\DIFdelend \DIFaddbegin \DIFadd{did not }\DIFaddend think of by themselves. \DIFdelbegin \DIFdel{In addition, }\DIFdelend \DIFaddbegin \DIFadd{This large variety of opinions in a well-sized sample, added to the automatic findings of statistical text analysis methods, gives an advantage to our study compared to others with smaller samples. Besides, }\DIFaddend this study could help us analyze the satisfaction and dissatisfaction factors cross-culturally and compare them with the existing literature.
+
+%DIF >  Reviewer comparison table
+\DIFaddbegin \DIFadd{Undoubtedly previous literature has examples of other cross-culture studies of tourist behavior and to further highlight our study and its merits. A contrast is shown in Table \ref{tab:lit-rev}. This table shows that older studies were conducted with surveys and had a different study topic. These are changes in demand \mbox{%DIFAUXCMD
+\cite{bauer1993changing}}\hspace{0pt}%DIFAUXCMD
+, tourist motivation \mbox{%DIFAUXCMD
+\cite{kim2000}}\hspace{0pt}%DIFAUXCMD
+, and closer to our study, satisfaction levels \mbox{%DIFAUXCMD
+\cite{choi2000}}\hspace{0pt}%DIFAUXCMD
+. However, our study topic is not the levels of satisfaction but the factors that drive it, as well as dissatisfaction, which is overlooked in most studies. Newer studies with larger samples and similar methodologies have emerged, although two of these study restaurants instead of hotels \mbox{%DIFAUXCMD
+\cite{JIA2020104071, HUANG2017117}}\hspace{0pt}%DIFAUXCMD
+. One important difference is the geographical focus of their studies. While \mbox{%DIFAUXCMD
+\cite{FRANCESCO201924, JIA2020104071, HUANG2017117} }\hspace{0pt}%DIFAUXCMD
+have a multi-national focus, we instead focus on Japan. The focus on Japan is important because of its leading rank in hospitality across all types of businesses. This raises the question: in such an environment, will the customers be universally satisfied with this factor, or will they have differing views within their cultures? Our study brings light to the changes, or lack thereof, in different touristic environments where an attribute can be considered as excellent. The number of samples in other text-mining studies is also smaller to ours in comparison. Apart from that, every study has a different text mining method.
+}
+
+%DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{graphicx}
+%DIF >  \usepackage{lscape}
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{\DIFaddFL{Comparison between cross-culture or cross-country previous studies and our study}}
+\label{tab:lit-rev}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{l|l|l|l|l|l|l|l|}
+\cline{2-8}
+ & \textbf{Bauer et.al (1993)} & \textbf{\begin{tabular}[c]{@{}l@{}}Choi and\\ Chu (2000)\end{tabular}} & \textbf{Kim and Lee (2000)} & \textbf{Huang (2017)} & \textbf{\begin{tabular}[c]{@{}l@{}}Francesco and\\ Roberta (2019)\end{tabular}} & \textbf{Jia (2020)} & \textbf{Our study} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Comparison subjects}} & \begin{tabular}[c]{@{}l@{}}Asians\\ vs\\ Westerns\end{tabular} & \begin{tabular}[c]{@{}l@{}}Asians\\ vs\\ Westerners\end{tabular} & \begin{tabular}[c]{@{}l@{}}Anglo-Americans\\ vs \\ Japanese\end{tabular} & \begin{tabular}[c]{@{}l@{}}Chinese\\ vs\\ English-speakers\end{tabular} & \begin{tabular}[c]{@{}l@{}}USA\\ vs\\ China\\ vs\\ Italy\end{tabular} & \begin{tabular}[c]{@{}l@{}}Chinese\\ vs\\ US tourists\end{tabular} & \begin{tabular}[c]{@{}l@{}}Chinese \\ vs \\ Westerners\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Study topic}} & Changes in demand & Satisfaction Levels & Tourist Motivation & \begin{tabular}[c]{@{}l@{}}Dining experience \\ of Roast Duck\end{tabular} & \begin{tabular}[c]{@{}l@{}}Perception and \\ Emphasis\end{tabular} & \begin{tabular}[c]{@{}l@{}}Motivation and \\ Satisfaction\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}Satisfaction and \\ Dissatisfaction\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Geographical focus}} & Asia Pacific region & Hong Kong & Global & Beijing & Multi-national & Multi-national & \textbf{Japan} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Industry}} & Hotels & Hotels & Tourism & \begin{tabular}[c]{@{}l@{}}Restaurant \\ (Beijing Roast Duck)\end{tabular} & Hotels & Restaurants & Hotels \\ \hline
+\multicolumn{1}{|l|}{\textbf{Study subjects}} & Hotel managers & Hotel customers & \begin{tabular}[c]{@{}l@{}}Tourists arriving \\ in airport\end{tabular} & \begin{tabular}[c]{@{}l@{}}Diners \\ online reviews\end{tabular} & \begin{tabular}[c]{@{}l@{}}Hotel customers \\ online reviews\end{tabular} & \begin{tabular}[c]{@{}l@{}}Diners \\ online reviews\end{tabular} & \begin{tabular}[c]{@{}l@{}}Hotel customers \\ online reviews\end{tabular} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Sample method}} & surveys & surveys & survey & text mining & text mining & text mining & text mining \\ \hline
+\multicolumn{1}{|l|}{\textbf{Number of samples}} & 185 surveys & 540 surveys & \begin{tabular}[c]{@{}l@{}}165 Anglo-American\\ 209 Japanese\end{tabular} & \begin{tabular}[c]{@{}l@{}}990 Chinese reviews\\ 398 English reviews\end{tabular} & \begin{tabular}[c]{@{}l@{}}9000 reviews \\ (3000 per country)\end{tabular} & \begin{tabular}[c]{@{}l@{}}2448 reviews\\ (1360 Chinese)\\ (1088 English)\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}91,172 reviews\\ (49,561 Chinese)\\ (41,611 English)\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Study method}} & statistics & VARIMAX & MANOVA & \begin{tabular}[c]{@{}l@{}}Semantic \\ Network \\ Analysis\end{tabular} & Text Link Analysis & \begin{tabular}[c]{@{}l@{}}Topic modeling \\ (LDA)\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}SVM and \\ Rank-biased overlap\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Subject nationality}} & \begin{tabular}[c]{@{}l@{}}Asians: \\ China, \\ Fiji, \\ Hong Kong, \\ Indonesia, \\ Malaysia, \\ Singapore, \\ Taiwan, Guam, \\ Tahiti, Thailand\\ \\ Westerners: \\ Australia, \\ New Zealand\end{tabular} & \begin{tabular}[c]{@{}l@{}}Asians: \\ China, \\ Taiwan, \\ Japan,\\ South Korea, \\ South-East Asia\\ \\ Westerners: \\ North America,\\ Europe, Australia, \\ New Zealand\end{tabular} & USA, Japan & \begin{tabular}[c]{@{}l@{}}English-speakers: \\ U.K., USA, Australia,\\ New Zealand, Canada,\\ Ireland\\ \\ Chinese-speakers: China\end{tabular} & USA, China, Italy & USA, China & \begin{tabular}[c]{@{}l@{}}Chinese-speakers: \\ China\\ \\ English speakers:\\ (U.K., USA, \\ Australia,  \\ New Zealand, \\ Canada,  Ireland)\end{tabular} \\ \hline
+\end{tabular}%
+}
+\end{table}
+\end{landscape}
+
+\DIFaddend \subsection{Data mining, \DIFaddbegin \DIFadd{machine learning, }\DIFaddend knowledge discovery and sentiment analysis}\label{theory_data}
+
+%DIF <  Explain data mining and discovery of theory inside the data
+%DIF >  Explain the discovery of theory inside the data
+In the current world, data is presented to us in larger and larger quantities. Today's data sizes were commonly only seen in very specialized large laboratories with supercomputers a couple of decades ago\DIFdelbegin \DIFdel{, but }\DIFdelend \DIFaddbegin \DIFadd{. However, }\DIFaddend they are now \DIFdelbegin \DIFdel{common }\DIFdelend \DIFaddbegin \DIFadd{standard }\DIFaddend for market and managerial studies, independent university students\DIFaddbegin \DIFadd{, }\DIFaddend and any scientist that can connect to the Internet. Such quantities of data are available to study now more than ever\DIFdelbegin \DIFdel{, but }\DIFdelend \DIFaddbegin \DIFadd{. Nevertheless, }\DIFaddend it would be impossible for researchers to parse all of this data by themselves. As \cite{fayyad1996data} summarizes, data by itself is unusable until it goes through a process of selection, preprocessing, transformation, mining, and evaluation\DIFdelbegin \DIFdel{, and only then it can }\DIFdelend \DIFaddbegin \DIFadd{. Only then can it }\DIFaddend be established as knowledge. With the tools available to us in the era of information science, algorithms can be used to detect patterns that would take researchers too long to recognize\DIFdelbegin \DIFdel{, which can}\DIFdelend \DIFaddbegin \DIFadd{. These patterns can, later on, }\DIFaddend be evaluated to generate knowledge. This process is called Knowledge Discovery in Databases. 
+
+% Text mining 
+Now, there are\DIFdelbegin \DIFdel{of course }\DIFdelend \DIFaddbegin \DIFadd{, of course, }\DIFaddend many sources of numerical data to be \DIFdelbegin \DIFdel{mined, but }\DIFdelend \DIFaddbegin \DIFadd{explored.  However, }\DIFaddend perhaps what is most available and interesting to managerial purposes is the resource of customers' opinions in text form. \DIFdelbegin \DIFdel{With }\DIFdelend \DIFaddbegin \DIFadd{Since }\DIFaddend the introduction of Web 2.0, a never before seen quantity of valuable information is \DIFdelbegin \DIFdel{being }\DIFdelend posted to the Internet at a staggering speed. Text mining \DIFdelbegin \DIFdel{then has }\DIFdelend \DIFaddbegin \DIFadd{has then }\DIFaddend been proposed more than a decade ago to utilize this data \cite[e.g.][]{rajman1998text,nahm2002text}\DIFdelbegin \DIFdel{, using what is called }\DIFdelend \DIFaddbegin \DIFadd{. Using }\DIFaddend Natural Language Processing\DIFdelbegin \DIFdel{to }\DIFdelend \DIFaddbegin \DIFadd{, one can }\DIFaddend parse language in a way that \DIFdelbegin \DIFdel{it can be analyzed by a computer }\DIFdelend \DIFaddbegin \DIFadd{translates to numbers so that a computer can analyze it}\DIFaddend . Since then, text mining techniques have improved over the years. This has been used in the field of hospitality as well for many purposes, including satisfaction analysis from reviews \cite[e.g][]{berezina2016, xu2016, xiang2015, hargreaves2015, balbi2018}, social media's influence on travelers \cite[e.g.][]{xiang2010}, review summarization \cite[e.g.][]{hu2017436}, perceived value of reviews \cite[e.g][]{FANG2016498}, and even predicting hotel demand using web traffic data \cite[e.g][]{yang2014}.
+
+% Sentiment Analysis
+More than only analyzing patterns within the text, researchers have found how to determine the sentiment behind a statement based on speech patterns, statistical patterns, and other methodologies. This \DIFaddbegin \DIFadd{method }\DIFaddend is called sentiment analysis \DIFdelbegin \DIFdel{, }\DIFdelend or opinion mining\DIFdelbegin \DIFdel{, and a }\DIFdelend \DIFaddbegin \DIFadd{. A }\DIFaddend precursor of this method was attempted decades ago \cite[][]{stone1966general}. With sentiment analysis, one could use patterns in the text to determine whether a sentence was being said with a positive opinion, a critical opinion\DIFdelbegin \DIFdel{, or even }\DIFdelend \DIFaddbegin \DIFadd{. This methodology could even determine }\DIFaddend other ranges of emotions, depending on the thoroughness of the algorithm. Examples of sentiment analysis include ranking products through online reviews \cite[e.g][]{liu2017149, zhang2011}, predicting political poll results through opinions in Twitter \cite[][]{oconnor2010}, and so on. In the hospitality field, it has been used to classify reviewers' opinions of hotels in online reviews \cite[e.g.]{kim2017362, alsmadi2018}. 
+
+%DIF >  Machine Learning
+\DIFaddbegin \DIFadd{The algorithm used for sentiment analysis in our study is called a Support Vector Machine. It is a form of supervised machine learning used for binary classification. This means a sample of labeled training data is given to the algorithm to detect patterns in the data and use those patterns to establish a method for classifying other unlabeled data automatically. Machine learning is a general term used for algorithms that, when given data, will automatically use that data to "learn" from its patterns and apply them for improving upon a task. Learning machines can be supervised, as in our study, where the algorithm has manually labeled data to know the correct task result template. Machine learning can also be unsupervised, where without any pre-labeled data. In this latter case, the machine will analyze the structure and patters on the data and perform a task based on its conclusions on its own. Our study calls for a supervised machine since text analysis can be intricate. Many patterns might occur, but we are only interested in satisfaction and dissatisfaction labels. Consequently, we teach the machine through previously labeled text samples. 
+}
+
+\DIFadd{Machine learning and data mining are two fields with a significant overlap since they can use each other's methods to achieve the task at hand. Machine learning methods focus on the prediction of new data based on known properties and patterns of the given data. Data mining, on the other hand, is discovering new information and new properties of the data. Our machine learning approach will learn the sentiment patterns of our sample texts showing satisfaction and dissatisfaction, and using these to label the rest of the data. We are not exploring new patterns in the sentiment data. However, we are using sentiment predictions for knowledge discovery in our database. Thus our study is a data mining experiment based on machine learning.
+}
+
+\DIFaddend % Data exploration
+Because the methodology for finding patterns in the data is automatic and statistical\DIFdelbegin \DIFdel{in nature}\DIFdelend , it is both reliable \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{and unpredictable. Reliable }\DIFaddend in that the algorithm will find a pattern by its nature\DIFdelbegin \DIFdel{, and unpredictable, }\DIFdelend \DIFaddbegin \DIFadd{. Unpredictable }\DIFaddend in that because it has no intervention from the researchers in making questionnaires\DIFaddbegin \DIFadd{, }\DIFaddend it can have different results from anything that the researchers could expect. \DIFdelbegin \DIFdel{This is }\DIFdelend \DIFaddbegin \DIFadd{These qualities determine }\DIFaddend why, much like actual mining, data mining is mostly exploratory\DIFdelbegin \DIFdel{in nature}\DIFdelend . One can never be sure that \DIFdelbegin \DIFdel{something can be found, but }\DIFdelend \DIFaddbegin \DIFadd{one will find a specific something. However, }\DIFaddend we can make predictions and estimates about where to find knowledge, and what kind of knowledge \DIFdelbegin \DIFdel{can be uncovered. }\DIFdelend \DIFaddbegin \DIFadd{we can uncover. The exploration of large opinion datasets with these methods is essential. The reason being we can discover knowledge that could be missed by looking at a localized sample rather than a holistic view of every users' opinion. In other words, a machine algorithm can find the needles in a haystack that we did not know were there from taking small bundles of hay at a time.
+}\DIFaddend 
+
+In this study, we can predict that several things might occur. Our data could show satisfaction and dissatisfaction factors that are universal\DIFaddbegin \DIFadd{, }\DIFaddend and it could also find strictly cultural \DIFdelbegin \DIFdel{preferences, but }\DIFdelend \DIFaddbegin \DIFadd{factors. However, }\DIFaddend we expect that both of these options will present themselves. We can also assert that \DIFdelbegin \DIFdel{, if the previous literature is correct in their findings, }\DIFdelend we could arrive at very similar results \DIFdelbegin \DIFdel{, albeit }\DIFdelend \DIFaddbegin \DIFadd{to previous literature if they are correct in their findings. However, we are }\DIFaddend using a database \DIFaddbegin \DIFadd{of }\DIFaddend several orders of magnitude larger. We can also expect that, because of the lack of questionnaire design and \DIFdelbegin \DIFdel{freedom of users}\DIFdelend \DIFaddbegin \DIFadd{users' freedom }\DIFaddend to record their pleasures and grievances, \DIFdelbegin \DIFdel{it is possible that we will }\DIFdelend \DIFaddbegin \DIFadd{we may }\DIFaddend discover patterns that \DIFdelbegin \DIFdel{were previously unnoticed by researchers }\DIFdelend \DIFaddbegin \DIFadd{researchers previously noticed}\DIFaddend .
+
+
+\section{Methodology}\label{method}
+
+We have extracted a large number of text reviews from a Chinese portal site \textit{Ctrip}\DIFdelbegin \footnote{%DIFDELCMD < \label{ctrip}%%%
+\DIFdel{Ctrip: }%DIFDELCMD < \href {%%%
+\DIFdel{www.ctrip.com/}%DIFDELCMD < }{\path{www.ctrip.com/}}%%%
+}%DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\DIFdelend , as well as the travel site \textit{TripAdvisor}\DIFdelbegin \footnote{%DIFDELCMD < \label{tripadvisor}%%%
+\DIFdel{TripAdvisor: }%DIFDELCMD < \href {%%%
+\DIFdel{www.tripadvisor.com/}%DIFDELCMD < }{\path{www.tripadvisor.com/}}%%%
+} %DIFAUXCMD
+\addtocounter{footnote}{-1}%DIFAUXCMD
+\DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{. We then }\DIFaddend determined the most commonly used words that would contribute the most to positive and negative opinions in a review\DIFaddbegin \DIFadd{. We did this }\DIFaddend using Shannon's entropy to extract keywords from their vocabulary. These positive and negative keywords allow us to perform a Support Vector Machine (SVM) based emotional classification of the reviews in large quantities, saving time and resources for the researchers. \DIFdelbegin \DIFdel{After classifying }\DIFdelend \DIFaddbegin \DIFadd{We classified }\DIFaddend the sentences in the extracted reviews as emotionally positive or negative\DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{, using }\DIFaddend an optimized SVM\DIFdelbegin \DIFdel{, we also }\DIFdelend \DIFaddbegin \DIFadd{. We then }\DIFaddend observed the weight values of each keyword in the machine\DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{. We observed }\DIFaddend the frequency of the terms in \DIFdelbegin \DIFdel{all of the reviews }\DIFdelend \DIFaddbegin \DIFadd{the dataset }\DIFaddend to extract the most utilized words in either kind of \DIFdelbegin \DIFdel{reviews}\DIFdelend \DIFaddbegin \DIFadd{review}\DIFaddend . We show an overview of this methodology in Figure \ref{fig:method-overview} \cite[][]{Aleman2018ICAROB}. \DIFaddbegin \DIFadd{Finally, we used this ranking in frequency to perform a Rank-biased overlap test and make observations for the hypothesis testing.
+}\DIFaddend 
+
+\begin{figure}[bp]
+\centering
+\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{emotion-method-overview.png}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\textwidth]{emotion-method-overview_V2.png}
+\DIFaddendFL \caption{Overview of the methodology \DIFaddbeginFL \DIFaddFL{to quantitatively rank satisfaction factors}\DIFaddendFL .}
+\label{fig:method-overview}
+\end{figure}
+
+\subsection{Data collection}\label{datacollection}
+
+In the data collection stage for Chinese reviews in \textit{Ctrip}, a total of \DIFdelbegin \DIFdel{\num[group-separator={,}]{5938} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{5774} }\DIFaddend review pages of hotels in Japan were collected. From these pages, we extracted a total of \DIFdelbegin \DIFdel{\num[group-separator={,}]{44177} reviews, which were comprised of \num[group-separator={,}]{572218} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{245919} reviews, from which \num[group-separator={,}]{211932} were detected to be standard Mandarin Chinese from mainland China. Since a single review can have sentences with different sentiments, we separated sentences using punctuation marks. The Chinese reviews were comprised of \num[group-separator={,}]{187348} }\DIFaddend separate sentences. 
+
+In the \DIFdelbegin \DIFdel{TripAdvisor }\DIFdelend \DIFaddbegin \textit{\DIFadd{TripAdvisor}} \DIFaddend data collection, we collected data from \DIFdelbegin \DIFdel{\num[group-separator={,}]{21154} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{21380} }\DIFaddend different hotels. In total, we collected \num[group-separator={,}]{295931} reviews\DIFdelbegin \DIFdel{in English, which }\DIFdelend \DIFaddbegin \DIFadd{, from which \num[group-separator={,}]{295503} were detected to be in English. Similarly to the Chinese data, }\DIFaddend we then separated \DIFdelbegin \DIFdel{into \num[group-separator={,}]{2697086} }\DIFdelend \DIFaddbegin \DIFadd{these English reviews into \num[group-separator={,}]{2694261} }\DIFaddend sentences using the \textit{gensim} python library. \DIFaddbegin \DIFadd{For the language detection in both cases we used the }\textit{\DIFadd{langdetect}} \DIFadd{python library.
+}\DIFaddend 
+
+\DIFaddbegin \DIFadd{However, we needed to make the data and comparisons we draw from each of these datasets fair. For that purpose, we filtered both databases only to contain reviews from hotels in both datasets, using their English names to do a search match. We also filtered them to be in the same date range and cut off reviews outside of each other's date ranges. After filtering, we found that the number of hotels in common in the data collected was \num[group-separator={,}]{580} and that the overlapping date range for reviews was from July 2014 to July 2017. We also found that the price for a night in these hotels ranges from low priced capsule hotels at 2000 yen per night, to high-end hotels \num[group-separator={,}]{188000} yen a night as the far ends of the bell curve. Within this range, from }\textit{\DIFadd{Ctrip}} \DIFadd{there was \num[group-separator={,}]{49561} reviews comprised of \num[group-separator={,}]{105076} sentences, and from }\textit{\DIFadd{TripAdvisor}} \DIFadd{there was \num[group-separator={,}]{41611} reviews comprised of \num[group-separator={,}]{352022} sentences.
+}
+
+\DIFadd{We found that after filtering the data, the number of reviews was similar for both English and Chinese reviews, but that English reviews tend to be longer in general.
+}
+
+\DIFaddend \subsection{Text processing}\label{textprocessing}
+
+To parse Chinese words and separate them, we used the Stanford Word Segmenter \cite[][]{chang2008} program developed by the Stanford NLP Group\footnote{\label{stanfordnlp}The Natural Language Processing Group at Stanford University}. In the case of texts in English, however, only using spaces is not enough to correctly collect concepts. \DIFdelbegin \DIFdel{Because }\DIFdelend \DIFaddbegin \DIFadd{The English language is full }\DIFaddend of variations and conjugations of words depending on the context and tense\DIFaddbegin \DIFadd{. Thus}\DIFaddend , a better segmentation is achieved by using lemmatization, which returns the dictionary form of each word. For this purpose, we used the \textit{gensim} library with the English texts.
+
+\subsection{Sentiment analysis}\label{sentimentanalysis}
+
+The sentiment analysis was performed using the methodology described in \cite{Aleman2018ICAROB}. Keywords are determined by a comparison of Shannon's entropy \cite[][]{shannon1948} between two classes by a factor of \(\alpha\) for one class and \(\alpha'\) for the other, and then they are used in an SVM \cite[][]{cortes1995}, optimizing keywords to select the best performing classifier \DIFaddbegin \DIFadd{using the \(F_1\)-measure \mbox{%DIFAUXCMD
+\cite{powers2011}}\hspace{0pt}%DIFAUXCMD
+}\DIFaddend . The selected SVM \DIFdelbegin \DIFdel{'s }\DIFdelend keywords would then clearly represent the user \DIFdelbegin \DIFdel{preferences }\DIFdelend \DIFaddbegin \DIFadd{driving factors }\DIFaddend leading to positive and negative emotions. \DIFdelbegin \DIFdel{Examples of tagged sentences are shown in Table \ref{tab:training_examples}, and }\DIFdelend \DIFaddbegin \DIFadd{We also performed experiments to choose the best value of the parameter C used in the SVM. C is a constant that affects the optimization process when minimizing the error of the separating hyperplane. Low values of C give some freedom of error, which minimizes false positives. However, depending on the data, it can increase false negatives. Inversely, high values of C will likely result in minimal false negatives, but a possibility of false positives. }\DIFaddend SVM performance results are displayed in  \DIFdelbegin \DIFdel{section \ref{apx:entropy_results}. }\DIFdelend \DIFaddbegin \DIFadd{Tables \ref{tab:svm_f1_zh} and \ref{tab:svm_f1_en}. Examples of tagged sentences are shown in Table \ref{tab:training_examples}. 
+}\DIFaddend 
+
+%DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{graphicx}
+\DIFaddbegin \begin{table}[hbp]
+\centering
+\caption{\DIFaddFL{Best performing SVC 5-fold cross-validation Chinese text classifiers.}}
+\label{tab:svm_f1_zh}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{\DIFaddFL{Keyword List}} & \textbf{\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Classifier }\\ \DIFaddFL{emotion}\end{tabular}} & \textbf{\DIFaddFL{C}} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{\(F_1\) }\\ \DIFaddFL{\(\mu\)}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{\(F_1\) }\\ \DIFaddFL{\(\sigma\)}\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction keywords }\\ \DIFaddFL{(\(\alpha=2.75\))}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction }\end{tabular} & \DIFaddFL{2.5 }& \DIFaddFL{0.91 }& \DIFaddFL{0.01 }\\ \hline
+\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Negative keywords }\\ \DIFaddFL{(\(\alpha'=3.75\))}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{Dissatisfaction }\end{tabular} & \DIFaddFL{0.5 }& \DIFaddFL{0.67 }& \DIFaddFL{0.11 }\\ \hline
+\begin{tabular}[c]{@{}l@{}}\textbf{\DIFaddFL{Combined}} \\ \DIFaddFL{(\(\alpha\)=2.75, \(\alpha'\)=3.75)}\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction}\end{tabular}} & \textbf{\DIFaddFL{0.5}} & \textbf{\DIFaddFL{0.95}} & \textbf{\DIFaddFL{0.01}} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h] \centering
+\caption{\DIFaddFL{Best performing SVC 10-fold cross-validation English text classifiers.}}
+\label{tab:svm_f1_en}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\DIFaddFL{Keyword List }& \begin{tabular}[c]{@{}l@{}}\DIFaddFL{Classifier }\\ \DIFaddFL{emotion}\end{tabular} & \DIFaddFL{C }& \begin{tabular}[c]{@{}l@{}}\DIFaddFL{\(F_1\) }\\ \DIFaddFL{\(\mu\)}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{\(F_1\) }\\ \DIFaddFL{\(\sigma\)}\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction keywords }\\ \DIFaddFL{(\(\alpha=1.5\))}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction}\end{tabular} & \DIFaddFL{1.75 }& \DIFaddFL{0.82 }& \DIFaddFL{0.02 }\\ \hline
+\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Dissatisfaction keywords }\\ \DIFaddFL{(\(\alpha'=4.25\))}\end{tabular} & \begin{tabular}[c]{@{}l@{}}\DIFaddFL{Dissatisfaction}\end{tabular} & \DIFaddFL{3 }& \DIFaddFL{0.80 }& \DIFaddFL{0.03 }\\ \hline
+\begin{tabular}[c]{@{}l@{}}\textbf{\DIFaddFL{Combined}} \\ \DIFaddFL{(\(\alpha\)=1.5, \(\alpha'\)=4.25)}\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}\DIFaddFL{Satisfaction}\end{tabular}} & \textbf{\DIFaddFL{2}} & \textbf{\DIFaddFL{0.83}} & \textbf{\DIFaddFL{0.02}} \\ \hline
+\end{tabular}
+\end{table}
+
+%DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{multirow}
+%DIF >  \usepackage{graphicx}
+%DIF >  \usepackage[normalem]{ulem}
+%DIF >  \useunder{\uline}{\ul}{}
+\begin{table}[hbp]
+\centering
+\caption{\DIFaddFL{Examples of positive and negative sentences used for training SVM}}
+\label{tab:training_examples}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Language} & \textbf{Emotion} & \textbf{Sentences} \\ \hline
+\multirow{4}{*}{Chinese} & \multirow{2}{*}{Positive} & \begin{tabular}[c]{@{}l@{}}\begin{CJK}{UTF8}{gbsn} 酒店 的 服务 很 好 和 我 住 过 的 所有 日本 酒店 一样 各 种 隐形 服务 非常 厉害 \end{CJK}\\ (translated as: ``The service of the hotel is very good. \\ All the services of the Japanese hotels I have stayed in are extremely good.")\end{tabular} \\ \cline{3-3} 
+ &  & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 有 一 个 后门 到 地铁站 非常 近 周边 也 算 方便 酒店 服务 和 卫生 都 很 好 \end{CJK} \\ (translated as: ``There is a back door to the subway station very close to it. \\ The surrounding area is also convenient hotel service and health are very good")\end{tabular} \\ \cline{2-3} 
+ & \multirow{2}{*}{Negative} & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 酒店 旁边 很 荒凉 连个 便利 店 都 要 走 很远 \end{CJK} \\ (translated as: ``The hotel is very bleak, \\ and you have to go very far to go to the nearest convenience store.")\end{tabular} \\ \cline{3-3} 
+ &  & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 唯一 不 足 是 价格 太高 \end{CJK} \\ (translated as: ``The only negative is that the price is too high.")\end{tabular} \\ \hline
+\multirow{4}{*}{English} & \multirow{2}{*}{Positive} & It was extremely clean, peaceful and the hotel Hosts made us feel super welcome \\ \cline{3-3} 
+ &  & \begin{tabular}[c]{@{}l@{}}Location is very good, close to a main road with a subway station, a bakery,\\  a 7 eleven and a nice restaurant that is not too expensive but serves good food\end{tabular} \\ \cline{2-3} 
+ & \multirow{2}{*}{Negative} & \begin{tabular}[c]{@{}l@{}}The only downside: our room was labeled ``non-smoking" \\ but our duvet reeked of smoke.\end{tabular} \\ \cline{3-3} 
+ &  & A bit pricey though \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\DIFaddend Shannon’s entropy can be used to observe the probability distribution of each word inside the corpus. A word that is included in many documents will have a high entropy value for that set of documents. Opposite to this, a word appearing in only one document will have an entropy value of zero. 
+
+\DIFaddbegin \DIFadd{An SVM is trained to classify data based on previously labeled data, generalizing features of the data by defining a separating (p-1)-dimensional hyperplane in a p-dimensional space in which each dimension is a feature of the data. The separating hyperplane, along with the support vectors, divides the multi-dimensional space and minimizes the error of classification. 
+}
+
+\DIFadd{In our study, we used the linear kernel of the SVM classification process, defined by the formula (\ref{eq:svm1}) below. Each training sentence is a point of data, a row in the vector \(x\). Each column represents a feature; in our case, the quantities of each of the keywords in that particular sentence. The labels of previously known classifications (1 for positive, 0 for negative) for each sentence comprise the \(f(x)\) vector. The Weight Vector \(w\) is comprised of the influences each point has had in the training process to define the angle of the hyperplane. The bias coefficient \(b\) determines its position, as explained in section \ref{svmweightsanalysis}.
+}
+
+\begin{equation}\DIFadd{\label{eq:svm1}
+f(x) = w^\top x + b
+}\end{equation}
+
+
+\DIFaddend We tagged 159 Chinese sentences and \num[group-separator={,}]{2357} English sentences as positive or negative. The entropy comparison factors \(\alpha\) and \(\alpha'\) were tested from 1.25 to 6 in intervals of 0.25. After classification, our data contained \DIFdelbegin \DIFdel{\num[group-separator={,}]{506452} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{91239} }\DIFaddend positive Chinese sentences, \DIFdelbegin \DIFdel{\num[group-separator={,}]{65766} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{13837} }\DIFaddend negative Chinese sentences, \DIFdelbegin \DIFdel{\num[group-separator={,}]{1288098} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{167224} }\DIFaddend positive English sentences and \DIFdelbegin \DIFdel{\num[group-separator={,}]{1408988} }\DIFdelend \DIFaddbegin \DIFadd{\num[group-separator={,}]{184798} }\DIFaddend negative English sentences. 
+
+\subsection{SVM weight analysis}\label{svmweightsanalysis}
+
+During the SVM learning algorithm, each \DIFdelbegin \DIFdel{point of data }\DIFdelend \DIFaddbegin \DIFadd{data point }\DIFaddend that is classified incorrectly causes a change in the weight vector to \DIFdelbegin \DIFdel{better }\DIFdelend classify new data correctly. These changes to the weight vector are \DIFdelbegin \DIFdel{strong for features that }\DIFdelend \DIFaddbegin \DIFadd{greater for features close to the separating hyperplane. These features have stronger changes because they }\DIFaddend needed to be taken \DIFdelbegin \DIFdel{account of }\DIFdelend \DIFaddbegin \DIFadd{into account }\DIFaddend to classify with a minimal error\DIFdelbegin \DIFdel{, those close to the separating hyperplane}\DIFdelend . Sequentially, the weight vector can be interpreted as a numerical representation of \DIFdelbegin \DIFdel{the effect each featurehad for }\DIFdelend each \DIFaddbegin \DIFadd{feature's effect on each }\DIFaddend class in the classification process. Below we show the formula for the weight vector \DIFaddbegin \DIFadd{\(w\) }\DIFaddend (\ref{eq:svm_weight})\DIFdelbegin \DIFdel{.
+}\DIFdelend \DIFaddbegin \DIFadd{, where \(x\) is the training data and each vectorized sentence \(x_i\) in the data is labeled \(y_i\). Each cycle of the algorithm alters the value of \(w\) by \(\alpha\) to reduce the number of wrong classifications. This equation shows the last value of \(\alpha\) after the end of the cycle.
+}\DIFaddend 
+
+\begin{equation}\label{eq:svm_weight}
+w = \sum_{i=1}^N \alpha_i y_i x_i
+\end{equation}
+
+\subsection{Rank-biased Overlap}\label{rbo}
+
+In order to compare the similarity between two ranked lists, most cases would call to action a statistical measure such as Kendall's \(\tau\). However, \DIFdelbegin \DIFdel{since }\DIFdelend the lists are not necessarily of the same length \DIFdelbegin \DIFdel{, or have necessarily }\DIFdelend \DIFaddbegin \DIFadd{or necessarily have }\DIFaddend the same contents\DIFdelbegin \DIFdel{, and are }\DIFdelend \DIFaddbegin \DIFadd{. They are also }\DIFaddend top-weighted (where the first rank is the most important to know, \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{and are }\DIFaddend less and less \DIFdelbegin \DIFdel{importance }\DIFdelend \DIFaddbegin \DIFadd{important }\DIFaddend as the ranks continue)\DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{. Therefore, we propose that }\DIFaddend it is necessary to use another measure of similarity. \cite{webber2010similarity} proposed a Rank-biased Overlap (RBO) measurement\DIFdelbegin \DIFdel{, which }\DIFdelend \DIFaddbegin \DIFadd{. It }\DIFaddend takes all of these factors into consideration when calculating a value from 0 to 1, where \DIFdelbegin \DIFdel{0 }\DIFdelend \DIFaddbegin \DIFadd{zero }\DIFaddend means completely different lists\DIFdelbegin \DIFdel{and 1 }\DIFdelend \DIFaddbegin \DIFadd{, and one }\DIFaddend means the two lists are an exact match. Because our Chinese keywords (their translations, at least) \DIFdelbegin \DIFdel{don't }\DIFdelend \DIFaddbegin \DIFadd{do not }\DIFaddend match our English keywords one to one, it is necessary to use this method. Webber's RBO produces \DIFdelbegin \DIFdel{3 }\DIFdelend \DIFaddbegin \DIFadd{three }\DIFaddend measurements: a minimum RBO, a residual RBO\DIFdelbegin \DIFdel{(from which one can }\DIFdelend \DIFaddbegin \DIFadd{, and an extrapolated RBO.
+The residual RBO allows us to }\DIFaddend know the maximum RBO\DIFdelbegin \DIFdel{), and an extrapolated RBO (where the list is assumed to }\DIFdelend \DIFaddbegin \DIFadd{. In contrast, the extrapolated RBO is calculated by assuming the list would }\DIFaddend continue in the same pattern of similarity towards infinity\DIFdelbegin \DIFdel{)}\DIFdelend . The formula for the extrapolated RBO is shown in (\ref{eq:rbo_ext})\DIFdelbegin \DIFdel{, Where }\DIFdelend \DIFaddbegin \DIFadd{. }\DIFaddend \(S\) and \(T\) are listings, \(d\) is their depth, \(k\) is their evaluation depth, \(p\) is a parameter that controls the top-weightedness of the lists\DIFdelbegin \DIFdel{(or it could be thought }\DIFdelend \DIFaddbegin \DIFadd{, and \(X\) is the overlap between the lists. The evaluation depth \(p\) can also be understood }\DIFaddend as \(1-p\) being the probability to stop looking at the next item in the list\DIFdelbegin \DIFdel{), and \(X\) being the overlap between the lists}\DIFdelend . The complete process is described at length by \cite{webber2010similarity}.
+
+\begin{equation}\label{eq:rbo_ext}
+RBO_{EXT}(S,T,p,k) = \frac{X_k}{k} \cdot p^k + \frac{1-p}{p} \sum_{d=1}^k{\frac{X_d}{d} \cdot p^d}
+\end{equation}
+
+\section{Data Analysis}\label{dataanalysis}
+
+%DIF <  WITHOUT PERCENTAGE
+\subsection{Frequent keywords and their SVC weight values}\label{svmresults}
+
+To understand the \DIFdelbegin \DIFdel{preferences of Chinese-speaking }\DIFdelend \DIFaddbegin \DIFadd{satisfaction and dissatisfaction factors of Chinese }\DIFaddend tourists and English-speaking tourists when lodging in Japan, we study both the frequency of the words they use\DIFdelbegin \DIFdel{in relation to the number of total reviews}\DIFdelend , and their weight in the Support Vector Classifier (SVC). Following that, to know the relevance of a keyword as a preference for each group, we observed the frequencies of each entropy-based keyword in our complete data set and their SVC weight value. The frequency of the keywords in the database shows the level of priority it has for customers\DIFdelbegin \DIFdel{, and the }\DIFdelend \DIFaddbegin \DIFadd{. The }\DIFaddend weight value allows us to observe the sentiment it relates to by its positive or negative sign. We ranked the keywords by frequency, and use their SVC weight for analyzing the related sentiment\DIFdelbegin \DIFdel{(}\DIFdelend \DIFaddbegin \DIFadd{. A }\DIFaddend positive weight means positive sentiment, and \DIFaddbegin \DIFadd{a }\DIFaddend negative weight signifies negative sentiment). 
+
+We observed the top 10 words with the highest frequencies for keywords that were linked by entropy to satisfaction and dissatisfaction in emotionally positive and negative statements to study\DIFdelbegin \DIFdel{and quantitatively rank }\DIFdelend \DIFaddbegin \DIFadd{. The keywords are the quantitative rank of }\DIFaddend the needs of Chinese \DIFdelbegin \DIFdel{customers, as }\DIFdelend \DIFaddbegin \DIFadd{and English speaking customers. This is }\DIFaddend shown in the Tables \DIFdelbegin \DIFdel{\ref{tab:pos_keys_zh} and \ref{tab:neg_keys_zh} }\DIFdelend \DIFaddbegin \DIFadd{\ref{tab:pos_keys} for positive keywords and \ref{tab:neg_keys} for negative ones }\DIFaddend (however, the \DIFdelbegin \DIFdel{latter }\DIFdelend \DIFaddbegin \DIFadd{negative Chinese keyword list }\DIFaddend does not have more than \DIFdelbegin \DIFdel{7 }\DIFdelend \DIFaddbegin \DIFadd{seven }\DIFaddend keywords available)\DIFdelbegin \DIFdel{; and for English-speaking customers, as shown in Tables \ref{tab:pos_keys_en} and \ref{tab:neg_keys_en}}\DIFdelend .
+
+\DIFdelbegin \DIFdel{There were many more keywords than shown in most cases, however, and some showed to be high in weight but low in frequency. This could mean they were useful for classification (the emotional reaction is more extreme) but aren't as important a preference for users (there aren't many cases in that the keyword was applicable). In the appendix, Table \ref{tab:key_weights_zh} shows some keywords that have a relatively high weight value for both positive and negative extremes and their translations in the relevant context. In Table \ref{tab:key_weights_en} we show keywords for the English classifier with high weight values as well.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Chinese_frequencies_svm_weight_positive_translations_matched.csv
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp] %%%
+\DIFdelendFL %DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{graphicx}
+%DIF >  \usepackage[normalem]{ulem}
+%DIF >  \useunder{\uline}{\ul}{}
+\DIFaddbeginFL \begin{table}[h]
+\DIFaddendFL \centering
+\caption{Top 10 \DIFdelbeginFL \DIFdelFL{frequent }\DIFdelendFL positive \DIFdelbeginFL \DIFdelFL{Chinese }\DIFdelendFL keywords in \DIFdelbeginFL \DIFdelFL{satisfaction }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{positive }\DIFaddendFL sentences\DIFdelbeginFL \DIFdelFL{.}\DIFdelendFL }
+\DIFdelbeginFL %DIFDELCMD < \label{tab:pos_keys_zh}
+%DIFDELCMD < \begin{tabular}{|c|l|c|c|c|} \hline
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Word}} %DIFAUXCMD
+%DIFDELCMD < & \multicolumn{1}{c|}{\textbf{Translation}} & %%%
+\textbf{\DIFdelFL{Frequency}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{SVC Weight}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  1
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{大 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{big 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{15470 }%DIFDELCMD < & %%%
+\DIFdelFL{0.624 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  2
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{干净 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{clean 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{12166 }%DIFDELCMD < & %%%
+\DIFdelFL{0.638 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  3
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{早餐 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{breakfast 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{10575 }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  4
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{推荐 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{recommendation 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{8752 }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  5
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{环境 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & \begin{tabular}[c]{@{}l@{}}
+%DIFDELCMD <     %%%
+\DIFdelFL{environment
+    }%DIFDELCMD < \end{tabular} 
+%DIFDELCMD <         & %%%
+\DIFdelFL{8694 }%DIFDELCMD < & %%%
+\DIFdelFL{0.248 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  6
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{周边 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{periphery 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{8456 }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  7
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{近 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{close
+        }%DIFDELCMD < & %%%
+\DIFdelFL{8372 }%DIFDELCMD < & %%%
+\DIFdelFL{0.028 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  8
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{交通 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{transportation
+        }%DIFDELCMD < & %%%
+\DIFdelFL{8264 }%DIFDELCMD < & %%%
+\DIFdelFL{0.586 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  9
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{附近 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{nearby
+        }%DIFDELCMD < & %%%
+\DIFdelFL{6619 }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  10
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{地铁 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{subway
+        }%DIFDELCMD < & %%%
+\DIFdelFL{5386 }%DIFDELCMD < & %%%
+\DIFdelFL{0.180 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \label{tab:pos_keys}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|l|c|c|l|l|c|c|}
+\cline{1-4} \cline{6-8}
+\multicolumn{4}{|c|}{\textbf{Positive Chinese Keywords}}                                             &                                & \multicolumn{3}{c|}{\textbf{Positive English Keywords}}                       \\ \cline{1-4} \cline{6-8} 
+\textbf{Word} & \multicolumn{1}{c|}{\textbf{Translation}} & \textbf{Frequency} & \textbf{SVC Weight} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Word}} & \textbf{Frequency} & \textbf{SVC Weight} \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 大 \end{CJK}             & big                                       & 10155              & 0.623               &                                & staff                              & 13583              & 0.537               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 干净 \end{CJK}            & clean                                     & 6918               & 0.638               &                                & location                           & 10127              & 0.842               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 交通 \end{CJK}            & transportation                            & 6765               & 0.586               &                                & clean                              & 7636               & 1.886               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 日本 \end{CJK}            & Japan                                     & 5889               & 0.495               &                                & helpful                            & 5271               & 1.999               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 早餐 \end{CJK}            & breakfast                                 & 5726               & 0.495               &                                & friendly                           & 5060               & 1.199               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 近 \end{CJK}             & close                                     & 5348               & 0.028               &                                & comfortable                        & 4948               & 1.724               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 地铁 \end{CJK}            & subway                                    & 4491               & 0.18                &                                & shopping                           & 4884               & 1.308               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 购物 \end{CJK}            & shopping                                  & 4206               & 0                   &                                & train                              & 4778               & 0                   \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 下次 \end{CJK}            & next time                                 & 3596               & 0.247               &                                & subway                             & 4405               & 1.951               \\ \cline{1-4} \cline{6-8} 
+\begin{CJK}{UTF8}{gbsn} 推荐 \end{CJK}            & recommend                                 & 3574               & 0.495               &                                & recommend                          & 3812               & 1.158               \\ \cline{1-4} \cline{6-8} 
+\end{tabular}%
+}
+\DIFaddendFL \end{table}
+
+
+%DIF <  Chinese_frequencies_svm_weight_negative_translations_matched.csv
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp] %%%
+\DIFdelendFL %DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{graphicx}
+\DIFaddbeginFL \begin{table}[h]
+\DIFaddendFL \centering
+\caption{\DIFdelbeginFL \DIFdelFL{Frequent }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Top 10 }\DIFaddendFL negative \DIFdelbeginFL \DIFdelFL{Chinese }\DIFdelendFL keywords in \DIFdelbeginFL \DIFdelFL{dissatisfaction }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{negative }\DIFaddendFL sentences\DIFdelbeginFL \DIFdelFL{.}\DIFdelendFL }
+\DIFdelbeginFL %DIFDELCMD < \label{tab:neg_keys_zh}
+%DIFDELCMD < \begin{tabular}{|c|l|c|c|} \hline
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Word}} %DIFAUXCMD
+%DIFDELCMD < & \multicolumn{1}{c|}{\textbf{Translation}} & %%%
+\textbf{\DIFdelFL{Frequency}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{SVC Weight}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  1
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{价格 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{price 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{7636 }%DIFDELCMD < & %%%
+\DIFdelFL{-1.505 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  2
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{地理 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{geography 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{2238 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.812 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  3
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{中文 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{Chinese language 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{1410 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.714 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  4
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{陈旧 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{old-fashioned 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{698 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  5
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{距离 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{distance 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{349 }%DIFDELCMD < & %%%
+\DIFdelFL{0 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  6
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{老 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{old 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{311 }%DIFDELCMD < & %%%
+\DIFdelFL{0 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  7
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{华人 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{Chinese person 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{16 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.238 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \label{tab:neg_keys}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{clccl|l|c|c|}
+\cline{1-4} \cline{6-8}
+\multicolumn{4}{|c|}{\textbf{Negative Chinese Keywords}}                                                                                                             & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{3}{c|}{\textbf{Negative English Keywords}}                       \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\textbf{Word}} & \multicolumn{1}{c|}{\textbf{Translation}} & \multicolumn{1}{c|}{\textbf{Frequency}} & \multicolumn{1}{c|}{\textbf{SVC Weight}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Word}} & \textbf{Frequency} & \textbf{SVC Weight} \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 价格 \end{CJK} }            & \multicolumn{1}{l|}{price}                & \multicolumn{1}{c|}{1908}               & \multicolumn{1}{c|}{-2}                  &                                & dated                              & 426                & 0                   \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 中文 \end{CJK} }            & \multicolumn{1}{l|}{Chinese language}     & \multicolumn{1}{c|}{744}                & \multicolumn{1}{c|}{-0.714}              &                                & working                            & 350                & -0.557              \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 地理 \end{CJK} }            & \multicolumn{1}{l|}{geography}            & \multicolumn{1}{c|}{710}                & \multicolumn{1}{c|}{-0.812}              &                                & pricey                             & 327                & -1.614              \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 距离 \end{CJK} }            & \multicolumn{1}{l|}{distance}             & \multicolumn{1}{c|}{440}                & \multicolumn{1}{c|}{0}                   &                                & slow                               & 306                & -1.281              \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 陈旧 \end{CJK} }            & \multicolumn{1}{l|}{old-fashioned}        & \multicolumn{1}{c|}{338}                & \multicolumn{1}{c|}{0}                   &                                & carpet                             & 224                & -0.507              \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 老   \end{CJK} }             & \multicolumn{1}{l|}{old}                  & \multicolumn{1}{c|}{323}                & \multicolumn{1}{c|}{0}                   &                                & cigarette                          & 220                & -0.435              \\ \cline{1-4} \cline{6-8} 
+\multicolumn{1}{|c|}{\begin{CJK}{UTF8}{gbsn} 华人 \end{CJK} }            & \multicolumn{1}{l|}{Chinese person}       & \multicolumn{1}{c|}{16}                 & \multicolumn{1}{c|}{-0.5}                &                                & uncomfortable                      & 207                & -2.423              \\ \cline{1-4} \cline{6-8} 
+                                                                         &                                           &                                         &                                          &                                & paper                              & 185                & -0.503              \\ \cline{6-8} 
+                                                                         &                                           &                                         &                                          &                                & smallest                           & 168                & -1.035              \\ \cline{6-8} 
+                                                                         &                                           &                                         &                                          &                                & dirty                              & 163                & -1.275              \\ \cline{6-8} 
+\end{tabular}%
+}
+\DIFaddendFL \end{table}
+
+%DIF <  Hugo_1_SVM_Combined_p1.5_n4.25_c2_Frequency_counts_posinega_subject-only.csv
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Top 10 positive English keywords in satisfaction sentences.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:pos_keys_en}
+%DIFDELCMD < \begin{tabular}{|l|c|c|}
+%DIFDELCMD < \hline
+%DIFDELCMD < \multicolumn{1}{|c|}{\textbf{Word}} & %%%
+\textbf{\DIFdelFL{Frequency}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{SVC Weight}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  1
+\DIFdelFL{staff }%DIFDELCMD < & %%%
+\DIFdelFL{138677 }%DIFDELCMD < & %%%
+\DIFdelFL{0.537 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  2
+\DIFdelFL{clean }%DIFDELCMD < & %%%
+\DIFdelFL{105971 }%DIFDELCMD < & %%%
+\DIFdelFL{1.886 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  3
+\DIFdelFL{location }%DIFDELCMD < & %%%
+\DIFdelFL{103151 }%DIFDELCMD < & %%%
+\DIFdelFL{0.842 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  4
+\DIFdelFL{helpful }%DIFDELCMD < & %%%
+\DIFdelFL{63558 }%DIFDELCMD < & %%%
+\DIFdelFL{1.999 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  5
+\DIFdelFL{comfortable }%DIFDELCMD < & %%%
+\DIFdelFL{62793 }%DIFDELCMD < & %%%
+\DIFdelFL{1.724 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  6
+\DIFdelFL{friendly }%DIFDELCMD < & %%%
+\DIFdelFL{57307 }%DIFDELCMD < & %%%
+\DIFdelFL{1.199 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  7
+\DIFdelFL{recommend }%DIFDELCMD < & %%%
+\DIFdelFL{51433 }%DIFDELCMD < & %%%
+\DIFdelFL{1.158 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  8
+\DIFdelFL{train }%DIFDELCMD < & %%%
+\DIFdelFL{45148 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  9
+\DIFdelFL{free }%DIFDELCMD < & %%%
+\DIFdelFL{42084 }%DIFDELCMD < & %%%
+\DIFdelFL{0.734 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  10
+\DIFdelFL{subway }%DIFDELCMD < & %%%
+\DIFdelFL{38354 }%DIFDELCMD < & %%%
+\DIFdelFL{1.951 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Hugo_1_SVM_Combined_p1.5_n4.25_c2_Frequency_counts_posinega_subject-only.csv
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{High negative weight English keywords in dissatisfaction sentences.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:neg_keys_en}
+%DIFDELCMD < \begin{tabular}{|l|c|c|}
+%DIFDELCMD < \hline
+%DIFDELCMD < \multicolumn{1}{|c|}{\textbf{Word}} & %%%
+\textbf{\DIFdelFL{Frequency}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{SVC Weight}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  1
+\DIFdelFL{pricey }%DIFDELCMD < & %%%
+\DIFdelFL{3809 }%DIFDELCMD < & %%%
+\DIFdelFL{-1.614 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  2
+\DIFdelFL{carpet }%DIFDELCMD < & %%%
+\DIFdelFL{3683 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.507 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  3
+\DIFdelFL{slow }%DIFDELCMD < & %%%
+\DIFdelFL{3177 }%DIFDELCMD < & %%%
+\DIFdelFL{-1.281 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  4
+\DIFdelFL{dirty }%DIFDELCMD < & %%%
+\DIFdelFL{2943 }%DIFDELCMD < & %%%
+\DIFdelFL{-1.275 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  5
+\DIFdelFL{uncomfortable }%DIFDELCMD < & %%%
+\DIFdelFL{2942 }%DIFDELCMD < & %%%
+\DIFdelFL{-2.423 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  6
+\DIFdelFL{stain }%DIFDELCMD < & %%%
+\DIFdelFL{2787 }%DIFDELCMD < & %%%
+\DIFdelFL{-1.886 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  7
+\DIFdelFL{cigarette }%DIFDELCMD < & %%%
+\DIFdelFL{2468 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.435 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  8
+\DIFdelFL{curtain }%DIFDELCMD < & %%%
+\DIFdelFL{2032 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.224 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  9
+\DIFdelFL{paper }%DIFDELCMD < & %%%
+\DIFdelFL{2029 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.503 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+%DIF <  10
+\DIFdelFL{renovation }%DIFDELCMD < & %%%
+\DIFdelFL{1898 }%DIFDELCMD < & %%%
+\DIFdelFL{-0.548 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Rank-biased Overlap}\label{rboresults}
+
+In order to calculate the similarity between the ranked lists shown in \DIFdelbegin \DIFdel{Tables \ref{tab:pos_keys_zh} and \ref{tab:pos_keys_en}}\DIFdelend \DIFaddbegin \DIFadd{Table \ref{tab:pos_keys}}\DIFaddend , and the lists in \DIFdelbegin \DIFdel{Tables \ref{tab:neg_keys_zh} and \ref{tab:neg_keys_en}}\DIFdelend \DIFaddbegin \DIFadd{Table \ref{tab:neg_keys}}\DIFaddend , we calculated the extrapolated Rank-biased Overlap between the English keyword lists and the English translation of the Chinese keyword lists at different cutoff points. Additionally, we prepared and modified the lists so that words that are similar but would not overlap otherwise would overlap in this analysis. For example, in the English keyword lists, the word is ``pricey\DIFaddbegin \DIFadd{,}\DIFaddend " while in the Chinese keywords it is translated as ``price\DIFdelbegin \DIFdel{",and as such, it was changed }\DIFdelend \DIFaddbegin \DIFadd{," so we changed it }\DIFaddend to ``pricey" to match the English keywords. \DIFdelbegin \DIFdel{This was }\DIFdelend \DIFaddbegin \DIFadd{We did this change }\DIFaddend purely to overlap the most words possible, \DIFaddbegin \DIFadd{and }\DIFaddend so it could have been \DIFdelbegin \DIFdel{very well }\DIFdelend modified the other way around with the same effect. The results of these calculations are shown in Table \ref{tab:rbo}. In the case of Chinese dissatisfaction keywords, which is only comprised of 7 keywords, the list remains complete in all cutoff points except 5. \DIFdelbegin \DIFdel{Since the }\DIFdelend \DIFaddbegin \DIFadd{The }\DIFaddend RBO measure can work regardless of the length of each list, \DIFdelbegin \DIFdel{this is }\DIFdelend \DIFaddbegin \DIFadd{so there was }\DIFaddend not a problem in its calculation.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\DIFdelbegin %DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{table}[h]
+\DIFaddendFL \centering
+\caption{RBO results between Chinese and English keyword lists, \(p=0.9\).}
+\label{tab:rbo}
+\begin{tabular}{|l|c|r|}
+\hline
+\multicolumn{1}{|c|}{\textbf{List cutoff}} & \textbf{Emotion} & \(RBO_{EXT}\) \\ \hline
+\multirow{2}{*}{None}   & Satisfaction      & \DIFdelbeginFL \DIFdelFL{0.265 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.217 }\DIFaddendFL \\ \cline{2-3} 
+                        & Dissatisfaction   & \DIFdelbeginFL \DIFdelFL{0.299 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.137 }\DIFaddendFL \\ \hline
+\multirow{2}{*}{Top 20} & Satisfaction      & \DIFdelbeginFL \DIFdelFL{0.265 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.216 }\DIFaddendFL \\ \cline{2-3} 
+                        & Dissatisfaction   & \DIFdelbeginFL \DIFdelFL{0.293 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.132 }\DIFaddendFL \\ \hline
+\multirow{2}{*}{Top 10} & Satisfaction      & \DIFdelbeginFL \DIFdelFL{0.266 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.257 }\DIFaddendFL \\ \cline{2-3} 
+                        & Dissatisfaction   & \DIFdelbeginFL \DIFdelFL{0.285 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.128 }\DIFaddendFL \\ \hline
+\multirow{2}{*}{Top 5}  & Satisfaction      & \DIFdelbeginFL \DIFdelFL{0.221 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.176 }\DIFaddendFL \\ \cline{2-3} 
+                        & Dissatisfaction   & \DIFdelbeginFL \DIFdelFL{0.321 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0.176 }\DIFaddendFL \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Results}\label{results}
+
+\subsection{\DIFdelbegin \DIFdel{Comparison of Chinese }\DIFdelend \DIFaddbegin \DIFadd{Experiment results }\DIFaddend and \DIFdelbegin \DIFdel{English-speaking tourists' preferences}\DIFdelend \DIFaddbegin \DIFadd{testing the hypotheses}\DIFaddend }
+
+\DIFaddbegin \DIFadd{From the observation of the top-ranking subjects for Chinese tourists, we can assert that keywords relating to service and staff friendliness are not on the top 10 satisfaction factors. Besides, there are complaints about a Chinese friendly environment. This makes our hypothesis \ref{hyp:omotenashi_zh} rejected. On the other hand, the word ``staff'' tops the list of satisfaction factors in English-written reviews, followed by a few other keywords lower in the top 10 list, such as ``helpful'' or ``friendly''. This confirms our hypothesis \ref{hyp:omotenashi_en}. Since we found that these two populations are different in their satisfaction with Japanese hospitality, our hypothesis \ref{hyp:omotenashi_both} is confirmed.
+}
+
+\DIFaddend The extrapolated Rank-biased Overlap (shown in Table \ref{tab:rbo}) ranged from \DIFdelbegin \DIFdel{0.221 to 0.265 }\DIFdelend \DIFaddbegin \DIFadd{0.176 to 0.257 }\DIFaddend in satisfaction lists, and from \DIFdelbegin \DIFdel{0.285 to 0.321 }\DIFdelend \DIFaddbegin \DIFadd{0.128 to 0.176 }\DIFaddend in the dissatisfaction lists, which are low similarity values (\(RBO_{EXT} < 0.5\)). This means that, while there is some similarity, the \DIFdelbegin \DIFdel{preferences }\DIFdelend \DIFaddbegin \DIFadd{satisfaction and dissatisfaction factors }\DIFaddend are fundamentally different if we consider them as top-weighted\DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{; }\DIFaddend that is, the first elements are the most important in the lists, and therefore in their similarity measurement as well. This confirms our hypothesis \DIFdelbegin \DIFdel{\ref{hyp:1}}\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:diff_all}}\DIFaddend , that the priorities for satisfaction and dissatisfaction are different for Chinese and English-speaking tourists. 
+
+\DIFdelbegin \DIFdel{From observation, however, we can assert that both }\DIFdelend \DIFaddbegin \DIFadd{Both }\DIFaddend Chinese and English-speaking tourists in Japan have different priorities\DIFdelbegin \DIFdel{, but }\DIFdelend \DIFaddbegin \DIFadd{. However, both populations }\DIFaddend consider the location of the hotel and the availability of transport \DIFdelbegin \DIFdel{nearby, such as subway or trains, as a }\DIFdelend \DIFaddbegin \DIFadd{(subways and trains) nearby, as }\DIFaddend secondary but still \DIFdelbegin \DIFdel{important point }\DIFdelend \DIFaddbegin \DIFadd{essential points }\DIFaddend in their satisfaction \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{with }\DIFaddend a hotel. The Chinese customers are primarily satisfied with the room quality in spaciousness and cleanliness\DIFdelbegin \DIFdel{, while }\DIFdelend \DIFaddbegin \DIFadd{. In contrast, }\DIFaddend the English-speaking customers are easily upset by any lack of cleanliness and smoke smell from cigarettes. English-speaking tourists\DIFaddbegin \DIFadd{, }\DIFaddend on the other hand\DIFaddbegin \DIFadd{, }\DIFaddend value staff friendliness over room quality when considering their satisfaction. 
+
+The lists for Chinese and English-speaking tourists are quite different\DIFdelbegin \DIFdel{, but }\DIFdelend \DIFaddbegin \DIFadd{. However, }\DIFaddend if we compare the lists, we find that ``clean", ``recommend\DIFdelbegin \DIFdel{",``subway}\DIFdelend \DIFaddbegin \DIFadd{," ``subway,}\DIFaddend " \DIFaddbegin \DIFadd{``shopping,"  }\DIFaddend and ``price" are \DIFdelbegin \DIFdel{common }\DIFdelend \DIFaddbegin \DIFadd{shared }\DIFaddend factors to both customer groups. Their place in the ranked list is the \DIFdelbegin \DIFdel{exact }\DIFdelend same for most of them, and only \DIFdelbegin \DIFdel{1 out of 4 factors is different in rank}\DIFdelend \DIFaddbegin \DIFadd{``shopping" and ``subway" are exchanged in priority}\DIFaddend . Furthermore, when arranging both lists by eliminating all \DIFdelbegin \DIFdel{uncommon }\DIFdelend \DIFaddbegin \DIFadd{unique }\DIFaddend elements, the lists become \DIFaddbegin \DIFadd{almost }\DIFaddend identical with an RBO of \DIFdelbegin \DIFdel{1.0 for both satisfaction and }\DIFdelend \DIFaddbegin \DIFadd{0.906 for the top 20 and top 10 satisfaction keywords and 1.0 for the }\DIFaddend dissatisfaction lists. \DIFaddbegin \DIFadd{The lists become dissimilar when there is no cutoff point. However, it's still an RBO of 0.575 for the satisfaction list and 1.0 for the dissatisfaction list. }\DIFaddend This means hypothesis \DIFdelbegin \DIFdel{\ref{hyp:2} }\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:diff_com} }\DIFaddend is rejected (\(RBO_{EXT} > 0.5\)), where \DIFdelbegin \DIFdel{the similar }\DIFdelend \DIFaddbegin \DIFadd{we hypothesized shared }\DIFaddend aspects in both customer groups \DIFdelbegin \DIFdel{were hypothesized }\DIFdelend to be different in their priority.
+
+We also can observe some keywords that \DIFdelbegin \DIFdel{aren't }\DIFdelend \DIFaddbegin \DIFadd{are not }\DIFaddend considered by their counterparts. For example, \DIFaddbegin \DIFadd{mainland }\DIFaddend Chinese tourists are very satisfied with breakfast inclusion\DIFdelbegin \DIFdel{, while }\DIFdelend \DIFaddbegin \DIFadd{. At the same time, }\DIFaddend English-speaking customers are satisfied with \DIFdelbegin \DIFdel{free amenities}\DIFdelend \DIFaddbegin \DIFadd{the staff and service}\DIFaddend . On the other hand, English-speaking customers mentioned tobacco smell in many reviews, while it wasn't statistically identified as a problem at all for their Chinese counterparts.
+
+\DIFdelbegin \DIFdel{As to }\DIFdelend \DIFaddbegin \DIFadd{We can observe }\DIFaddend the top 10 satisfaction and dissatisfaction keywords \DIFdelbegin \DIFdel{themselves we can observe }\DIFdelend \DIFaddbegin \DIFadd{and determine }\DIFaddend whether they are \DIFaddbegin \DIFadd{managerial }\DIFaddend attributes internal to the hotel, that is, \DIFdelbegin \DIFdel{managerial in nature, or }\DIFdelend \DIFaddbegin \DIFadd{or environmental attributes }\DIFaddend external to it\DIFdelbegin \DIFdel{, environmental in nature. We can see these results in Table \ref{tab:hyp3}. }\DIFdelend \DIFaddbegin \DIFadd{. We manually labeled the top keywords of each language into either managerial or environmental by considering how the word would be used when writing a review. If the word implies an issue that could be solved or managed by the hotel staff or management, we consider it managerial. If the word is describing factors that are unchangeable by the staff or management, we consider them environmental. }\DIFaddend The interpretation of these keywords is shown in the \DIFdelbegin \DIFdel{Appendix in }\DIFdelend Tables \ref{tab:man_env_pos} and \ref{tab:man_env_neg}.
+
+% Please add the following required packages to your document preamble:
+%DIF <  \usepackage{multirow}
+% \usepackage{graphicx}
+\DIFdelbegin %DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < %%%
+\DIFdelendFL %DIF >  \usepackage[normalem]{ulem}
+%DIF >  \useunder{\uline}{\ul}{}
+\DIFaddbeginFL \begin{table}[h]
+\centering
+\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Managerial and Environmental nature of }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Hotel attribute types for }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{most frequent }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{top 10 satisfaction }\DIFaddendFL keywords}
+\DIFdelbeginFL %DIFDELCMD < \label{tab:hyp3}
+%DIFDELCMD < \resizebox{\textwidth}{!}{%
+%DIFDELCMD < \begin{tabular}{|c|c|r|r|r|}
+%DIFDELCMD < \hline
+%DIFDELCMD < \textbf{Emotion} & \textbf{Customer group} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Managerial\\ Factors\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Environmental\\ Factors\end{tabular}}} & \multicolumn{1}{c|}{\textbf{Unidentified}} \\ \hline
+%DIFDELCMD < \multirow{2}{*}{Satisfaction} & Chinese speakers & 30\% & 60\% & 10\% \\ \cline{2-5} 
+%DIFDELCMD <  & English speakers & 60\% & 30\% & 10\% \\ \hline
+%DIFDELCMD < \multirow{2}{*}{Dissatisfaction} & Chinese speakers & 71.4\% & 28.6\% & 0\% \\ \cline{2-5} 
+%DIFDELCMD <  & English speakers & 100\% & 0\% & 0\% \\ \hline
+%DIFDELCMD < \end{tabular}%
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \label{tab:man_env_pos}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|r|r|}
+\cline{1-2} \cline{4-5}
+\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Chinese satisfaction\\ keywords (translation)\end{tabular}}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}English satisfaction\\ keywords\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} \\ \cline{1-2} \cline{4-5} 
+managerial & big &  & staff & managerial \\ \cline{1-2} \cline{4-5} 
+managerial & clean &  & location & environmental \\ \cline{1-2} \cline{4-5} 
+environmental & transportation &  & clean & managerial \\ \cline{1-2} \cline{4-5} 
+unidentified & Japan &  & helpful & managerial \\ \cline{1-2} \cline{4-5} 
+managerial & breakfast &  & friendly & managerial \\ \cline{1-2} \cline{4-5} 
+environmental & close &  & comfortable & managerial \\ \cline{1-2} \cline{4-5} 
+environmental & subway &  & shopping & environmental \\ \cline{1-2} \cline{4-5} 
+environmental & shopping &  & train & environmental \\ \cline{1-2} \cline{4-5} 
+unidentified & next time &  & subway & environmental \\ \cline{1-2} \cline{4-5} 
+unidentified & recommend &  & recommend & unidentified \\ \cline{1-2} \cline{4-5} 
+\end{tabular}%
+}
+\DIFaddendFL \end{table}
+
+%DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{graphicx}
+\DIFaddbegin \begin{table}[h]
+\centering
+\caption{\DIFaddFL{Hotel attribute types for the top 10 dissatisfaction keywords}}
+\label{tab:man_env_neg}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll|r|r|}
+\cline{1-2} \cline{4-5}
+\multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Chinese dissatisfaction\\ keywords (translation)\end{tabular}}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}English dissatisfaction\\ keywords\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{price} &  & dated & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{Chinese language} &  & working & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{environmental} & \multicolumn{1}{l|}{geography} &  & pricey & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{environmental} & \multicolumn{1}{l|}{distance} &  & slow & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{old-fashioned} &  & carpet & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{old} &  & cigarette & managerial \\ \cline{1-2} \cline{4-5} 
+\multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{Chinese person} &  & uncomfortable & managerial \\ \cline{1-2} \cline{4-5} 
+ &  &  & paper & managerial \\ \cline{4-5} 
+ &  &  & smallest & managerial \\ \cline{4-5} 
+ &  &  & dirty & managerial \\ \cline{4-5} 
+\end{tabular}%
+}
+\end{table}
+
+
+\DIFaddend For our purposes, hypothesis \DIFdelbegin \DIFdel{\ref{hyp:3} }\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:man_env} }\DIFaddend states that the satisfaction and dissatisfaction factors would stem from both managerial and environmental attributes to the hotel. This is confirmed for all but one list. The exception is the English-speaking tourists' top 10 dissatisfaction factors, which are all managerial\DIFdelbegin \DIFdel{in nature}\DIFdelend . However, this is only regarding the top 10 items \DIFdelbegin \DIFdel{in the list, and lower in the listthere are }\DIFdelend \DIFaddbegin \DIFadd{on the list. Lower on the list, we can observe }\DIFaddend some environmental factors. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Discussion}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{discussion}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The results indicate that our main hypothesis - Chinese and Western tourists have different priorities in hotel attributes that lead to their satisfaction and dissatisfaction - is correct. Below we explore what those differences were, what is the possible cause for them, and what they imply for the industry, as well as discussing similarities between the two groups. We also discuss the differences between managerial and environmental elements of the hotel and how they contribute to the satisfaction of customers in light of the results from our third hypothesis - Satisfaction and dissatisfaction stems from both internal (managerial) and external (environmental) attributes of the hotel}\DIFdelend \DIFaddbegin \DIFadd{We can see the summarized results in Table \ref{tab:hyp_man_env}}\DIFaddend . 
+
+
+%DIF >  Please add the following required packages to your document preamble:
+%DIF >  \usepackage{multirow}
+%DIF >  \usepackage{graphicx}
+\DIFaddbegin \begin{table}[h]
+\caption{\DIFaddFL{Managerial and Environmental nature of the 10 most frequent keywords}}
+\label{tab:hyp_man_env}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|r|r|r|}
+\hline
+\textbf{Emotion} & \textbf{Customer group} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Managerial\\ Factors\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Environmental\\ Factors\end{tabular}}} & \multicolumn{1}{c|}{\textbf{Unidentified}} \\ \hline
+\multirow{2}{*}{Satisfaction} 
+    & Chinese speakers & 30\% & 40\% & 30\% \\ \cline{2-5} 
+    & English speakers & 50\% & 40\% & 10\% \\ \hline
+\multirow{2}{*}{Dissatisfaction} 
+    & Chinese speakers & 71.4\% & 28.6\% & 0\% \\ \cline{2-5} 
+    & English speakers & 100\% & 0\% & 0\% \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+\DIFaddend \subsection{Chinese tourists - A big \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend clean space\DIFdelbegin \DIFdel{, and Chinese friendly}\DIFdelend }\label{disc:zh}
+
+We found that \DIFaddbegin \DIFadd{mainland }\DIFaddend Chinese tourists are satisfied mostly by a big and clean space provided by the Japanese hotels. From \DIFdelbegin \DIFdel{further inspection}\DIFdelend \DIFaddbegin \DIFadd{inspecting random samples}\DIFaddend , we also find that \DIFdelbegin \DIFdel{while }\DIFdelend this is mostly relating to the rooms\DIFdelbegin \DIFdel{, there are }\DIFdelend \DIFaddbegin \DIFadd{. There are also }\DIFaddend many references to the public bathing facilities in the hotel. In Japan, there is what is called \textit{sent\=o}, which are artificially made public bathing facilities, on occasions including saunas and baths with \DIFdelbegin \DIFdel{special }\DIFdelend \DIFaddbegin \DIFadd{unique }\DIFaddend qualities. On the other hand, there are natural hot springs, called \textit{onsen}\DIFdelbegin \DIFdel{, which can be either }\DIFdelend \DIFaddbegin \DIFadd{. They can either be }\DIFaddend bathing in the natural source of the water \DIFdelbegin \DIFdel{, }\DIFdelend or using the \DIFdelbegin \DIFdel{hot-spring water }\DIFdelend \DIFaddbegin \DIFadd{hot springs }\DIFaddend in artificially made bath facilities. It is a Japanese custom and culture that all customers use the facilities after cleaning themselves in a shower and go into the baths without any clothes. \DIFdelbegin \DIFdel{This }\DIFdelend \DIFaddbegin \DIFadd{It }\DIFaddend can be a cultural shock for many tourists, but \DIFdelbegin \DIFdel{still, this is an important }\DIFdelend \DIFaddbegin \DIFadd{this is a fundamental }\DIFaddend attraction for many.
+
+From these two first ranking keywords (``big" and ``clean"), we can assert that room quality is the most \DIFdelbegin \DIFdel{important }\DIFdelend \DIFaddbegin \DIFadd{critical }\DIFaddend satisfaction factor for Chinese customers. \DIFdelbegin \DIFdel{This means that Chinese tourists have an expectation of spaciousness and cleanliness when coming to Japan, be it by reputation, previous experiences, or cultural backgrounds. Whichever is the case, it appears that Chinese tourists are satisfied, which means their expectations regarding the rooms are being met. We can compare this result with previous literature, where traveling Chinese tourists choose their destination based on several factors, including cleanliness, nature, architecture, and scenery \mbox{%DIFAUXCMD
+\cite[][]{ryan2001}}\hspace{0pt}%DIFAUXCMD
+. 
+This other few factors found in previous literature could be linked to the keyword ``environment}\DIFdelend \DIFaddbegin \DIFadd{However, the word ``big}\DIFaddend " \DIFdelbegin \DIFdel{as well.
+}\DIFdelend \DIFaddbegin \DIFadd{is widespread in the language and could be used in different contexts to point out positive and negative aspects. Since we are interested in how the word is a keyword of positive sentences, we took a small sample of the positively classified sentences that contained the word ``big" in Chinese. A team of Chinese speaking lab members then pointed out the usage of the word. Generally speaking, it was used for the spaciousness of rooms, bathtubs, and communal bath facilities. 
+}\DIFaddend 
+
+One key component we found in Chinese customer \DIFdelbegin \DIFdel{preferences }\DIFdelend \DIFaddbegin \DIFadd{satisfaction factors }\DIFaddend is the inclusion of breakfast within the hotel. \DIFdelbegin \DIFdel{This can be inferred from the high frequency with which this keyword was included in the sentences emotionally classified as positive. }\DIFdelend While other food-related words were extracted, most of them were general\DIFdelbegin \DIFdel{in nature}\DIFdelend , like “food” or “eating\DIFdelbegin \DIFdel{”,}\DIFdelend \DIFaddbegin \DIFadd{,” }\DIFaddend and in a lower ranking. In contrast, the word “breakfast” \DIFdelbegin \DIFdel{, which is referring to a specific time and very possibly }\DIFdelend \DIFaddbegin \DIFadd{refers possibly to }\DIFaddend its inclusion in the hotel commodities, was \DIFdelbegin \DIFdel{very }\DIFdelend frequently used in positive texts compared to other food-related words. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{Moreover, Chinese tourists have expectations about the treatment towards the Chinese visitors that aren't being met. Be it Chinese language pamphlets, Chinese texts on instructions for the hotel room and it's appliances and features (T.V. channels, Wi-Fi setup, etc), or just the treatment towards Chinese people, it seems that their expectations are not being met. This is natural, since traveling in a strange land without knowledge of the language can be a daunting experience. \mbox{%DIFAUXCMD
+\cite{ryan2001} }\hspace{0pt}%DIFAUXCMD
+also found that communication difficulties was one of the main reasons Chinese customers would give for not visiting again}\DIFdelend \DIFaddbegin \DIFadd{A recommended strategy for hotel management is to invest in the inclusion or betterment of hotel breakfast}\DIFaddend . 
+
+\subsection{Western tourists - A friendly face, and absolutely clean}\label{disc:en}
+
+From the satisfaction factors of English-speaking tourists, we can see that at least \DIFdelbegin \DIFdel{3 }\DIFdelend \DIFaddbegin \DIFadd{three }\DIFaddend words relate to staff friendliness and services. The word ``staff" is the most frequently used word for satisfied customers, while ``helpful" and ``friendly" follow it lower in the list at the \DIFdelbegin \DIFdel{4th and 6th place. Japan is famous for their customer service all over the world. Staff members are trained to speak in }\textit{\DIFdel{sonkeigo}}%DIFAUXCMD
+\DIFdel{, or ``respectful language", one of the most formal of the Japanese formality syntaxes. They are also trained to bow with different depths depending on the situation, where a light bow could be used to say ``Please, allow me to guide you", and a deep bow to apologize for any inconvenience the customer could have, with a very respectful apology as well. This is all very different from Westerner experiences and while it could be a culture shock to some, it is mostly seen positively. After all, Japanese staff treats all customers in this respectful manner, but for some customers, this could very well be the best they have been treated until that moment. We can also see that \mbox{%DIFAUXCMD
+\cite{kozak2002} }\hspace{0pt}%DIFAUXCMD
+and \mbox{%DIFAUXCMD
+\cite{shanka2004} }\hspace{0pt}%DIFAUXCMD
+have also found that hospitality and staff friendliness is an important determinant in the satisfaction of Western tourists. On another note, we can also observe that the word ``free" is present in the satisfaction keywords, which after observing a few examples in the database, we concluded that it relates to the free amenities in a hotel room, such as cosmetics, soaps, coffee, tea, and so on. 
+}\DIFdelend \DIFaddbegin \DIFadd{fourth and fifth place. Japanese high standards in hospitality very likely influenced this result.
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{However, we can see from the rest of the keywords that most of the dissatisfaction with Japanese hotels stems from a lack of hygiene and room cleanliness. Where Chinese customers were completely satisfied, English-speaking customers have found many places unacceptable to their standards . The most common complaint regarding cleanliness was about the carpet, followed by complaints about stains, and cigarette stench in the curtains. \mbox{%DIFAUXCMD
+\cite{kozak2002} }\hspace{0pt}%DIFAUXCMD
+also found that hygiene and cleanliness were important satisfaction determinants for Western tourists. However, in the previous literature, this was linked merely to satisfaction.
+In comparison, our research uncovered that it is mostly linked to dissatisfaction and that westerners could be said to have high standards of hygiene when compared to their Chinese counterparts. }\DIFdelend Aside from cleanliness, we can also observe the word ``\DIFdelbegin \DIFdel{renovation}\DIFdelend \DIFaddbegin \DIFadd{working}\DIFaddend " is written \DIFdelbegin \DIFdel{lower in }\DIFdelend \DIFaddbegin \DIFadd{higher on }\DIFaddend the list, as well as the word ``paper\DIFdelbegin \DIFdel{".After observation of }\DIFdelend \DIFaddbegin \DIFadd{." We observed }\DIFaddend the samples, \DIFaddbegin \DIFadd{and }\DIFaddend it is often used with the expression ``paper-thin walls", which could mean the customers can \DIFaddbegin \DIFadd{easily }\DIFaddend hear their neighbors\DIFdelbegin \DIFdel{easily}\DIFdelend . Regarding the word ``\DIFdelbegin \DIFdel{renovation",some }\DIFdelend \DIFaddbegin \DIFadd{working,'' we also took a sample of the texts to see its context. It seems to be related mostly to construction work near or at the facilities. Some }\DIFaddend cities in Japan (e.g.\DIFaddbegin \DIFadd{, }\DIFaddend Osaka) are currently \DIFdelbegin \DIFdel{going under }\DIFdelend \DIFaddbegin \DIFadd{undergoing }\DIFaddend a large number of renovations, which are also extending to the hotel facilities. Customers staying in places in renovation or near a \DIFdelbegin \DIFdel{renovation construction }\DIFdelend \DIFaddbegin \DIFadd{construction site }\DIFaddend can be expected to wake up to construction noises, have their view obstructed by metal bars, and other unpleasant experiences. Another keyword there is ``slow", which upon inspection of example reviews, we concluded that it reflects the speed of the Internet connection in the hotel rooms.
+
+\DIFdelbegin \subsection{\DIFdel{Price, the common enemy}}%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{disc:price}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{An interesting detail of the keyword ranking is that the word ``comfortable" is high on the list of satisfaction factors and ``uncomfortable" high on the dissatisfaction factors. It seems that in general, western tourists are highly sensitive to comfort levels in the hotels and whether it reaches their expectations.
+}\DIFaddend 
+
+
+\DIFdelbegin \DIFdel{For both customer groups, the main reason for dissatisfaction is price, which can be interpreted as a concern about value for money.
+A paper studying Chinese tourists found that they had this concern \mbox{%DIFAUXCMD
+\cite[][]{truong2009}}\hspace{0pt}%DIFAUXCMD
+, but our results indicate that in the case of Japanese hotels, this is less of a cultural attribute, and has more to do with the pricing of hotels overall. 
+The tourists coming to Japan could be both experienced travelers or first-time travelers, but the fact is that their expectation of the price for hotels was lower than what they found in Japan. In general, Japan is an expensive place to visit, which could have an impact in this placement in the ranking}\DIFdelend \DIFaddbegin \subsection{\DIFadd{Tobacco, what's that smell?}}\label{disc:tobacco}
+
+\DIFadd{A concern for Western tourists was the smell of tobacco in their room. Upon manual inspection of a sample of reviews with this keyword, we found that the room was often advertised as non-smoking, yet, the smell permeated the room and curtains. Another common complaint was that there were no non-smoking facilities available at all. The smell of smoke can completely ruin some customers' stay and give a bad impression to review writers, which can lower the number of future customers. 
+}
+
+\DIFadd{However, in comparison, Chinese customers seem not to be bothered by this at all. We consulted studies involving the use of tobacco in different countries. Previous research states that 49 - 60\% of Chinese men (and 2.0 - 2.8\% of women) currently smoke or have smoked before, taken from a sample of \num[group-separator={,}]{170000} Chinese adults in 2013-2014, which is high compared to many English-speaking countries \mbox{%DIFAUXCMD
+\cite[][]{zhang2019tobacco, who2015tobacco}}\hspace{0pt}%DIFAUXCMD
+.
+}
+
+\DIFadd{Japan itself has a polarized view on smoking, and despite being one of the world's largest tobacco markets, its use has been decreasing in recent years. Smoking in public spaces is prohibited in some wards of Tokyo (namely Chiyoda, Shinjuku, and Shibuya). However, it is generally only urged and not mandatory to have smoking restrictions in restaurants, bars, hotels, and public areas. However, there are many places where ``smoking rooms" are available to keep the smoke to an enclosed area and avoid bothering others. Despite this, businesses, especially those who cater to certain kinds of customers, will generally be discouraged from having smoking restrictions if they want to keep their clientele. If Japanese hotels want to cater to all kinds of customers, Western and Asian alike, they must provide spaces without tobacco smell. After all, even if it does not bother a few customers, the lack of smell would make it an appropriate space for all kinds of customers}\DIFaddend . 
+
+
+\subsection{Location, location, location}\label{disc:location}
+
+The location of the hotel, closeness to the subway and public transport, and availability of nearby shops were observed to be of importance to both Chinese and English-speaking tourists. While it \DIFdelbegin \DIFdel{wasn't the first }\DIFdelend \DIFaddbegin \DIFadd{was not the }\DIFaddend priority for either of them, we can assert that the \DIFdelbegin \DIFdel{location of the hotel}\DIFdelend \DIFaddbegin \DIFadd{hotel's location }\DIFaddend is a secondary but still important point in \DIFdelbegin \DIFdel{their satisfaction of a hotel}\DIFdelend \DIFaddbegin \DIFadd{the hotel's satisfaction}\DIFaddend . However, since this is an external factor to the management of the hotel, it is not often considered in \DIFaddbegin \DIFadd{the }\DIFaddend literature. Upon inspection of examples from the data, we found that most customers were satisfied if the hotel was \DIFdelbegin \DIFdel{nearby }\DIFdelend \DIFaddbegin \DIFadd{near }\DIFaddend to at least two other subjects: subway\DIFdelbegin \DIFdel{or }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend train, and convenience stores. 
+
+Japan is a country with a \DIFdelbegin \DIFdel{particular }\DIFdelend \DIFaddbegin \DIFadd{peculiar }\DIFaddend public transport system. The rush hour makes for a subway filled to the brim with people in suits making their commute, and trains and subway stations in Tokyo create a confusing public transport map for \DIFdelbegin \DIFdel{an outside observer}\DIFdelend \DIFaddbegin \DIFadd{a visitor}\DIFaddend . Buses are also available, although less used than the rail systems in the big cities. These three are \DIFdelbegin \DIFdel{particularly }\DIFdelend \DIFaddbegin \DIFadd{unusually }\DIFaddend affordable in price. Then there are the more expensive transports, such as the bullet train \textit{shinkansen} for traveling across the country, and taxis. Taxis in Japan are a luxury compared to other countries. Where in less developed countries the taxi is the cheap method of transport of choice, in Japan, taxis are made to provide a high-quality experience, with a matching price. This means that for tourists, subway availability and \DIFdelbegin \DIFdel{a good map or }\DIFdelend \DIFaddbegin \DIFadd{maps or GPS applications, as well as a }\DIFaddend plan to travel the city\DIFaddbegin \DIFadd{, }\DIFaddend are of utmost necessity.
+
+Japanese convenience stores, on the other hand, are also famous worldwide\DIFdelbegin \DIFdel{for their convenience . From }\DIFdelend \DIFaddbegin \DIFadd{. Japanese convenience stores are a haven for the traveler in need. It offers anything, from }\DIFaddend drinks and snacks to full meals, copy and scanning machines, alcohol, cleaning supplies, personal hygiene items, underwear, towels, international ATMs\DIFaddbegin \DIFadd{, }\DIFaddend and so on\DIFdelbegin \DIFdel{, Japanese convenience stores are a haven for the traveler in need}\DIFdelend . If some trouble occurred, or a traveler forgot to pack a \DIFdelbegin \DIFdel{certain }\DIFdelend \DIFaddbegin \DIFadd{particular }\DIFaddend item, it is almost sure that they can find it\DIFdelbegin \DIFdel{here}\DIFdelend .
+
+Therefore, considering \DIFaddbegin \DIFadd{that }\DIFaddend both transport systems and nearby shops are points of interest for Chinese and Western tourists, Japanese hotels have to \DIFdelbegin \DIFdel{choose carefully }\DIFdelend \DIFaddbegin \DIFadd{carefully choose }\DIFaddend their location from the moment \DIFdelbegin \DIFdel{that }\DIFdelend they are constructed. While not a top priority, this is a universal factor for both customer groups\DIFaddbegin \DIFadd{, }\DIFaddend and it can be an instant way to generate positive reviews.
+
+
+
+\DIFdelbegin \subsection{\DIFdel{Tobacco, what's that smell?}}%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{disc:tobacco}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \section{\DIFadd{Discussion}}\label{discussion}
+\DIFaddend 
+
+\DIFdelbegin \DIFdel{A main concern for Western tourists was the smell of tobacco in their room. Upon manual inspection of a sample of reviews with this keyword, we found that it was often the case that the room was advertised as non-smoking, and yet the smell permeated the room and curtains.
+Another common complaint was that there wasn't any non-smoking facilities available at all, to begin with. This can completely ruin some customers' stay, and give a bad impression for review writers, which can lower the number of future customers. }%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{However, in comparison, Chinese customers seem to not be bothered by this at all . We consulted studies involving the use of tobacco in different countries. Previous research states that 49 }\DIFdelend \DIFaddbegin \DIFadd{The results indicate that our hypothesis }\DIFaddend - \DIFdelbegin \DIFdel{60\% of Chinese men (and 2.0 }\DIFdelend \DIFaddbegin \DIFadd{Chinese and Western tourists have different priorities in hotel attributes that lead to their satisfaction and dissatisfaction }\DIFaddend - \DIFdelbegin \DIFdel{2.8\% of women) currently smoke or have smoked before, taken from a sample of \num[group-separator={,}]{170000} Chinese adults in 2013-2014, which is high compared to many }\DIFdelend \DIFaddbegin \DIFadd{is correct. Furthermore, they indicate that, in the context of Japanese hospitality, only Western customers show satisfaction from staff and service amongst their top detected factors. Below we explore the possible interactions with }\textit{\DIFadd{Omotenashi}}\DIFadd{, what the differences between Chinese and Western tourists were, what is the possible cause for them, and what they imply for the industry. We also discuss the differences between managerial and environmental elements of the hotel and how they contribute to the satisfaction of customers in light of the results from our third hypothesis - Satisfaction and dissatisfaction stem from both internal (managerial) and external (environmental) attributes of the hotel.
+}
+
+\subsection{\DIFadd{Western and Chinese tourists in the }\textit{\DIFadd{Omotenashi}} \DIFadd{environment}}\label{disc:omotenashi}
+
+\DIFadd{To this day, scholars continue to correct our historical bias towards the west. In this time, studies have determined that different cultural backgrounds lead to different expectations, which in turn influence the satisfaction of tourists. Meaning, tourists of a particular culture will have different leading satisfaction factors across different destinations. However, Japan presents a particular environment. The spirit of hospitality and service, }\textit{\DIFadd{Omotenashi}}\DIFadd{, excels, and is considered the highest standard across the world. Can such an environment affect different cultures equally? Or is it only attractive to certain cultures? Our study brings light to these questions. 
+}
+
+\DIFadd{Our results indicate that Western tourists are the most satisfied with friendly and helpful staff in Japan. As explained earlier in this paper, Japan is famous for its customer service all over the world. Respectful language and bowing are not exclusive to high priced hotels or businesses and can even be found in convenience stores. The level of hospitality in even the cheapest of convenience stores is starkly different from Westerner experiences. While it could be a culture shock to some, it is mostly seen positively. After all, the Japanese staff respectfully treats all customers. However, for some customers, this could be the best way they have been treated until that moment. We can also see that \mbox{%DIFAUXCMD
+\cite{kozak2002} }\hspace{0pt}%DIFAUXCMD
+and \mbox{%DIFAUXCMD
+\cite{shanka2004} }\hspace{0pt}%DIFAUXCMD
+have also found that hospitality and staff friendliness is a vital determinant in the satisfaction of Western tourists. 
+}
+
+\DIFadd{However, we can see from the rest of the western keywords that a big part of the dissatisfaction with Japanese hotels stems from a lack of hygiene and room cleanliness. Although Chinese customers only had positive keywords about cleanliness, }\DIFaddend English-speaking \DIFdelbegin \DIFdel{countries \mbox{%DIFAUXCMD
+\cite[][]{zhang2019tobacco, who2015tobacco}}\hspace{0pt}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{customers have found many places unacceptable to their standards. The most common complaint regarding cleanliness was about the carpet, followed by complaints about cigarette stench, and general dirtiness. \mbox{%DIFAUXCMD
+\cite{kozak2002} }\hspace{0pt}%DIFAUXCMD
+also found that hygiene and cleanliness were essential satisfaction determinants for Western tourists. However, in the previous literature, this was linked merely to satisfaction. In comparison, our research uncovered that words relating to cleanliness are mostly linked to dissatisfaction. Westerners could be said to have a high standard of room cleanliness when compared to their Chinese counterparts}\DIFaddend . 
+
+\DIFdelbegin \DIFdel{Japan itself has a polarized view on smoking, and despite being one of the world's largest tobacco markets, its use has been decreasing in recent years. While smoking in public spaces isprohibited in some wards of Tokyo (namely Chiyoda, Shinjuku, and Shibuya), it is generally only urged and not mandatory to have smoking restrictions in restaurants, bars, hotels, and public areas. 
+However}\DIFdelend \DIFaddbegin \DIFadd{According to previous research, we can see that Western tourists are already inclined to appreciate hospitality for their satisfaction. When presented with Japanese hospitality, this expectation is met and overcome. However, we can see from our results that Chinese tourists had less focus on hospitality, staff, or service and were more concerned with room quality. We could theorize that despite being presented with high standard hospitality, it is ignored. It could be that their culture does not hold the expectation initially. That is}\DIFaddend , \DIFdelbegin \DIFdel{there are many places where ``smoking rooms" are available to keep the smoke to an enclosed area and avoid bothering others.Despite this, businesses, especially those who cater to certain kinds of customers, will generally be discouraged from having smoking restrictions if they want to keep their clientele. If Japanese hotels want to cater to all kinds of customers, Western and Asian alike, they must provide spaces without tobacco smell. After all, even if it doesn't bother some customers, the lack of smell would not bother any existing customers }\DIFdelend \DIFaddbegin \DIFadd{when an expectation that is not held is met, the satisfaction that stems from this is less than if it was expected.
+}
+
+\DIFadd{On the other hand, we have the phenomenon of a ``nice surprise'': When an unknown need is unexpectedly met, there is more satisfaction. It is necessary to note the difference between these two phenomenons. The ``nice surprise'' fulfills a need unexpectedly, while perhaps the hospitality grade in Japan is not fulfilling a high enough need for the Chinese population, resulting in less satisfaction. For greater satisfaction, the existence of a need being met is necessary. 
+}
+
+\DIFadd{However, another possibility presents itself when we observe the Chinese tourists' dissatisfaction factors. Chinese tourists may have expectations about the treatment towards the Chinese visitors that are not being met, even in this high standard hospitality environment. Japan is known worldwide for their hospitality, but they are also known historically to be monolingual and have a relatively large language barrier \mbox{%DIFAUXCMD
+\cite{heinrich2012making, coulmas2002japan}}\hspace{0pt}%DIFAUXCMD
+. While the Japanese effort to accommodate English speakers is slowly taking shape, Chinese accommodations can be lagging. Chinese language pamphlets, Chinese texts on instructions for the hotel room, and its appliances and features (e.g., T.V. channels, Wi-Fi setup), or just the treatment towards Chinese people could be examples. It is natural to be dissatisfied, since traveling in a strange land without knowing the language can be a daunting experience. \mbox{%DIFAUXCMD
+\cite{ryan2001} }\hspace{0pt}%DIFAUXCMD
+also found that communication difficulty was one of the main reasons Chinese customers would state for not visiting again. It seems like this is a problem that is not singular to Japan.
+}
+
+\DIFadd{Our initial question was whether the environment of high-grade hospitality would affect both cultures equally. This study brought us closer to the answer. On the one hand, there is a possibility that Chinese customers did have high-grade hospitality and did not get equally satisfied with Westerners. In that case, it appears that the difference stems from a psychological place. Expectation leads to satisfaction and a lack of expectation results in lesser satisfaction. On the other hand, there is also a possibility that Chinese customers are not receiving the highest grade of hospitality because of cultural friction between Japan and China}\DIFaddend . 
+
+\DIFaddbegin \DIFadd{It is unclear from our results which of these could be the case. One thing is clear for hotel managers, however. Competing in }\textit{\DIFadd{Omotenashi}} \DIFadd{does include language services, especially in the international tourism industry. Better multilingual support can only improve that already high standard in Japan. Considering that most of the tourists in Japan come from other countries in Asia, this is an endeavor that truly can bring benefits to their investment. Proposals for this endeavor include hiring Chinese speaking staff, preparing pamphlets in Chinese, or have a translator application readily available with staff trained in interacting through an electronic translator.
+}
+
+\DIFaddend \subsection{Managerial vs. Environmental satisfaction}\DIFdelbegin %DIFDELCMD < \label{disc:hyp3}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{disc:man_env}
+\DIFaddend 
+
+As we stated in section \ref{theory_satisfaction}, previous research is focused mostly on internal or managerial attributes of the hotel and their influence on customer satisfaction. \DIFdelbegin \DIFdel{For example, }\DIFdelend \DIFaddbegin \DIFadd{Examples of managerial attributes include }\DIFaddend staff behavior, facilities, commodities, amenities, and appliances that can be improved within the hotel \cite[e.g.][]{shanka2004, choi2001}. However, external or environmental attributes, such as \DIFaddbegin \DIFadd{the }\DIFaddend location of the hotel relative to public transport and shops, language immersion of the country, noise pollution, \DIFdelbegin \DIFdel{weather, and so on, }\DIFdelend \DIFaddbegin \DIFadd{or weather, }\DIFaddend are not usually analyzed in satisfaction studies. Because our study left the satisfaction factors to be decided statistically via customers' online reviews, we can see in their priorities the \DIFdelbegin \DIFdel{amount of importance that }\DIFdelend \DIFaddbegin \DIFadd{importance of }\DIFaddend those environmental or managerial attributes\DIFdelbegin \DIFdel{can have}\DIFdelend . 
+
+From Table \DIFdelbegin \DIFdel{\ref{tab:hyp3} }\DIFdelend \DIFaddbegin \DIFadd{\ref{tab:hyp_man_env} }\DIFaddend and appendix Tables \ref{tab:man_env_pos} and \ref{tab:man_env_neg}, we can see that in regards to satisfaction, \DIFdelbegin \DIFdel{60}\DIFdelend \DIFaddbegin \DIFadd{40}\DIFaddend \% of keywords used by Chinese tourists are of an environmental nature (namely ``\DIFdelbegin \DIFdel{environment}\DIFdelend \DIFaddbegin \DIFadd{transportation}\DIFaddend ", ``\DIFdelbegin \DIFdel{periphery", ``}\DIFdelend close", ``\DIFdelbegin \DIFdel{transportation}\DIFdelend \DIFaddbegin \DIFadd{subway}\DIFaddend ", \DIFdelbegin \DIFdel{``nearby}\DIFdelend \DIFaddbegin \DIFadd{and ``shopping}\DIFaddend "\DIFdelbegin \DIFdel{, and ``subway"}\DIFdelend ), while \DIFdelbegin \DIFdel{the remaining }\DIFdelend \DIFaddbegin \DIFadd{a lower }\DIFaddend 30\% is managerial in nature (and an undefined \DIFdelbegin \DIFdel{10}\DIFdelend \DIFaddbegin \DIFadd{30}\DIFaddend \%). However, \DIFaddbegin \DIFadd{two of }\DIFaddend these managerial words are all concentrated at the top of the list (``big", ``clean"\DIFdelbegin \DIFdel{, ``breakfast}\DIFdelend \DIFaddbegin \DIFadd{). Chinese tourists could expect spaciousness and cleanliness when coming to Japan. That expectation could be caused by reputation, previous experiences, or cultural backgrounds. Some scholars argue that different cultures have different room size perceptions \mbox{%DIFAUXCMD
+\cite{Saulton2017}}\hspace{0pt}%DIFAUXCMD
+. Although the study subjects are German and South Korean, the study presents the results as differences influenced by Asian and Western cultures. We argue that one country is not representative of others' cultures, so there can be differences between South Korea and China in room size perception. However, an interesting point appears. It could be that a different room size perception affects the satisfaction of Chinese tourists in contrast with Westerners. The dissatisfaction list for Western tourists could indicate that they perceive the rooms or bathtubs as small compared to Chinese tourists that praise them. We can compare these results with previous literature, where traveling Chinese tourists choose their destination based on several factors, including cleanliness, nature, architecture, and scenery \mbox{%DIFAUXCMD
+\cite[][]{ryan2001}}\hspace{0pt}%DIFAUXCMD
+. These other few factors found in previous literature could be linked to the keyword ``environment}\DIFaddend " \DIFdelbegin \DIFdel{).
+}\DIFdelend \DIFaddbegin \DIFadd{as well.
+}
+
+\DIFaddend In comparison, English speakers are mostly satisfied with managerial attributes of the hotel, with keywords such as ``staff", ``clean\DIFdelbegin \DIFdel{",``helpful",and ``free}\DIFdelend \DIFaddbegin \DIFadd{," ``helpful," and ``friendly,}\DIFaddend " to name a few. English-speaking customers also have managerial attributes at the very top of their list\DIFdelbegin \DIFdel{. This means that if one considers the satisfaction of }\DIFdelend \DIFaddbegin \DIFadd{, except for the environmental nature of the location of the hotel. If one considers }\DIFaddend both Chinese and Western tourists\DIFaddbegin \DIFadd{' satisfaction}\DIFaddend , a hotel \DIFdelbegin \DIFdel{has the ability to }\DIFdelend \DIFaddbegin \DIFadd{can }\DIFaddend improve in ways that will attract more customers in the future. If it was the other way around\DIFaddbegin \DIFadd{, }\DIFaddend and the satisfaction was \DIFdelbegin \DIFdel{to be }\DIFdelend related more with environmental attributes \DIFaddbegin \DIFadd{overall}\DIFaddend , hotels would have to compete solely on their location. 
+\DIFaddbegin 
+
+\DIFadd{For both customer groups, the main reason for dissatisfaction is pricing, which can be interpreted as a concern about value for money. A paper studying Chinese tourists found that they had this concern \mbox{%DIFAUXCMD
+\cite[][]{truong2009}}\hspace{0pt}%DIFAUXCMD
+, but our results indicate that in the case of Japanese hotels, this is less of a cultural attribute, and has more to do with the pricing of hotels overall. The tourists coming to Japan could be both experienced travelers or first-time travelers, but the fact is that their expectation of the price for hotels was lower than what they found in Japan. In general, Japan is an expensive place to visit, which could impact this placement in the ranking. Space is scarce in Japan, and capsule hotels with cramped spaces of 2 x 1  meters cost around 3,000 to 6,000 yen per night. Bigger business hotel rooms are expensive, ranging from 5,000 to 12,000 yen per night. For comparison, hotels in the USA with a similar quality can be half the price. 
+}
+
+\DIFaddend Similarly, most of the dissatisfaction is caused by issues that could be solved with improved management. Of course, this could be staff training (perhaps in language), hiring professional cleaning services for rooms with smoke smells, or improving the bedding, all of which can be costly. However, if hotels want to attract more \DIFdelbegin \DIFdel{and more }\DIFdelend customers, this paper provides a good guideline for which factors to consider first, and which ones will be best suited to which customer groups. 
+
+\DIFaddbegin \DIFadd{Now, a point of interest in this study is the difference in how managerial and environmental factors concern Chinese and Western tourists. We can see that for Chinese customers, while the top positive keyword is managerial, the size of a room is hardly modifiable once the hotel's construction is complete. The second keyword follows as a managerial factor as well. Except, this time, hotel management can readily improve the cleanliness of their hotel. The rest of the positive keywords, however, are either undefined or environmental. Once the location and construction of the hotel are set, not much can be done to satisfy a Chinese tourist further. On the other hand, one can turn the dissatisfaction factors into satisfaction by focusing on those for improvement. As mentioned before, Chinese language availability is another managerial attribute that can be improved with investment in staff and training. 
+}
+
+\DIFadd{Western tourists, on the other hand, are all around both satisfied and dissatisfied with mostly managerial factors, with a 50\% of the top 10 satisfaction factors and a 100\% of the top 10 dissatisfaction factors coming from managerial attributes. The room for improvement for Western tourists is more extensive than their Chinese counterparts, and as such, present a bigger investment opportunity. As mentioned earlier in this paper, Westerners are known as ``long-haul" customers, spending more than 45\% of their budget on hotel lodging. On the other hand, their Asian counterparts only spend 25\% of their budget on hotels \mbox{%DIFAUXCMD
+\cite{choi2000}}\hspace{0pt}%DIFAUXCMD
+. With bigger returns on managerial improvements, it seems like investing in improving attributes that dissatisfy Western customers, such as cleanliness and removing tobacco smell. Making more hotel facilities tobacco-free and deodorizing the rooms can be a low-cost investment that could increase returns many times over. 
+}
+
+\DIFadd{The opposite argument could also be made, however, that Chinese customers provide a more significant number of customers, even though they tend to spend less on lodging. Attracting a large number of Chinese customers can be a viable strategy for hotels. However, as mentioned before, they tend to focus more on environmental attributes, leaving language barrier-breaking as one of the few strategies to accomplish this.
+}
+
+\DIFadd{The basic premise of this study is that different cultures lead to different expectations and satisfaction factors. This premise also plays a role in the differentiation between the preference of managerial or environmental attributes. Perhaps the cultural background of Chinese tourists emphasizes their surroundings and their place in nature and the environment. Chinese historical backgrounds of Confucianism, Taoism and Buddhism permeate the thought processes of Chinese populations. However, scholars argue that the changes in generations and their economic and recent history gives less importance to these concepts in their lives \mbox{%DIFAUXCMD
+\cite{gao2017chinese}}\hspace{0pt}%DIFAUXCMD
+. However, one could argue that there is a Chinese cultural attribute that emphasizes the environment and the place one is in towards satisfaction, rather than the way one is treated. According to previous research, Chinese tourists are collectivist, while Westerners are individualists \mbox{%DIFAUXCMD
+\cite{kim2000}}\hspace{0pt}%DIFAUXCMD
+. A more anthropocentric and individualistic Western culture could result in more of their expectations and priorities be related to how one is treated in social circumstances, rather than the environment one is in. 
+}
+
+\subsection{\DIFadd{Implications for hotel managers}}\label{disc:implications}
+
+\DIFadd{Our study presents two important conclusions: one about hospitality and cultural differences, and another about managerial decisions towards two different populations. Chinese tourists are not experiencing the best that }\textit{\DIFadd{Omotenashi}} \DIFadd{has to offer. Either they do not get much satisfaction from hospitality or feel that basic language and communication needs are not being met. On the other hand, Western tourists are elated with Japanese hospitality. The other conclusion is that managerial decisions will mostly benefit Western tourists, except that Chinese language improvements and breakfast inclusion can satisfy more Chinese customers. Japan is recently seeing an increase in Chinese students as well as Western students of universities. Hiring students as part-time workers could increase the language services of a hotel.
+}
+
+\DIFadd{To satisfy both customer types, hotel managers need to invest in cleanliness, deodorizing, and making hotel rooms tobacco-free. It could also be recommended to invest in breakfast inclusion and multilingual services and staff preparedness to deal with Chinese and English speakers. Western tourists were also observed to have high standards in comfort, which can be improved upon managerially for better reviews. Perhaps it could be suggested to perform surveys of the bedding that is most comfortable for Western tourists. However, not all hotels can invest in all of these factors simultaneously. Our results suggest that satisfying cleanliness needs can satisfy both customer types and that a low-cost investment could be to make the facilities tobacco-free. 
+}
+
+\DIFadd{Environmental factors, while not manageable after a hotel has finished its construction, are essential to consider for managers as well. As previously stated, transport systems and nearby shops are points of interest for both Chinese and Western tourists. Japanese hotel managers have to consider the location and surroundings since before the hotel is constructed. A suggestion could be to purchase land and start the construction after plans to make new subway lines are made. 
+}
+
+\DIFadd{It is left to the managers to consider their business model for the next strategy. One option could be attracting more Chinese customers in number with their observed low budgeting. Another could be attracting more high budget Western customers is on par with their business model. For example, investing more on cleanliness could improve on Western customers looking for high-quality lodging, even though the price per night would increase.
+}
+
+
+\DIFaddend \section{Limitations \DIFaddbegin \DIFadd{and Future Work}\DIFaddend }\label{limitations}
+
+This paper is not without its limitations. We analyzed keywords of satisfaction and dissatisfaction statistically based on whether they appeared on satisfied reviews or dissatisfied ones. Following that, we \DIFdelbegin \DIFdel{performed observations of sentences with those words, in an attempt }\DIFdelend \DIFaddbegin \DIFadd{attempted }\DIFaddend to understand the context that these words were being used in \DIFaddbegin \DIFadd{by taking samples and observing them manually}\DIFaddend . However, because of the large number of sentences in our data being analyzed, we could not perform a complete analysis of the context of these sentences across the database. Another limitation is that a \DIFdelbegin \DIFdel{big }\DIFdelend \DIFaddbegin \DIFadd{large }\DIFaddend portion of the Asian tourists coming to Japan \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{is }\DIFaddend Taiwanese and Korean\DIFdelbegin \DIFdel{, of which we couldn't do an analysis because of team members not knowing }\DIFdelend \DIFaddbegin \DIFadd{. We could not analyze these populations because our team members do not know }\DIFaddend those languages. Aside from that, because of the \DIFdelbegin \DIFdel{anonymous }\DIFdelend nature of the data \DIFaddbegin \DIFadd{collected}\DIFaddend , further typology analysis \DIFdelbegin \DIFdel{couldn't }\DIFdelend \DIFaddbegin \DIFadd{could not }\DIFaddend be made (for example, Chinese men and women of different ages \DIFdelbegin \DIFdel{, }\DIFdelend or their Westerner counterparts).
+
+\DIFaddbegin \DIFadd{In future work, we plan to investigate further into this topic. We plan to extend our data to research for different trends for different regions of Japan and in different kinds of hotels, as well as between customers traveling alone or in groups, for fun or work. Another point of interest in the future of this study is to use word clusters with similar meanings instead of single words. 
+}
+
+\DIFaddend \section{Conclusion\DIFdelbegin \DIFdel{and Future Work}\DIFdelend }\label{conclusion}
+
+In this study, \DIFdelbegin \DIFdel{with the purpose }\DIFdelend \DIFaddbegin \DIFadd{our objective was }\DIFaddend to analyze the differences in satisfaction and dissatisfaction between Chinese and English-speaking customers of Japanese hotels\DIFdelbegin \DIFdel{, we }\DIFdelend \DIFaddbegin \DIFadd{. We }\DIFaddend extracted keywords from their online reviews uploaded to the portal sites \textit{Ctrip} and \textit{TripAdvisor} using Shannon's entropy calculations\DIFdelbegin \DIFdel{; then we }\DIFdelend \DIFaddbegin \DIFadd{. We }\DIFaddend used these keywords for sentiment classification via an SVC. We then measured the Rank-biased Overlap of the top 10 most frequently used keywords in satisfied and dissatisfied sentences \DIFdelbegin \DIFdel{in Chinese and English reviews to find their similarity (or lack thereof).
+}\DIFdelend \DIFaddbegin \DIFadd{to find the differences between Chinese and Western tourists. 
+}
+
+\DIFadd{In the context of Japanese hospitality, we found that Western tourists had the most satisfaction with staff behavior, confirming our hypothesis \ref{hyp:omotenashi_en}. However, we found that Chinese customers had other concerns than hospitality when studying their satisfaction. As such, our hypothesis \ref{hyp:omotenashi_zh} is rejected. Since both cultures have a different reaction to this environment of hospitality, our hypothesis \ref{hyp:omotenashi_both} is confirmed. From this, we discussed two possible theories on why Chinese tourists respond differently to Westerners in this environment of }\textit{\DIFadd{Omotenashi}}\DIFadd{. One theory is that they are not being treated well enough, and this environment is not compatible with them because of language or culture barriers. The second possible theory is that they react differently to hospitality since they do not have the same expectations to be satisfied in the same way. We theorize that a lack of expectations could result in lessened satisfaction, even if the same service is presented.
+}
+
+\DIFaddend We obtained values ranging from \DIFdelbegin \DIFdel{0.221 to 0.265 }\DIFdelend \DIFaddbegin \DIFadd{0.176 to 0.257 }\DIFaddend in satisfaction lists and from \DIFdelbegin \DIFdel{0.285 to 0.321 }\DIFdelend \DIFaddbegin \DIFadd{0.128 to 0.176 }\DIFaddend in dissatisfaction lists at different cutoff points. These are low values (\(RBO_{EXT} < 0.5\)), so we can assert that the \DIFdelbegin \DIFdel{preferences }\DIFdelend \DIFaddbegin \DIFadd{satisfaction and dissatisfaction factors }\DIFaddend of Chinese and English-speaking tourists are different, confirming our hypothesis \DIFdelbegin \DIFdel{\ref{hyp:1}. }%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:diff_all}. }\DIFaddend We then measured the similarity in ranking from the words that were common satisfaction or dissatisfaction factors for both Chinese and English speakers\DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{. We }\DIFaddend found that from the four words that were common amongst both groups (``clean", ``recommend\DIFdelbegin \DIFdel{",``subway}\DIFdelend \DIFaddbegin \DIFadd{," ``subway,}\DIFaddend " and ``price")\DIFdelbegin \DIFdel{, their ranking when isolatedfrom the uncommon elements in both lists was identical , resulting }\DIFdelend \DIFaddbegin \DIFadd{. When these shared terms were isolated, both lists were almost identical at the cutoff point of 20 words. This resulted }\DIFaddend in an RBO \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{ranging from 0.906 to }\DIFaddend 1.0. This means our hypothesis \DIFdelbegin \DIFdel{\ref{hyp:2} }\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:diff_com} }\DIFaddend is rejected (\(RBO_{EXT} > 0.5\)), and that the common ground within both customer groups is also similar in ranking. 
+
+Lastly, we measured the amount of satisfaction and dissatisfaction factors that were referring to managerial attributes of a hotel \DIFdelbegin \DIFdel{(that it }\DIFdelend \DIFaddbegin \DIFadd{or environmental attributes of the hotel. Managerial attributes are those that they }\DIFaddend can be changed via managerial decisions without relocating\DIFdelbegin \DIFdel{) or environmental attributes of the hotel (}\DIFdelend \DIFaddbegin \DIFadd{. On the other hand, environmental attributes are }\DIFaddend things like location, closeness to shops\DIFaddbegin \DIFadd{, }\DIFaddend or public transport\DIFdelbegin \DIFdel{)}\DIFdelend . We found that both are included in the satisfaction and dissatisfaction of both customer groups, confirming our hypothesis \DIFdelbegin \DIFdel{\ref{hyp:3}}\DIFdelend \DIFaddbegin \DIFadd{\ref{hyp:man_env}}\DIFaddend . We also found that most of the Western customer satisfaction (\DIFdelbegin \DIFdel{60}\DIFdelend \DIFaddbegin \DIFadd{50}\DIFaddend \% of the top 10 words) and dissatisfaction (100\% of the top 10 words) stems from managerial attributes of the hotel\DIFdelbegin \DIFdel{, while }\DIFdelend \DIFaddbegin \DIFadd{.
+}
+
+\DIFadd{In contrast, }\DIFaddend environmental attributes only make for a smaller portion of the factors (\DIFdelbegin \DIFdel{30}\DIFdelend \DIFaddbegin \DIFadd{40}\DIFaddend \% of the top 10 satisfaction keywords). In the case of Chinese customer satisfaction, the top of the list was managerial \DIFdelbegin \DIFdel{in nature }\DIFdelend (30\% of the top 10 words)\DIFdelbegin \DIFdel{and a bigger }\DIFdelend \DIFaddbegin \DIFadd{, and a more significant }\DIFaddend portion, although lower in \DIFaddbegin \DIFadd{its }\DIFaddend ranking, was environmental \DIFdelbegin \DIFdel{in nature (60}\DIFdelend \DIFaddbegin \DIFadd{(40}\DIFaddend \%). For Chinese customer dissatisfaction, however, 71.4\% of the keywords were managerial\DIFdelbegin \DIFdel{in nature}\DIFdelend , while the other 28.6\% were environmental\DIFdelbegin \DIFdel{in nature. }%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{Our }\DIFdelend \DIFaddbegin \DIFadd{. We discussed how these distributions in managerial or environmental factors having priorities in either population could lead to different management strategies. One possible approach is to try to improve the satisfaction levels of Chinese tourists, who dedicate less percentage of their budget to hotels but are more abundant in number. They are less satisfied with managerial factors but have an identifiable method of improving satisfaction by lessening language barriers and providing breakfast. Another approach we discussed was focusing on the cleanliness and comfort that Western tourists expect, as well as making the hotels tobacco-free. With this strategy, we favor ``long-haul'' Western tourists who spend almost half of their budget on hotels. While Westerners are less in number than Chinese tourists, it could prove to have more substantial returns. The reason for this being that Chinese customers also favor cleanliness as a satisfaction factor, and both populations could be pleased. In this paper, we provide }\DIFaddend results and discussion \DIFaddbegin \DIFadd{that }\DIFaddend can be utilized as a guideline for managerial decisions when considering Chinese and Western tourists \DIFaddbegin \DIFadd{in Japan}\DIFaddend , and we can observe their stark differences \DIFdelbegin \DIFdel{, as well as their common attributes. 
+In future work we plan to investigate further into this topic, extending our data set and researching for different trends for different regions of Japan and in different kinds of hotels, as well as between customers traveling alone or in groups, for fun or work. Another point of interest for the future of this study is to use word clusters with similar meanings instead of single words. 
+}\DIFdelend \DIFaddbegin \DIFadd{and shared attributes. 
+}\DIFaddend 
+
+\begin{acknowledgements}
+
+During our research, we received the commentary and discussion \DIFaddbegin \DIFadd{by our dear colleagues }\DIFaddend necessary to understand \DIFdelbegin \DIFdel{certain }\DIFdelend \DIFaddbegin \DIFadd{particular }\DIFaddend cultural aspects that could influence the interpretation of the data\DIFdelbegin \DIFdel{by our dear colleagues, whom we }\DIFdelend \DIFaddbegin \DIFadd{. We }\DIFaddend would like to show gratitude to \DIFdelbegin \DIFdel{, }\DIFdelend Mr. Liangyuan Zhou, Ms. Min Fan\DIFaddbegin \DIFadd{, }\DIFaddend and Ms. Eerdengqiqige \DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{for this.
+}
+
+\DIFaddend We would also like to show gratitude to Ms. Aleksandra Jajus, from whom we also received notes on the editing and commentary on the content of our manuscript.
+
+\medskip
+
+Funding: This work was supported by the Japan Construction Information Center Foundation (JACIC).
+
+\medskip
+
+Conflict of interest: none
+
+\end{acknowledgements}
+
+% \section*{References}
+
+\bibliography{bibfile-emotion}
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < \clearpage
+%DIFDELCMD < 
+
+%DIFDELCMD < \appendixpage
+%DIFDELCMD < \appendix
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Sentiment analysis training data examples}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{apx:sentences_ex}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Please add the following required packages to your document preamble:
+%DIF <  \usepackage{multirow}
+%DIF <  \usepackage{graphicx}
+%DIF <  \usepackage[normalem]{ulem}
+%DIF <  \useunder{\uline}{\ul}{}
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Examples of positive and negative sentences used for training SVM}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:training_examples}
+%DIFDELCMD < \resizebox{\textwidth}{!}{%
+%DIFDELCMD < \begin{tabular}{|c|c|l|}
+%DIFDELCMD < \hline
+%DIFDELCMD < \textbf{Language} & \textbf{Emotion} & \textbf{Sentences} \\ \hline
+%DIFDELCMD < \multirow{4}{*}{Chinese} & \multirow{2}{*}{Positive} & \begin{tabular}[c]{@{}l@{}}\begin{CJK}{UTF8}{gbsn} 酒店 的 服务 很 好 和 我 住 过 的 所有 日本 酒店 一样 各 种 隐形 服务 非常 厉害 \end{CJK}\\ (translated as: ``The service of the hotel is very good. \\ All the services of the Japanese hotels I have stayed in are extremely good.")\end{tabular} \\ \cline{3-3} 
+%DIFDELCMD <  &  & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 有 一 个 后门 到 地铁站 非常 近 周边 也 算 方便 酒店 服务 和 卫生 都 很 好 \end{CJK} \\ (translated as: ``There is a back door to the subway station very close to it. \\ The surrounding area is also convenient hotel service and health are very good")\end{tabular} \\ \cline{2-3} 
+%DIFDELCMD <  & \multirow{2}{*}{Negative} & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 酒店 旁边 很 荒凉 连个 便利 店 都 要 走 很远 \end{CJK} \\ (translated as: ``The hotel is very bleak, \\ and you have to go very far to go to the nearest convenience store.")\end{tabular} \\ \cline{3-3} 
+%DIFDELCMD <  &  & \begin{tabular}[c]{@{}l@{}} \begin{CJK}{UTF8}{gbsn} 唯一 不 足 是 价格 太高 \end{CJK} \\ (translated as: ``The only negative is that the price is too high.")\end{tabular} \\ \hline
+%DIFDELCMD < \multirow{4}{*}{English} & \multirow{2}{*}{Positive} & It was extremely clean, peaceful and the hotel Hosts made us feel super welcome \\ \cline{3-3} 
+%DIFDELCMD <  &  & \begin{tabular}[c]{@{}l@{}}Location is very good, close to a main road with a subway station, a bakery,\\  a 7 eleven and a nice restaurant that is not too expensive but serves good food\end{tabular} \\ \cline{2-3} 
+%DIFDELCMD <  & \multirow{2}{*}{Negative} & \begin{tabular}[c]{@{}l@{}}The only downside: our room was labeled ``non-smoking" \\ but our duvet reeked of smoke.\end{tabular} \\ \cline{3-3} 
+%DIFDELCMD <  &  & A bit pricey though \\ \hline
+%DIFDELCMD < \end{tabular}%
+%DIFDELCMD < }
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Entropy keyword extraction experiment results}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{apx:entropy_results}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{As explained in section \ref{sentimentanalysis}, we performed experiments with different entropy values to extract keywords from the vocabulary. Then we chose the best performing classification machine based on those keywords as shown in the Tables \ref{tab:svm_f1_zh} and \ref{tab:svm_f1_en}. We also performed experiments to choose the best value of the parameter C used in the SVC. C is a constant that affects the optimization process when minimizing the error of the separating hyperplane. Low values of C give some freedom of error, which minimizes false positives, but depending on the data it can increase false negatives. Inversely, high values of C will likely result in minimal false negatives, but a possibility of false positives. 
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Please add the following required packages to your document preamble:
+%DIF <  \usepackage{graphicx}
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Best performing SVC 5-fold cross-validation Chinese text classifiers.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:svm_f1_zh}
+%DIFDELCMD < \begin{tabular}{|l|l|l|l|l|}
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Keyword List}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Classifier }%DIFDELCMD < \\ %%%
+\DIFdelFL{emotion}%DIFDELCMD < \end{tabular}%%%
+} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{C}} %DIFAUXCMD
+%DIFDELCMD < & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{\(F_1\) }%DIFDELCMD < \\ %%%
+\DIFdelFL{\(\mu\)}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{\(F_1\) }%DIFDELCMD < \\ %%%
+\DIFdelFL{\(\sigma\)}%DIFDELCMD < \end{tabular} \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction keywords }%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha=2.75\))}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction }%DIFDELCMD < \end{tabular} & %%%
+\DIFdelFL{2.5 }%DIFDELCMD < & %%%
+\DIFdelFL{0.91 }%DIFDELCMD < & %%%
+\DIFdelFL{0.01 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Negative keywords }%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha'=3.75\))}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Dissatisfaction }%DIFDELCMD < \end{tabular} & %%%
+\DIFdelFL{0.5 }%DIFDELCMD < & %%%
+\DIFdelFL{0.67 }%DIFDELCMD < & %%%
+\DIFdelFL{0.11 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\textbf{\DIFdelFL{Combined}} %DIFAUXCMD
+%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha\)=2.75, \(\alpha'\)=3.75)}%DIFDELCMD < \end{tabular} & %%%
+\textbf{%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction}%DIFDELCMD < \end{tabular}%%%
+} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{0.5}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{0.95}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{0.01}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp] \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Best performing SVC 10-fold cross-validation English text classifiers.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:svm_f1_en}
+%DIFDELCMD < \begin{tabular}{|l|l|l|l|l|}
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelFL{Keyword List }%DIFDELCMD < & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Classifier }%DIFDELCMD < \\ %%%
+\DIFdelFL{emotion}%DIFDELCMD < \end{tabular} & %%%
+\DIFdelFL{C }%DIFDELCMD < & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{\(F_1\) }%DIFDELCMD < \\ %%%
+\DIFdelFL{\(\mu\)}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{\(F_1\) }%DIFDELCMD < \\ %%%
+\DIFdelFL{\(\sigma\)}%DIFDELCMD < \end{tabular} \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction keywords }%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha=1.5\))}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction}%DIFDELCMD < \end{tabular} & %%%
+\DIFdelFL{1.75 }%DIFDELCMD < & %%%
+\DIFdelFL{0.82 }%DIFDELCMD < & %%%
+\DIFdelFL{0.02 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Dissatisfaction keywords }%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha'=4.25\))}%DIFDELCMD < \end{tabular} & \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Dissatisfaction}%DIFDELCMD < \end{tabular} & %%%
+\DIFdelFL{3 }%DIFDELCMD < & %%%
+\DIFdelFL{0.80 }%DIFDELCMD < & %%%
+\DIFdelFL{0.03 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\textbf{\DIFdelFL{Combined}} %DIFAUXCMD
+%DIFDELCMD < \\ %%%
+\DIFdelFL{(\(\alpha\)=1.5, \(\alpha'\)=4.25)}%DIFDELCMD < \end{tabular} & %%%
+\textbf{%DIFDELCMD < \begin{tabular}[c]{@{}l@{}}%%%
+\DIFdelFL{Satisfaction}%DIFDELCMD < \end{tabular}%%%
+} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{2}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{0.83}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{0.02}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Keywords with high SVM weights regardless of frequency}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{apx:keywords_weights}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{There were many more keywords than shown in Tables \ref{tab:pos_keys_en} and \ref{tab:neg_keys_en}. Some showed to be high in weight but low in frequency. This could mean they were useful for classification but aren't as important a preference for users. Table \ref{tab:key_weights_zh} shows some keywords that have a relatively high weight value for both positive and negative extremes and their translations in the relevant context. In Table \ref{tab:key_weights_en} we show keywords for the English classifier with high weight values as well.
+}%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp] \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Chinese keywords with high SVM weights regardless of frequency.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:key_weights_zh}
+%DIFDELCMD < \begin{tabular}{|>{\centering\arraybackslash}m{3em}|m{10em}|>{\centering\arraybackslash}m{7em}|>{\centering\arraybackslash}m{5em}|} \hline
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Word}} %DIFAUXCMD
+%DIFDELCMD < & \multicolumn{1}{c|}{\textbf{Translation}} & %%%
+\textbf{\DIFdelFL{Entropy List}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{SVC Weight}} %DIFAUXCMD
+%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{地方 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{region, local 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{1.343 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{干净 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{clean 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.638 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{大 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{big, wide 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.624 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{交通 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{traffic, transportation 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.586 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{热情 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{cordial, kindness 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{周边 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{periphery 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{景色 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{scenery 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{推荐 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{recommendation 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{日本 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{Japan 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{早餐 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{breakfast 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{附近 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{nearby 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Positive 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{0.495 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{中文 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{Chinese text 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Negative 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{-0.714 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{地理 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{geography 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Negative 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{-0.812 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \begin{CJK}{UTF8}{gbsn} %%%
+\DIFdelFL{价格 }%DIFDELCMD < \end{CJK} 
+%DIFDELCMD <     & %%%
+\DIFdelFL{price 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{Negative 
+        }%DIFDELCMD < & %%%
+\DIFdelFL{-1.505 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{English keywords with high SVM weights regardless of frequency.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:key_weights_en}
+%DIFDELCMD < \begin{tabular}{|l|c|c|}
+%DIFDELCMD < \hline
+%DIFDELCMD < \multicolumn{1}{|c|}{\textbf{Word}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Entropy\\ List\end{tabular}}} & \multicolumn{1}{c|}{\textbf{SVC Weight}} \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{bathhouse }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{2.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{museum }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{2.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{meeting }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{1.997 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{subway }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{1.951 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{cozy }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{2.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{convenience }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{1.888 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{clean }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{1.886 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{comfortable }%DIFDELCMD < & %%%
+\DIFdelFL{Positive }%DIFDELCMD < & %%%
+\DIFdelFL{1.724 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{dirty }%DIFDELCMD < & %%%
+\DIFdelFL{Negative }%DIFDELCMD < & %%%
+\DIFdelFL{-1.275 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{policy }%DIFDELCMD < & %%%
+\DIFdelFL{Negative }%DIFDELCMD < & %%%
+\DIFdelFL{-1.463 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{prepay }%DIFDELCMD < & %%%
+\DIFdelFL{Negative }%DIFDELCMD < & %%%
+\DIFdelFL{-1.517 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{pricey }%DIFDELCMD < & %%%
+\DIFdelFL{Negative }%DIFDELCMD < & %%%
+\DIFdelFL{-1.614 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < %%%
+\DIFdelFL{sticky }%DIFDELCMD < & %%%
+\DIFdelFL{Negative }%DIFDELCMD < & %%%
+\DIFdelFL{-2.000 }%DIFDELCMD < \\ \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\section{\DIFdel{Managerial and Environmental keywords}}%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{apx:man_env}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{As explained on \ref{disc:hyp3}, we identified the nature of each keyword in the top 10 lists of both satisfaction and dissatisfaction for Chinese and English-speaking tourists and summarized them in Table \ref{tab:hyp3}. The detailed identification of each keyword is shown in Tables \ref{tab:man_env_pos} and \ref{tab:man_env_neg} below.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Please add the following required packages to your document preamble:
+%DIF <  \usepackage{graphicx}
+%DIF <  \usepackage[normalem]{ulem}
+%DIF <  \useunder{\uline}{\ul}{}
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Hotel attribute types for the top 10 satisfaction keywords}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:man_env_pos}
+%DIFDELCMD < \resizebox{\textwidth}{!}{%
+%DIFDELCMD < \begin{tabular}{|l|l|l|r|r|}
+%DIFDELCMD < \cline{1-2} \cline{4-5}
+%DIFDELCMD < \multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Chinese satisfaction\\ keywords (translation)\end{tabular}}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}English satisfaction\\ keywords\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < managerial & big &  & staff & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < managerial & clean &  & clean & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < managerial & breakfast &  & location & environmental \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < unidentified & recommendation &  & helpful & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & environment &  & comfortable & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & periphery &  & friendly & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & close &  & recommend & unidentified \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & transportation &  & train & environmental \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & nearby &  & free & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < environmental & subway &  & subway & environmental \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \end{tabular}%
+%DIFDELCMD < }
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF <  Please add the following required packages to your document preamble:
+%DIF <  \usepackage{graphicx}
+%DIFDELCMD < \begin{table}[hbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Hotel attribute types for the top 10 dissatisfaction keywords}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:man_env_neg}
+%DIFDELCMD < \resizebox{\textwidth}{!}{%
+%DIFDELCMD < \begin{tabular}{lll|r|r|}
+%DIFDELCMD < \cline{1-2} \cline{4-5}
+%DIFDELCMD < \multicolumn{1}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Chinese dissatisfaction\\ keywords (translation)\end{tabular}}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}English dissatisfaction\\ keywords\end{tabular}}} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Hotel Attribute\\ Type\end{tabular}}} \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{price} &  & pricey & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{environmental} & \multicolumn{1}{l|}{geography} &  & carpet & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{Chinese language} &  & slow & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{old-fashioned} &  & dirty & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{environmental} & \multicolumn{1}{l|}{distance} &  & uncomfortable & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{old} &  & stain & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD < \multicolumn{1}{|l|}{managerial} & \multicolumn{1}{l|}{Chinese person} &  & cigarette & managerial \\ \cline{1-2} \cline{4-5} 
+%DIFDELCMD <  &  &  & curtain & managerial \\ \cline{4-5} 
+%DIFDELCMD <  &  &  & paper & managerial \\ \cline{4-5} 
+%DIFDELCMD <  &  &  & renovation & managerial \\ \cline{4-5} 
+%DIFDELCMD < \end{tabular}%
+%DIFDELCMD < }
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend 
+
+\end{document}

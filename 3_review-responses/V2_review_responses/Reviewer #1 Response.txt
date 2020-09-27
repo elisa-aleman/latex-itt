@@ -1,0 +1,61 @@
+Reviewer #1 Response
+
+
+
+------------
+1. Comment #3 from Reviewer #3
+It is not a deal breaker. However, I am with Reviewer #3 that the hypotheses of this study bring much value to the body of our knowledge. In the sense that this study took an exploratory approach (i.e., data mining), hypothesis testing may not be ideal to achieve the research goal.
+
+Comment #3 from Reviewer #3
+"#3 - Literature review
+*  Since H1, H2 and H3 has already been extensively tested in prior studies, I do not see the worthiness and necessity to re-examine them. 
+
+*  For Section 3.2, the authors may consider reviewing more cross-country studies and presenting the findings in a tabular format (with the column showing study topic, industry, samples' nationality …) This comparison table shall be helpful for the authors to justify if the research gaps truly exist"
+------------
+
+
+
+
+
+
+------------
+2. Comment #4 from Reviewer #3 & Comment #4 from Reviewer #5
+I don't think there is nothing that the authors can do about it. I recommend the authors acknowledge it as a study limitation.
+
+Comment #4 from Reviewer #3
+"#4 - Method
+*  To provide a fair comparison, the two sets of texts should review the same hotels within a similar time period. The authors should provide this background information in order to demonstrate the fairness of comparing those two sets of texts
+
+*  Please report more information about the review samples, including time period, hotel and hotel attributes involved in this study and etc"
+
+Comment #4 from Reviewer #5
+"In the Data Collection, can the authors explain what kinds of hotels (category, Hotel types, or star rating) were extracted? Are the same hotels extracted from both Ctrip and Tripadvisor? How many hotels are there? I believe different types of hotels would have generated different satisfaction level and perspectives. Please provide more details about these hotels."
+------------
+
+We added an extra layer to our research to overcome this limitation, although we admit that it's not fully encompassing the category or hotel type. We divided our datasets into price ranges. It is 
+
+
+
+
+------------
+3. Comment #6 from Reviewer #5
+Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns.
+
+Comment #6 from Reviewer #5
+"Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?"
+------------
+
+
+
+
+
+------------
+4. Comment #7 from Reviewer #5
+I am still confused with internal and external attributes. While the "location" of the hotels is an external attribute, "big" rooms, bathtubs, and bath facilities are internal attributes. Both the location of the hotel and the size of rooms and facilities cannot be changed once the construction of the hotel is completed. The authors may want to recategorise/rename them (e.g., tangibles/intangibles; soft/hard).
+Look forward to it.
+
+Comment #7 from Reviewer #5
+"For the managerial and environmental keywords, what criteria were used for classifying these keywords? "
+------------
+
+

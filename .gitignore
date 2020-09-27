@@ -282,6 +282,7 @@ TSWLatexianTemp*
 # Ignore tmp files from libreoffice and excel
 *.~lock.*#
 *~$*
+.DS_Store
 
 # Unused CSVs
 Z_tables_csv/unused/
