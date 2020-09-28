@@ -381,7 +381,7 @@
 
     The price for a night in these hotels ranges from low priced capsule hotels at 2000 yen per night, to high-end hotels \num[group-separator={,}]{188000} yen a night as the far ends of the bell curve. Customers' expectations can vary greatly depending on the pricing of the hotel room they stay at. We therefore made observations on the distribution of pricing in the hotels of our database and binned the data by price ranges, decided by consideration of objective of stay. We show these distributions in Figure \ref{fig:price_dist}. The structure of the data after division by price is shown in Table \ref{tab:exp_notes}, which also includes the results of emotional classification after application of our SVC, as explained in \ref{sentimentanalysis}. The first three price ranges (0 to 2500 yen, 2500 to 5000 yen, 5000 to 10,000 yen) would correspond to low class hotels or even hostels on the lower end, and cheap business hotels on the higher end. Further on there are business hotels in the next range (10,000 to 15,000 yen), and after that the stays could be at Japanese style \textit{ryokan} when traveling in groups, high class business hotels, luxury love hotels, or higher class hotels (15,000 to 20,000 yen, 20,000 to 30,000 yen). Further than that is more likely to be \textit{ryokan} or high class resorts or five-star hotels (30,000 to 50,000 yen, 50,000 to 100,000 yen, 100,000 to 200,000 yen). Note that because of choosing the highest price per one night in each hotel, the cheapest two price ranges (0 to 2500 yen, 2500 to 5000 yen) are empty, despite some rooms being priced at 2000 yen per night. Because of this, other tables will omit these two price ranges.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
             \includegraphics[width=\textwidth]{price_range_distribution_50_even_bins.png}
@@ -459,7 +459,7 @@
 
     A dependency parser analyzes the grammatical structure of a sentence, detecting connections between words and describing the action and direction of those connections. We show an example of these dependencies in Figure \ref{fig:depparse}. In this study we use the Stanford NLP Dependency Parser, as described by \cite{chen-EMNLP:2014}. A list of dependencies used by this parser is detailed by \cite{marneffe_manning_2016_depparse_manual}. In more recent versions, they use an updated dependency tag list from Universal Dependencies \cite[][]{zeman2018conll}. In our study, this step was necessary to extract adjective modifiers and their subject. We did that by parsing the entire database, and extracting instances of a few determined dependency codes. One of these dependency codes is ``amod'', which stands for adjectival modifier, where an adjective modifies a noun directly (e.g. A big apple). The other dependency code we used was ``nsubj'', or nominal subject, which is the syntactic subject of a class. We used this one for cases where the adjective is modifying the noun indirectly through other words (e.g. The apple is big). This dependency does not necessarily only include a combination of adjectives and nouns, but it can also be connected with copular verbs, nouns, or other adjectives. For this reason we saw necessary to also perform a Part of Speech (POS) tagging of these clauses.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{depparse.png}
     \caption{Example of dependency parsing.}
@@ -468,7 +468,7 @@
 
     A Part of Speech (POS) tagger is a program that assigns word tokens with tags identifying the part of speech. An example is shown in Figure \ref{fig:postag}. A Part of Speech is a category of lexical items that serve similar grammatical purposes; for example, nouns, adjectives, verbs, conjunctions, and so on. In our study, we used the Stanford NLP POS tagger software, described by \cite{toutanova2000enriching} and \cite{toutanova2003feature}, which uses the Penn Chinese Treebank tags \cite[][]{xia_penntreebank}.
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{postag.png}
     \caption{Example of POS tagging with the Penn Treebank tags.}
@@ -675,7 +675,7 @@
     % \usepackage{graphicx}
     % \usepackage[normalem]{ulem}
     % \useunder{\uline}{\ul}{}
-    \begin{table}[]
+    \begin{table}[ht]
     \centering
     \caption{English and Chinese comparison of the top 10 positive keywords.}
     \label{tab:freq_res_pos}
@@ -775,7 +775,7 @@
     % Please add the following required packages to your document preamble:
     % \usepackage{multirow}
     % \usepackage{graphicx}
-    \begin{table}[]
+    \begin{table}[ht]
       \centering
       \caption{English and Chinese comparison of the top 10 negative keywords.}
       \label{tab:freq_res_neg}
@@ -882,7 +882,7 @@
     % \usepackage{graphicx}
     % \usepackage{lscape}
     \begin{landscape}
-    \begin{table}[]
+    \begin{table}[p]
       \centering
       \caption{Top 4 words related to the mainly used adjectives in positive Chinese texts.}
       \label{tab:adj_zh_pos}
@@ -1759,7 +1759,7 @@
     % \usepackage{graphicx}
     % \usepackage{lscape}
     \begin{landscape}
-    \begin{table}[]
+    \begin{table}[p]
       \centering
       \caption{Top 4 words related to the mainly used adjectives in negative English texts.}
       \label{tab:adj_en_neg}
@@ -2026,7 +2026,7 @@
   % Please add the following required packages to your document preamble:
   % \usepackage{multirow}
   % \usepackage{graphicx}
-  \begin{table}[]
+  \begin{table}[ht]
     \centering
     \caption{Determination of hard and soft attributes for Chinese keywords. }
     \label{tab:zh_hard_soft_keywords}
@@ -2065,7 +2065,7 @@
       }
   \end{table}
 
-  \begin{figure}[h]
+  \begin{figure}[ht]
       \centering
       \begin{subfigure}[b]{0.45\textwidth}
           \includegraphics[width=\textwidth]{hard_soft_attr_zh_pos.png}
@@ -2084,7 +2084,7 @@
   % \usepackage{graphicx}
   % \usepackage[normalem]{ulem}
   % \useunder{\uline}{\ul}{}
-  \begin{table}[]
+  \begin{table}[ht]
     \centering
     \caption{Determination of hard and soft attributes for English keywords. }
     \label{tab:en_hard_soft_keywords}
@@ -2138,7 +2138,7 @@
       }
   \end{table}
 
-  \begin{figure}[h]
+  \begin{figure}[ht]
       \centering
       \begin{subfigure}[b]{0.45\textwidth}
           \includegraphics[width=\textwidth]{hard_soft_attr_en_pos.png}
@@ -2247,16 +2247,30 @@
 
     The basic premise of this study is that different cultures lead to different expectations and satisfaction factors. This premise also plays a role in the differentiation between the preference of hard or soft attributes. Perhaps the cultural background of Chinese tourists emphasizes their surroundings and their place in nature and the environment. Chinese historical backgrounds of Confucianism, Taoism and Buddhism permeate the thought processes of Chinese populations. However, scholars argue that the changes in generations and their economic and recent history gives less importance to these concepts in their lives \cite[][]{gao2017chinese}. Nevertheless, one could argue that there is a Chinese cultural attribute that emphasizes the environment and the place one is in towards satisfaction, rather than the way one is treated. According to previous research, Chinese tourists are collectivist, while Westerners are individualists \cite[][]{kim2000}. A more anthropocentric and individualistic Western culture could result in more of their expectations and priorities be related to how one is treated in social circumstances, rather than the environment one is in.
 
+  \subsection{Price range differences}\label{disc:price}
 
-  % \subsection{Implications for hotel managers}\label{disc:implications}
+    % some big paragraph about changing the way they speak, and about expectations, nice surprise, etc. 
+    % Introduce the concept of logical expectations vs feelings expectations.
+    % For example expecting it to be clean: ok just as expected / what?! it's not clean?! / cigarette
+    %             expecting them to be nice: Still feel happy after they were nice
+    % Omotenashi comes in play here.
 
-    % Our study presents two important conclusions: one about hospitality and cultural differences, and another about managerial decisions towards two different populations. Chinese tourists are not experiencing the best that \textit{Omotenashi} has to offer. Either they do not get much satisfaction from hospitality or feel that basic language and communication needs are not being met. On the other hand, Western tourists are elated with Japanese hospitality. The other conclusion is that managerial decisions will mostly benefit Western tourists, except that Chinese language improvements and breakfast inclusion can satisfy more Chinese customers. Japan is recently seeing an increase in Chinese students as well as Western students of universities. Hiring students as part-time workers could increase the language services of a hotel.
+    % paragraph about differences in perceptions from each culture
+    % 
 
-    % To satisfy both customer types, hotel managers need to invest in cleanliness, deodorizing, and making hotel rooms tobacco-free. It could also be recommended to invest in breakfast inclusion and multilingual services and staff preparedness to deal with Chinese and English speakers. Western tourists were also observed to have high standards in comfort, which can be improved upon managerially for better reviews. Perhaps it could be suggested to perform surveys of the bedding that is most comfortable for Western tourists. However, not all hotels can invest in all of these factors simultaneously. Our results suggest that satisfying cleanliness needs can satisfy both customer types and that a low-cost investment could be to make the facilities tobacco-free. 
+    % paragraph about things that stay the same across all prices
 
-    % Environmental factors, while not manageable after a hotel has finished its construction, are essential to consider for managers as well. As previously stated, transport systems and nearby shops are points of interest for both Chinese and Western tourists. Japanese hotel managers have to consider the location and surroundings since before the hotel is constructed. A suggestion could be to purchase land and start the construction after plans to make new subway lines are made. 
+    % 
 
-    % It is left to the managers to consider their business model for the next strategy. One option could be attracting more Chinese customers in number with their observed low budgeting. Another could be attracting more high budget Western customers is on par with their business model. For example, investing more on cleanliness could improve on Western customers looking for high-quality lodging, even though the price per night would increase.
+  \subsection{Implications for hotel managers}\label{disc:implications}
+
+    Our study presents two important conclusions: one about hospitality and cultural differences, and another about managerial decisions towards two different populations. Chinese tourists, as a whole, are not showing the most satisfaction towards \textit{omotenashi}, instead focusing on the hard attributes of a hotel. Either they do not get as much satisfaction from hospitality as Western tourists, or feel that basic language and communication needs are not being met, so they receive a lesser impression. On the other hand, Western tourists are elated with Japanese hospitality, preferring soft attributes that management can influence to hard set ones. The other conclusion is that managerial decisions will mostly benefit Western tourists, excepting that Chinese language improvements and breakfast inclusion can satisfy more Chinese customers. Japan is recently seeing an increase in Chinese students as well as Western students of universities. Hiring students as part-time workers could increase the language services of a hotel.
+
+    To satisfy both customer types, hotel managers need to invest in cleanliness, deodorizing, and making hotel rooms tobacco-free. It could also be recommended to invest in breakfast inclusion and multilingual services and staff preparedness to deal with Chinese and English speakers. Western tourists were also observed to have high standards in comfort, which can be improved upon managerially for better reviews. Perhaps it could be suggested to perform surveys of the bedding that is most comfortable for Western tourists. However, not all hotels can invest in all of these factors simultaneously. Our results suggest that satisfying cleanliness needs can satisfy both customer types and that a low-cost investment could be to make the facilities tobacco-free. Our results are also divided by price ranges, so a hotel manager can consider which analysis suits their hotel the most.
+
+    Hard attributes, while not manageable after a hotel has finished its construction, are essential to consider for managers as well. As previously stated, transport systems and nearby shops are points of interest for both Chinese and Western tourists. Japanese hotel managers have to consider the location and surroundings since before the hotel is constructed. A suggestion could be to purchase land and start the construction after plans to make new subway lines are made. 
+
+    It is left to the managers to consider their business model for the next strategy. One option could be attracting more Chinese customers in number with their observed low budgeting. Another could be attracting more high budget Western customers is on par with their business model. For example, investing more on cleanliness could improve on Western customers looking for high-quality lodging, even though the price per night would increase. On the other hand, hotels might be considered costly by Chinese customers wherever such an investment is made.
 
 \section{Limitations and Future Work}\label{limitations}
 
