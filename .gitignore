@@ -283,6 +283,7 @@ TSWLatexianTemp*
 *.~lock.*#
 *~$*
 .DS_Store
+Icon
 
 # Unused CSVs
 Z_tables_csv/unused/

@@ -17,7 +17,7 @@ DOCNAME="${INFILE%.*}"
 if [[ $ONLYCLEAN ]];
 then
     echo "Removing secondary files, no compile made"
-    rm *.blg *.bbl *.aux *.log *.thm *.out
+    rm $DOCNAME.blg $DOCNAME.bbl $DOCNAME.aux $DOCNAME.log $DOCNAME.thm $DOCNAME.out
 else
     if [[ $NOBIB ]];
     then
@@ -29,7 +29,7 @@ else
         echo "Skipping Bibtex from compile."
     else
         echo "Removing secondary files, starting from scratch"
-        rm *.blg *.bbl *.aux *.log *.thm *.out
+        rm $DOCNAME.blg $DOCNAME.bbl $DOCNAME.aux $DOCNAME.log $DOCNAME.thm $DOCNAME.out
         pdflatex $DOCNAME.tex
         if [ $? -ne 0 ]; then
             echo "Compilation error. Check log."
@@ -41,7 +41,7 @@ else
     fi
     if [[ $CLEAN ]]; then
     echo "Removing secondary files"
-    rm *.blg *.bbl *.aux *.log *.thm *.out
+    rm $DOCNAME.blg $DOCNAME.bbl $DOCNAME.aux $DOCNAME.log $DOCNAME.thm $DOCNAME.out
     fi
 fi
 if [[ $VIEW ]]; then
