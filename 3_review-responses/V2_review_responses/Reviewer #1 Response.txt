@@ -1,61 +1,64 @@
 Reviewer #1 Response
 
+Thank you for your comments. I will enclose them in hyphens and respond below that section for each comment. I will also include quotes from Reviewer #5 where necessary, using '>>>' before it. 
 
+In summary, we added two more layers to our study. We divided the data in price ranges, and we added automatic adjective + noun pairing counts, by using dependency parsing and part of speech tagging.
 
 ------------
 1. Comment #3 from Reviewer #3
 It is not a deal breaker. However, I am with Reviewer #3 that the hypotheses of this study bring much value to the body of our knowledge. In the sense that this study took an exploratory approach (i.e., data mining), hypothesis testing may not be ideal to achieve the research goal.
 
-Comment #3 from Reviewer #3
-"#3 - Literature review
-*  Since H1, H2 and H3 has already been extensively tested in prior studies, I do not see the worthiness and necessity to re-examine them. 
+>>>Comment #3 from Reviewer #3
+>>>"#3 - Literature review
+    *  Since H1, H2 and H3 has already been extensively tested in prior studies, I do not see the worthiness and necessity to re-examine them. 
 
-*  For Section 3.2, the authors may consider reviewing more cross-country studies and presenting the findings in a tabular format (with the column showing study topic, industry, samples' nationality …) This comparison table shall be helpful for the authors to justify if the research gaps truly exist"
+    *  For Section 3.2, the authors may consider reviewing more cross-country studies and presenting the findings in a tabular format (with the column showing study topic, industry, samples' nationality …) This comparison table shall be helpful for the authors to justify if the research gaps truly exist"
 ------------
 
-
-
-
-
+After some thought, we do agree that the hypotheses are able to be removed without altering the objective of the paper at all. We changed them to "Research Questions" only with the purpose of referencing them throughout the main text, but they don't have to be proven or rejected anymore.
 
 ------------
 2. Comment #4 from Reviewer #3 & Comment #4 from Reviewer #5
 I don't think there is nothing that the authors can do about it. I recommend the authors acknowledge it as a study limitation.
 
-Comment #4 from Reviewer #3
-"#4 - Method
-*  To provide a fair comparison, the two sets of texts should review the same hotels within a similar time period. The authors should provide this background information in order to demonstrate the fairness of comparing those two sets of texts
+>>>Comment #4 from Reviewer #3
+>>>"#4 - Method
+    *  To provide a fair comparison, the two sets of texts should review the same hotels within a similar time period. The authors should provide this background information in order to demonstrate the fairness of comparing those two sets of texts
 
-*  Please report more information about the review samples, including time period, hotel and hotel attributes involved in this study and etc"
+    *  Please report more information about the review samples, including time period, hotel and hotel attributes involved in this study and etc"
 
-Comment #4 from Reviewer #5
-"In the Data Collection, can the authors explain what kinds of hotels (category, Hotel types, or star rating) were extracted? Are the same hotels extracted from both Ctrip and Tripadvisor? How many hotels are there? I believe different types of hotels would have generated different satisfaction level and perspectives. Please provide more details about these hotels."
+>>>Comment #4 from Reviewer #5
+>>>"In the Data Collection, can the authors explain what kinds of hotels (category, Hotel types, or star rating) were extracted? Are the same hotels extracted from both Ctrip and Tripadvisor? How many hotels are there? I believe different types of hotels would have generated different satisfaction level and perspectives. Please provide more details about these hotels."
 ------------
 
-We added an extra layer to our research to overcome this limitation, although we admit that it's not fully encompassing the category or hotel type. We divided our datasets into price ranges. It is 
-
-
-
+We added an extra layer to our research to overcome this limitation, although we admit that it's not fully encompassing the category or hotel type. We divided our datasets into price ranges. We chose the highest price available in each hotel for a single room and a single night. This way, even if most customers aren't staying in that room, we can categorize the hotels by their quality. For example, there's probably no capsule hotels with suite rooms that would offer very different experiences. This way we think that we can clearly distinguish cheaper hotels and hostels, from business hotels, and from Japanese style ryokan or resorts. Then we performed the analysis and updated the discussion that was already written by observing the differences in results across different prices. We also added a new subsection of discussion, where we analyze all the differences in one place. We also comment in limitations that it is true that some hotels priced similarly will offer different experiences (e.g. Western style resorts and Japanese style ryokan).
 
 ------------
 3. Comment #6 from Reviewer #5
 Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns.
 
-Comment #6 from Reviewer #5
-"Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?"
+>>>Comment #6 from Reviewer #5
+>>>"Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?"
 ------------
 
-
-
-
+We completely agree, and improved the paper by adding more steps to the methodology. We used the Stanford CoreNLP pipeline to perform dependency parsing and part of speech tagging to the collected reviews. We used the dependency parsing to find which words are connected to each other and how, and we used the part of speech tagging to verify that the connections were of adjectives and nouns. Then we incorporated those pairs in the frequency analysis and considered which attributes of the hotel the customers were referring to, and in which context. This method is not perfect, and we can only follow one connection per word, but it gives us a deeper insight into the factors that customers consider.
 
 ------------
 4. Comment #7 from Reviewer #5
 I am still confused with internal and external attributes. While the "location" of the hotels is an external attribute, "big" rooms, bathtubs, and bath facilities are internal attributes. Both the location of the hotel and the size of rooms and facilities cannot be changed once the construction of the hotel is completed. The authors may want to recategorise/rename them (e.g., tangibles/intangibles; soft/hard).
 Look forward to it.
 
-Comment #7 from Reviewer #5
-"For the managerial and environmental keywords, what criteria were used for classifying these keywords? "
+>>>Comment #7 from Reviewer #5
+>>>"For the managerial and environmental keywords, what criteria were used for classifying these keywords? "
 ------------
 
+We agree with your comment and decided to reclassify them as hard and soft attributes. Before we explain the new definitions. 
+
+Hard attributes are those that are impossible, or highly impractical for the hotel to change. For example, aside from an expensive relocation, it is impossible to influence if the transportation system is convenient nearby, or what stores are nearby, once the hotel is constructed. We also include the size of the room and the beds in this category, since usually bed size is constricted by the size of the room.
+
+Soft attributes are those that the hotel can feasibly change, with some investment, improvement in services, training of the staff or hiring new staff. Perhaps improving the cleanliness of the rooms, or improving language assistance for Chinese tourists.
+
+------------
+
+Thank you for your commentary, we hope this revised version is to your liking.
 

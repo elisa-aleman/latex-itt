@@ -1,6 +1,8 @@
 Reviewer #5 Response
 
-Reviewer #5:
+Thank you for your comments. I will enclose them in hyphens and respond below that section for each comment. I will also include quotes from the previous revision where necessary, using '>>>' before it.
+
+In summary, we added two more layers to our study. We divided the data in price ranges, and we added automatic adjective + noun pairing counts, by using dependency parsing and part of speech tagging.
 
 ------------
 Section 3.3 contains a lot of misleading and confusing information:
@@ -30,10 +32,49 @@ The authors responded that hotel class were not recorded during data collection 
 I can see the authors had spend a lot of time to revise the paper and re-write the manuscript, however, if the research design is not correct, the result generated is meaningless. Therefore I will not comment the research findings and conclusion.
 ------------
 
+We understand, and redesigned the study to be able to study those differences. And while in Japan the concept of omotenashi permeates into all levels of customer service, the study is all the more interesting when studying the different reactions to differently priced hotels. 
+
+For this, we added an extra layer to our research by splitting the data into price ranges, although we admit that it's not fully encompassing the category or hotel type. To divide the data, first we observed the distribution of prices with a histogram, and adhered to a number of divisions that was appropriate for our data. 
+
+To divide the data, we chose the highest price available in each hotel for a single room and a single night. This way, even if most customers aren't staying in that room, we can categorize the hotels by their quality. For example, there's probably no capsule hotels with suite rooms that would offer very different experiences. This way we think that we can clearly distinguish cheaper hotels and hostels, from business hotels, and from Japanese style ryokan or resorts. 
+
+Then we performed the analysis and updated the discussion that was already written by observing the differences in results across different prices. We also added a new subsection of discussion, where we analyze all the differences in one place. We also comment in limitations that it is true that some hotels priced similarly will offer different experiences (e.g. Western style resorts and Japanese style ryokan).
+
+Some of our most interesting findings were added while analyzing price range differences, since we could observe the difference in behavior of Chinese and English-speaking tourists more clearly. For example, we found that Chinese people are more interested in shopping in Japan regardless of the level of luxury of the hotel they stay in, while Western tourists would enjoy shopping the most in only one of the categories (20,000 to 30,000 yen per night). 
+
+In addition, when redesigning the study, and because Reviewer #1 also pointed out your previous comments as important to consider, we also added a few more improvements. 
+
+------------
+>>>Comment #6 from your previous review
+>>>Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?
+
+>>> 3. Comment #3 from Reviewer #1
+>>>"Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns."
+------------
+
+We reconsidered this and completely agree. We decided to improve the paper by adding more steps to the methodology. We used the Stanford CoreNLP pipeline to perform dependency parsing and part of speech tagging to the collected reviews. We used the dependency parsing to find which words are connected to each other and how, and we used the part of speech tagging to verify that the connections were of adjectives and nouns. Then we incorporated those pairs in the frequency analysis and considered which attributes of the hotel the customers were referring to, and in which context. This method is not perfect, and we can only follow one connection per word, but it gives us a deeper insight into the factors that customers consider.
+
+
+------------
+>>>Comment #7 from your previous review
+>>>For the managerial and environmental keywords, what criteria were used for classifying these keywords?
+------------
+
+We received further commentary from Reviewer #1 on this and decided to reclassify these concepts. We define them now as hard and soft attributes. 
+
+Hard attributes are those that are impossible, or highly impractical for the hotel to change. For example, aside from an expensive relocation, it is impossible to influence if the transportation system is convenient nearby, or what stores are nearby, once the hotel is constructed. We also include the size of the room and the beds in this category, since usually bed size is constricted by the size of the room.
+
+Soft attributes are those that the hotel can feasibly change, with some investment, improvement in services, training of the staff or hiring new staff. Perhaps improving the cleanliness of the rooms, or improving language assistance for Chinese tourists.
+
 ------------
 Editorial: 
 Many in-text citations (e.g. Page 4 & 9) are not in standard format, please put them inside a bracket or change the sentence to mention the author name.
 Line 236, please spell out the number "3" to three.
 ------------
 
-We changed the spelling of lone numbers in the text. We also checked the in-text citations throughout the paper.
+We changed the spelling of lone numbers in the text. We also checked the in-text citations throughout the paper. Thank you for pointing out these mistakes.
+
+------------
+
+Thank you for your commentary, we hope this revised version is to your liking.
+
