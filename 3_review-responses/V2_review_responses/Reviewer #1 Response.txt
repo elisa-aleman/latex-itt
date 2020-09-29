@@ -11,11 +11,9 @@ It is not a deal breaker. However, I am with Reviewer #3 that the hypotheses of 
 >>>Comment #3 from Reviewer #3
 >>>"#3 - Literature review
     *  Since H1, H2 and H3 has already been extensively tested in prior studies, I do not see the worthiness and necessity to re-examine them. 
-
-    *  For Section 3.2, the authors may consider reviewing more cross-country studies and presenting the findings in a tabular format (with the column showing study topic, industry, samples' nationality …) This comparison table shall be helpful for the authors to justify if the research gaps truly exist"
 ------------
 
-After some thought, we do agree that the hypotheses are able to be removed without altering the objective of the paper at all. We changed them to "Research Questions" only with the purpose of referencing them throughout the main text, but they don't have to be proven or rejected anymore.
+After some thought, we do agree that the hypotheses are able to be removed without altering the objective of the paper at all. However we still view value in using these questions as a statement of the paper's objective and to better structure and showcase our results. Because of this, we changed them to "Research Questions". Research questions 1a and 1b will relate to the how the customers reach to omotenashi and how they differentiate from each other, while research questions 2a and 2b will relate to hard and soft attributes and how the management decisions can impact future improvement in customer satisfaction.
 
 ------------
 2. Comment #4 from Reviewer #3 & Comment #4 from Reviewer #5
