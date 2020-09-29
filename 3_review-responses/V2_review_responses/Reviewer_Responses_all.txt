@@ -1,0 +1,158 @@
+Reviewer #1 Response
+
+Thank you for your comments. I will enclose them in hyphens and respond below that section for each comment. I will also include quotes from Reviewer #5 where necessary, using '>>>' before it. 
+
+In summary, we added two more layers to our study. We divided the data in price ranges, and we added automatic adjective + noun pairing counts, by using dependency parsing and part of speech tagging.
+
+------------
+1. Comment #3 from Reviewer #3
+It is not a deal breaker. However, I am with Reviewer #3 that the hypotheses of this study bring much value to the body of our knowledge. In the sense that this study took an exploratory approach (i.e., data mining), hypothesis testing may not be ideal to achieve the research goal.
+
+>>>Comment #3 from Reviewer #3
+>>>"#3 - Literature review
+    *  Since H1, H2 and H3 has already been extensively tested in prior studies, I do not see the worthiness and necessity to re-examine them. 
+------------
+
+After some thought, we do agree that the hypotheses are able to be removed without altering the objective of the paper at all. However we still view value in using these questions as a statement of the paper's objective and to better structure and showcase our results. Because of this, we changed them to "Research Questions". Research questions 1a and 1b will relate to the how the customers reach to omotenashi and how they differentiate from each other, while research questions 2a and 2b will relate to hard and soft attributes and how the management decisions can impact future improvement in customer satisfaction.
+
+------------
+2. Comment #4 from Reviewer #3 & Comment #4 from Reviewer #5
+I don't think there is nothing that the authors can do about it. I recommend the authors acknowledge it as a study limitation.
+
+>>>Comment #4 from Reviewer #3
+>>>"#4 - Method
+    *  To provide a fair comparison, the two sets of texts should review the same hotels within a similar time period. The authors should provide this background information in order to demonstrate the fairness of comparing those two sets of texts
+
+    *  Please report more information about the review samples, including time period, hotel and hotel attributes involved in this study and etc"
+
+>>>Comment #4 from Reviewer #5
+>>>"In the Data Collection, can the authors explain what kinds of hotels (category, Hotel types, or star rating) were extracted? Are the same hotels extracted from both Ctrip and Tripadvisor? How many hotels are there? I believe different types of hotels would have generated different satisfaction level and perspectives. Please provide more details about these hotels."
+------------
+
+We added an extra layer to our research to overcome this limitation, although we admit that it's not fully encompassing the category or hotel type. We divided our datasets into price ranges. We chose the highest price available in each hotel for a single room and a single night. This way, even if most customers aren't staying in that room, we can categorize the hotels by their quality. For example, there's probably no capsule hotels with suite rooms that would offer very different experiences. This way we think that we can clearly distinguish cheaper hotels and hostels, from business hotels, and from Japanese style ryokan or resorts. Then we performed the analysis and updated the discussion that was already written by observing the differences in results across different prices. We also added a new subsection of discussion, where we analyze all the differences in one place. We also comment in limitations that it is true that some hotels priced similarly will offer different experiences (e.g. Western style resorts and Japanese style ryokan).
+
+------------
+3. Comment #6 from Reviewer #5
+Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns.
+
+>>>Comment #6 from Reviewer #5
+>>>"Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?"
+------------
+
+We completely agree, and improved the paper by adding more steps to the methodology. We used the Stanford CoreNLP pipeline to perform dependency parsing and part of speech tagging to the collected reviews. We used the dependency parsing to find which words are connected to each other and how, and we used the part of speech tagging to verify that the connections were of adjectives and nouns. Then we incorporated those pairs in the frequency analysis and considered which attributes of the hotel the customers were referring to, and in which context. This method is not perfect, and we can only follow one connection per word, but it gives us a deeper insight into the factors that customers consider.
+
+------------
+4. Comment #7 from Reviewer #5
+I am still confused with internal and external attributes. While the "location" of the hotels is an external attribute, "big" rooms, bathtubs, and bath facilities are internal attributes. Both the location of the hotel and the size of rooms and facilities cannot be changed once the construction of the hotel is completed. The authors may want to recategorise/rename them (e.g., tangibles/intangibles; soft/hard).
+Look forward to it.
+
+>>>Comment #7 from Reviewer #5
+>>>"For the managerial and environmental keywords, what criteria were used for classifying these keywords? "
+------------
+
+We agree with your comment and decided to reclassify them as hard and soft attributes. Before we explain the new definitions. 
+
+Hard attributes are those that are impossible, or highly impractical for the hotel to change. For example, aside from an expensive relocation, it is impossible to influence if the transportation system is convenient nearby, or what stores are nearby, once the hotel is constructed. We also include the size of the room and the beds in this category, since usually bed size is constricted by the size of the room.
+
+Soft attributes are those that the hotel can feasibly change, with some investment, improvement in services, training of the staff or hiring new staff. Perhaps improving the cleanliness of the rooms, or improving language assistance for Chinese tourists.
+
+------------
+
+Thank you for your commentary, we hope this revised version is to your liking.
+
+=====================================
+
+Reviewer #5 Response
+
+Thank you for your comments. I will enclose them in hyphens and respond below that section for each comment. I will also include quotes from the previous revision where necessary, using '>>>' before it.
+
+In summary, we added two more layers to our study. We divided the data in price ranges, and we added automatic adjective + noun pairing counts, by using dependency parsing and part of speech tagging.
+
+------------
+Section 3.3 contains a lot of misleading and confusing information:
+
+1.   "In the past, tourist behavior analyzed from western samples was wrongly thought to be a representation of universal behavior across all cultures (Nielsen et al. 2017; Jones 2010; Gunaratne 2009; Hogan and Emler 1978)". This is a very strong sentence; can the authors show evident that these studies have say such a strong conclusion?
+------------
+
+We agree that it is a strong conclusion from the cited papers without context, so we have included more information from these papers, as well as a new citation on the origin of the term WEIRD (Western, educated, industrialized, rich, and democratic) populations. We expanded the description as follows:
+
+"However, recent studies on social sciences, and thus, on tourist behavior, have been performed using surveys on WEIRD (Western, educated, industri- alized, rich, and democratic) populations that are culturally biased for the western world (Nielsen et al. 2017). The term WEIRD was coined by Henrich et al. (2010), who criticizes studies that assume that the subjects chosen from these populations are a representative sample of the rest of the world. This bias, albeit without the acronym, was discussed earlier about social psychol- ogy by Hogan and Emler (1978). Gunaratne (2009) pointed this bias out in discussions of globalization. At the same time, Nielsen et al. (2017) sampled papers on developmental psychology and statistically examined this bias. This western bias is pervasive in all kinds of social sciences, and tourism science is not an exception. For example, studies are easily performed in the language of the scientist doing surveys for the subjects. A great majority of tourist be- havior in history analysis has been performed with Western subjects and was thought to be universal until recent years."
+
+------------
+2.   "both academic researchers and businesses have decided to study Chinese tourist behavior (Sun et al. 2017)." Chinese tourists' study did not start from 2017.
+------------
+
+We apologize for the ambiguity. The citation was not of the start of Chinese tourism studies, but instead it points to a review paper that analyzed this growth in studies by making a survey from 2001 to 2012 of such studies. In this paper Sun et al. (2017) find that a rapid growth has started since 2007 onwards, and that it's starkly different from the slow growth in previous years. We changed it in the main document as follows:
+
+"Explaining this, Sun et al. (2017) analyzed the number of studies related to Chinese tourists from 2001 to 2012 and found a steady increase until 2007, followed by the rapid growth of studies on Chinese tourism."
+
+------------
+3.  "cross-cultural studies and analyses for Asian and Western tourists are scarce." And "One thing to note with the above cross-culture analyses is that they were performed before the year 2000." If the authors use Google scholar to search, I believe they could find hundred thousand of researches, this topic is not special or scarce at all. If the authors want to refer to Chinese and non-Chinese study, please do not generalize it as cross-cultural study. 
+------------
+
+We did not intend to generalize, it is a study between Asian and Western studies what we were referring to, so we reworded it in the document. While yes, cross-cultural studies in general aren't scarce, the specific case of Asian vs. Western, or even Chinese and non-Chinese, were very scarce. We reworded the text so that this is more obvious. Now, the topic at hand is special, considering its focus in the specific Japanese hospitality environment, which is even more scarcely researched. The particular combination that this paper offers is not found in previous research either. 
+
+We reworded as follows:
+
+"[...] To this day, studies and analyses specifically comparing Asian and Western tourists are scarce, and even less the number of studies specifically comparing Chinese and Western tourists. [...]
+
+One thing to note with the above Asian vs. Western analyses is that they were performed before 2000, and that they are not Chinese specific, but study Asian people in general. Meanwhile, the current Chinese economy boom is making an increase in the influx of tourists of this nation. [...] However, our study of online reviews takes the data that the hotel customers uploaded themselves, making the analysis unique in the exploring of their behavior in comparison with Western tourists, as well as studying them in the specific environment of high-level hospitality in Japan and observing hard factors that are not considered in most other studies."
+
+------------
+4.  "However, that boom could have created a difference in the expectations of tourists. In turn, that boom could have influenced their satisfaction factors when traveling." I cannot understand these two sentences. How can a boom or tourists create a different expectation of tourists? And how a boom can influence satisfaction?!
+------------
+
+We apologize for the ambiguity, we updated the text to show the connection between the two ideas better:
+
+"The current Chinese economy boom is making an increase in the influx of tourists. The resulting increase in marketing and creation of guided tours for Chinese tourists could have created a difference in the perceptions and expectations of tourists. In turn, if we follow the definition of satisfaction by Hunt (1975), that change in expectations could have influenced their satisfaction factors when traveling."
+
+------------
+The authors responded that hotel class were not recorded during data collection so the data cannot be categorized according to the hotel ranking. In that case, I can accept the research design of this study is appropriate. If the research design has such big defect, the result can no longer explain the difference between Chinese and non-Chinese. The authors mentioned the hotel room rate ranged from 2000 to 188000 yen. So how can you expect a customer paying 2000 yen will have same expectation with a customer paying 188000 yen? The definition of Omotenashi refers to high level customized service. For a capsule hotel which costed 2000 yen, what's kind of Omotenashi service can they provide?
+I can see the authors had spend a lot of time to revise the paper and re-write the manuscript, however, if the research design is not correct, the result generated is meaningless. Therefore I will not comment the research findings and conclusion.
+------------
+
+We understand, and redesigned the study to be able to study those differences. And while in Japan the concept of omotenashi permeates into all levels of customer service, the study is all the more interesting when studying the different reactions to differently priced hotels. 
+
+For this, we added an extra layer to our research by splitting the data into price ranges, although we admit that it's not fully encompassing the category or hotel type. To divide the data, first we observed the distribution of prices with a histogram, and adhered to a number of divisions that was appropriate for our data. 
+
+To divide the data, we chose the highest price available in each hotel for a single room and a single night. This way, even if most customers aren't staying in that room, we can categorize the hotels by their quality. For example, there's probably no capsule hotels with suite rooms that would offer very different experiences. This way we think that we can clearly distinguish cheaper hotels and hostels, from business hotels, and from Japanese style ryokan or resorts. 
+
+Then we performed the analysis and updated the discussion that was already written by observing the differences in results across different prices. We also added a new subsection of discussion, where we analyze all the differences in one place. We also comment in limitations that it is true that some hotels priced similarly will offer different experiences (e.g. Western style resorts and Japanese style ryokan).
+
+Some of our most interesting findings were added while analyzing price range differences, since we could observe the difference in behavior of Chinese and English-speaking tourists more clearly. For example, we found that Chinese people are more interested in shopping in Japan regardless of the level of luxury of the hotel they stay in, while Western tourists would enjoy shopping the most in only one of the categories (20,000 to 30,000 yen per night). 
+
+In addition, when redesigning the study, and because Reviewer #1 also pointed out your previous comments as important to consider, we also added a few more improvements. 
+
+------------
+>>>Comment #6 from your previous review
+>>>Regarding the keyword "Big", this is a very general word and can be describe as "Big" in size, "Big in feelings, or could be negative too "big disappointment". Can the authors explain further how this can be avoided in your data analysis?
+
+>>> 3. Comment #3 from Reviewer #1
+>>>"Among the four issues, it is the most critical one. Adjectives themselves cannot identify their associated attribute. I don't think "inspecting random samples" provides sufficient explanation. I recommend the authors run systematic analysis to examine the association between adjectives and nouns."
+------------
+
+We reconsidered this and completely agree. We decided to improve the paper by adding more steps to the methodology. We used the Stanford CoreNLP pipeline to perform dependency parsing and part of speech tagging to the collected reviews. We used the dependency parsing to find which words are connected to each other and how, and we used the part of speech tagging to verify that the connections were of adjectives and nouns. Then we incorporated those pairs in the frequency analysis and considered which attributes of the hotel the customers were referring to, and in which context. This method is not perfect, and we can only follow one connection per word, but it gives us a deeper insight into the factors that customers consider.
+
+------------
+>>>Comment #7 from your previous review
+>>>For the managerial and environmental keywords, what criteria were used for classifying these keywords?
+------------
+
+We received further commentary from Reviewer #1 on this and decided to reclassify these concepts. We define them now as hard and soft attributes. 
+
+Hard attributes are those that are impossible, or highly impractical for the hotel to change. For example, aside from an expensive relocation, it is impossible to influence if the transportation system is convenient nearby, or what stores are nearby, once the hotel is constructed. We also include the size of the room and the beds in this category, since usually bed size is constricted by the size of the room.
+
+Soft attributes are those that the hotel can feasibly change, with some investment, improvement in services, training of the staff or hiring new staff. Perhaps improving the cleanliness of the rooms, or improving language assistance for Chinese tourists.
+
+------------
+Editorial: 
+Many in-text citations (e.g. Page 4 & 9) are not in standard format, please put them inside a bracket or change the sentence to mention the author name.
+Line 236, please spell out the number "3" to three.
+------------
+
+We changed the spelling of lone numbers in the text. We also checked the in-text citations throughout the paper. Thank you for pointing out these mistakes.
+
+------------
+
+Thank you for your commentary, we hope this revised version is to your liking.
+
