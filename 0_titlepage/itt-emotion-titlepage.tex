@@ -3,156 +3,159 @@
 %\documentclass{svjour3}                     % onecolumn (standard format)
 %\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
 \documentclass[smallextended,natbib]{svjour3}       % onecolumn (second format)
-%\documentclass[twocolumn]{svjour3}          % twocolumn
-%
-\smartqed  % flush right qed marks, e.g. at end of proof
+% Fold 1
+  % Fold 2
+    % Fold 3
+      % Fold 4
+        %\documentclass[twocolumn]{svjour3}          % twocolumn
+        %
+        \smartqed  % flush right qed marks, e.g. at end of proof
 
-% For the ORCID icon
-\usepackage{scalerel}
-\usepackage{tikz}
-\usetikzlibrary{svg.path}
+        % For the ORCID icon
+        \usepackage{scalerel}
+        \usepackage{tikz}
+        \usetikzlibrary{svg.path}
 
-\definecolor{orcidlogocol}{HTML}{A6CE39}
-\tikzset{
-  orcidlogo/.pic={
-    \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
-    \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
-                 svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
-                 svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
-  }
-}
+        \definecolor{orcidlogocol}{HTML}{A6CE39}
+        \tikzset{
+          orcidlogo/.pic={
+            \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+            \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                         svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                         svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+          }
+        }
 
-\newcommand\orcidicon[1]{\href{https://orcid.org/#1}{\mbox{\scalerel*{
-\begin{tikzpicture}[yscale=-1,transform shape]
-\pic{orcidlogo};
-\end{tikzpicture}
-}{|}}}}
+        \newcommand\orcidicon[1]{\href{https://orcid.org/#1}{\mbox{\scalerel*{
+        \begin{tikzpicture}[yscale=-1,transform shape]
+        \pic{orcidlogo};
+        \end{tikzpicture}
+        }{|}}}}
 
-\usepackage{lineno, hyperref}
-% \usepackage[hyperfootnotes=false]{hyperref}
-\usepackage{array, pbox}
-\usepackage{mathtools}
-\usepackage{caption}
-\usepackage{graphicx}
+        \usepackage{lineno, hyperref}
+        \usepackage{array, pbox}
+        \usepackage{mathtools}
+        \usepackage{caption}
+        \usepackage{subcaption}
+        \usepackage{graphicx}
 
-% To use chinese characters
-\usepackage{CJKutf8}
+        % To use chinese characters
+        \usepackage{CJKutf8}
 
-% To add an appendix page
-\usepackage[page, title]{appendix}
+        % To add an appendix page
+        \usepackage[page, title]{appendix}
 
-% Stick footnotes to bottom of the page
-\usepackage[bottom]{footmisc}
+        % To insert commas into large numbers automatically
+        \usepackage{siunitx}
 
-% To insert commas into large numbers automatically
-\usepackage{siunitx}
+        % To add research questions
+        \usepackage{ntheorem}
+        \theoremseparator{:}
+        \newtheorem{rsq}{Research Question}
 
-% To add hypothesis theorem
-\usepackage{ntheorem}
-\theoremseparator{:}
-\newtheorem{hyp}{Hypothesis}
-
-% To add subhypothesis theorems
-\makeatletter
-\newcounter{subhyp} 
-\let\savedc@hyp\c@hyp
-\newenvironment{subhyp}
- {%
-  \setcounter{subhyp}{0}%
-  \stepcounter{hyp}%
-  \edef\saved@hyp{\thehyp}% Save the current value of hyp
-  \let\c@hyp\c@subhyp     % Now hyp is subhyp
-  \renewcommand{\thehyp}{\saved@hyp\alph{hyp}}%
- }
- {}
-\newcommand{\normhyp}{%
-  \let\c@hyp\savedc@hyp % revert to the old one
-  \renewcommand\thehyp{\arabic{hyp}}%
-} 
-\makeatother
+        % To add subrsq theorems
+        \makeatletter
+        \newcounter{subrsq} 
+        \let\savedc@rsq\c@rsq
+        \newenvironment{subrsq}
+         {%
+          \setcounter{subrsq}{0}%
+          \stepcounter{rsq}%
+          \edef\saved@rsq{\thersq}% Save the current value of rsq
+          \let\c@rsq\c@subrsq     % Now rsq is subrsq
+          \renewcommand{\thersq}{\saved@rsq\alph{rsq}}%
+         }
+         {}
+        \newcommand{\normrsq}{%
+          \let\c@rsq\savedc@rsq % revert to the old one
+          \renewcommand\thersq{\arabic{rsq}}%
+        } 
+        \makeatother
 
 
-% To add the envelope symbol in Corresponding Author using % \Letter
-\usepackage{marvosym}
+        % To add the envelope symbol in Corresponding Author using % \Letter
+        \usepackage{marvosym}
 
-% to add superscripts to mark the institute of authors
-% patch \maketitle:
-\newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
-\newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
+        % to add superscripts to mark the institute of authors
+        % patch \maketitle:
+        \newcommand*{\affaddr}[1]{#1} % No op here. Customize it for different styles.
+        \newcommand*{\affmark}[1][*]{\textsuperscript{#1}}
 
-% For table formatting
-\usepackage{multirow}
-\usepackage[normalem]{ulem}
-\useunder{\uline}{\ul}{}
+        % For table formatting
+        \usepackage{multirow}
+        \usepackage[normalem]{ulem}
+        \useunder{\uline}{\ul}{}
 
-% For landscape tables
-\usepackage{lscape}
+        % For landscape tables
+        \usepackage{lscape}
 
-\modulolinenumbers[5]
+        \modulolinenumbers[5]
 
-\journalname{Information Technology \& Tourism}
+        \journalname{Information Technology \& Tourism}
 
-\bibliographystyle{spbasic}
+        \bibliographystyle{spbasic}
 
 \begin{document}
 
-\title{Cross-culture differences in tourists faced with Japanese hospitality: A text mining and rank-biased overlap measure study of satisfaction and dissatisfaction factors in Chinese and Western cultures}
+\title{Cross-culture differences in tourists faced with Japanese hospitality: A text mining and natural language processing study of satisfaction and dissatisfaction factors in Chinese and Western cultures}
 
-\titlerunning{Cross-culture differences in tourists faced with Japanese hospitality: A text ...}
+% Fold 1
+  % Fold 2
+    % Fold 3
+      % Fold 4
+        \titlerunning{Cross-culture differences in tourists faced with Japanese hospitality: A text ...}
 
-\author{Elisa Claire Alem\'an Carre\'on \protect\affmark[1] \orcidicon{0000-0002-6437-0866} \and
-        Hugo Alberto Mendoza Espa\~na                                   \protect\affmark[1] \and
-        Hirofumi Nonaka                                                 \protect\affmark[1] \and
-        Toru Hiraoka                                                    \protect\affmark[2]
-}
+        \author{Elisa Claire Alem\'an Carre\'on \protect\affmark[1] \orcidicon{0000-0002-6437-0866} \and
+                Hugo Alberto Mendoza Espa\~na                                   \protect\affmark[1] \and
+                Hirofumi Nonaka                                                 \protect\affmark[1] \and
+                Toru Hiraoka                                                    \protect\affmark[2]
+        }
 
-\authorrunning{E. Alemán Carreón et al.}
+        \authorrunning{E. Alemán Carreón et al.}
 
-\institute{\Letter \hspace*{0.16em} Elisa Claire Alem\'an Carre\'on  \at
-            % Nagaoka University of Technology, Nagaoka, Japan \\
-            \hspace*{1em} \email{elisa.claire.aleman.carreon@gmail.com} \\
-            \hspace*{1em} ORCID: 0000-0002-6437-0866 %\\
-            % Corresponding Author %  \\
-            % \emph{Present address:P.C. 940-2033, Ribbon Nagaoka B104, 1128-3 Kaminozoki-machi, Nagaoka, Niigata, Japan}
-        \and
-            \hspace*{1em} Hugo Alberto Mendoza Espa\~na \at
-            % Nagaoka University of Technology, Nagaoka, Japan \\
-            \hspace*{1em} \email{mendoza.espana@gmail.com}
-        \and
-            \hspace*{1em} Hirofumi Nonaka \at
-            % Nagaoka University of Technology, Nagaoka, Japan \\
-            \hspace*{1em} \email{nonaka@kjs.nagaokaut.ac.jp}
-        \and
-            \hspace*{1em} Toru Hiraoka \at
-            % University of Nagasaki, Nagasaki, Japan \\
-            \hspace*{1em} \email{hiraoka@sun.ac.jp}
-        \and
-            \at \affaddr{\affmark[1] \hspace*{0.15em} Nagaoka University of Technology, Nagaoka, Japan}
-        \and
-            \at \affaddr{\affmark[2] \hspace*{0.15em} University of Nagasaki, Nagasaki, Japan}
-}
+        \institute{\Letter \hspace*{0.16em} Elisa Claire Alem\'an Carre\'on  \at
+                    % Nagaoka University of Technology, Nagaoka, Japan \\
+                    \hspace*{1em} \email{elisa.claire.aleman.carreon@gmail.com} \\
+                    \hspace*{1em} ORCID: 0000-0002-6437-0866 %\\
+                    % Corresponding Author %  \\
+                    % \emph{Present address:P.C. 940-2033, Ribbon Nagaoka B104, 1128-3 Kaminozoki-machi, Nagaoka, Niigata, Japan}
+                \and
+                    \hspace*{1em} Hugo Alberto Mendoza Espa\~na \at
+                    % Nagaoka University of Technology, Nagaoka, Japan \\
+                    \hspace*{1em} \email{mendoza.espana@gmail.com}
+                \and
+                    \hspace*{1em} Hirofumi Nonaka \at
+                    % Nagaoka University of Technology, Nagaoka, Japan \\
+                    \hspace*{1em} \email{nonaka@kjs.nagaokaut.ac.jp}
+                \and
+                    \hspace*{1em} Toru Hiraoka \at
+                    % University of Nagasaki, Nagasaki, Japan \\
+                    \hspace*{1em} \email{hiraoka@sun.ac.jp}
+                \and
+                    \at \affaddr{\affmark[1] \hspace*{0.15em} Nagaoka University of Technology, Nagaoka, Japan}
+                \and
+                    \at \affaddr{\affmark[2] \hspace*{0.15em} University of Nagasaki, Nagasaki, Japan}
+        }
 
-\date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
+        \date{Received: date / Accepted: date}
+        % The correct dates will be entered by the editor
 
-\maketitle
+        \maketitle
 
 \begin{acknowledgements}
 
-During our research, we received the commentary and discussion by our dear colleagues necessary to understand particular cultural aspects that could influence the interpretation of the data. We would like to show gratitude to Mr. Liangyuan Zhou, Ms. Min Fan, and Ms. Eerdengqiqige for this.
+  During our research, we received the commentary and discussion by our dear colleagues necessary to understand particular cultural aspects that could influence the data's interpretation. We would like to show gratitude to Mr. Liangyuan Zhou, Ms. Min Fan, and Ms. Eerdengqiqige for this.
 
-We would also like to show gratitude to Ms. Aleksandra Jajus, from whom we also received notes on the editing and commentary on the content of our manuscript.
+  We would also like to show gratitude to Ms. Aleksandra Jajus, from whom we also received notes on the editing and commentary on the content of our manuscript.
 
-\medskip
+  \medskip
 
-Funding: This work was supported by the Japan Construction Information Center Foundation (JACIC).
+  Funding: This work was supported by the Japan Construction Information Center Foundation (JACIC).
 
-\medskip
+  \medskip
 
-Conflict of interest: none
+  Conflict of interest: none
 
 \end{acknowledgements}
-
-
 
 \end{document}
