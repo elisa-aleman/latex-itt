@@ -10,17 +10,31 @@ parser.add_argument('-n', '--newversion', default="2", type=str,
                     help='Version number of the new file. [default %(default)s]')
 parser.add_argument('-o', '--oldversion', default="1", type=str,
                     help='Version number of the new file. [default %(default)s]')
-parser.add_argument('-s', '--setdiffendname', action='store_true',
+parser.add_argument('--setdiffendname', action='store_true',
                     default=False, help='Use provided --diffendname. [default %(default)s]')
-parser.add_argument('-d', '--diffendname', default="paper", type=str,
+parser.add_argument('--diffendname', default="paper", type=str,
                     help='Name of the project to append at end of the diff file. [default %(default)s]')
-parser.add_argument('-m', '--compile', action='store_true',
+parser.add_argument('-m', '--compile', '--make', action='store_true',
                     default=True, help='Compile with latexcompile.sh [default %(default)s]')
 parser.add_argument('-v', '--view', action='store_true',
                     default=True, help='Open the PDF at end of compile. [default %(default)s]')
 parser.add_argument('-c', '--clean', action='store_true',
                     default=True, help='Clean latex secondary files [default %(default)s]')
+parser.add_argument('--graphics-markup', default="new-only", type=str,
+                    help='latexdiff argument pass. Change highlight style for graphics embedded with \includegraphics commands. Check latexdiff -h for more info. [default %(default)s]')
+parser.add_argument('--math-markup', default="coarse", type=str,
+                    help='latexdiff argument pass. Determine granularity of markup in displayed math environments. Check latexdiff -h for more info. [default %(default)s]')
+parser.add_argument('-d','--disable-citation-markup', '--disable-auto-mbox', dest='auto-mbox', action='store_true',
+                    default=True, help='Supress citation markup and markup of other vulnerable commands in styles using ulem (UNDERLINE,FONTSTRIKE, CULINECHBAR) (the two options are identical and are simply aliases) [default %(default)s]')
+parser.add_argument('-e', '--enable-citation-markup', '--enable-auto-mbox', dest='auto-mbox', action='store_false',
+                    help='Enables back the citation auto-mbox behavior, which is disabled by default in my code')
+parser.add_argument('--no-tables', dest='table-mode', action='store_true',
+                    default=True, help='Avoids marking diff on tables and longtables [default %(default)s]')
+parser.add_argument('-t', '--enable-tables', dest='table-mode', action='store_false',
+                    help='Enables back the latexdiff marking on tables, which is disabled by default in my code')
 EOF
+
+# Getting filenames and version names
 
 NEWDOCNAME="${NEWFILE%.*}"
 OLDDOCNAME="${OLDFILE%.*}"
@@ -53,30 +67,57 @@ fi
 DIFFFILE="V${OLDV}--V${NEWV}-diff_${DIFFENDNAME}.tex"
 echo "diff filename set to $DIFFFILE"
 
-echo "Running latexdiff -t UNDERLINE --graphics-markup="none" --math-markup="whole" --disable-citation-markup --exclude-textcmd="section" --exclude-textcmd="section\*" --config="PICTUREENV=(?:picture|DIFnomarkup|table)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE"
-latexdiff -t UNDERLINE --graphics-markup="none" --math-markup="whole" --disable-citation-markup --exclude-textcmd="section" --exclude-textcmd="section\*" --config="PICTUREENV=(?:picture|DIFnomarkup|table)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE
+
+## Main latexdiff call
+echo "Running latexdiff with command:"
+if [[ $DISABLE_CITATION_MARKUP ]]; then
+    if [[ $NO_TABLES ]]; then
+        CALL="latexdiff -t UNDERLINE --graphics-markup=\"$GRAPHICS_MARKUP\" --math-markup=\"$MATH_MARKUP\" --disable-citation-markup --exclude-textcmd=\"section\" --exclude-textcmd=\"section\*\" --exclude-textcmd=\"footnote\" --config=\"PICTUREENV=(?:picture|DIFnomarkup|table|longtable)[\w\d*@]*\" $OLDFILE $NEWFILE > $DIFFFILE"
+        set -x
+        latexdiff -t UNDERLINE --graphics-markup="$GRAPHICS_MARKUP" --math-markup="$MATH_MARKUP" --disable-citation-markup --exclude-textcmd="section" --exclude-textcmd="section\*" --exclude-textcmd="footnote" --config="PICTUREENV=(?:picture|DIFnomarkup|table|longtable)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE
+    else
+        CALL="latexdiff -t UNDERLINE --graphics-markup=\"$GRAPHICS_MARKUP\" --math-markup=\"$MATH_MARKUP\" --disable-citation-markup --exclude-textcmd=\"section\" --exclude-textcmd=\"section\*\" --exclude-textcmd=\"footnote\" --config=\"PICTUREENV=(?:picture|DIFnomarkup)[\w\d*@]*\" $OLDFILE $NEWFILE > $DIFFFILE"
+        set -x
+        latexdiff -t UNDERLINE --graphics-markup="$GRAPHICS_MARKUP" --math-markup="$MATH_MARKUP" --disable-citation-markup --exclude-textcmd="section" --exclude-textcmd="section\*" --exclude-textcmd="footnote" --config="PICTUREENV=(?:picture|DIFnomarkup)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE
+    fi
+else
+    if [[ $NO_TABLES ]]; then
+        CALL="latexdiff -t UNDERLINE --graphics-markup=\"$GRAPHICS_MARKUP\" --math-markup=\"$MATH_MARKUP\" --exclude-textcmd=\"section\" --exclude-textcmd=\"section\*\" --exclude-textcmd=\"footnote\" --config=\"PICTUREENV=(?:picture|DIFnomarkup|table|longtable)[\w\d*@]*\" $OLDFILE $NEWFILE > $DIFFFILE"
+        set -x
+        latexdiff -t UNDERLINE --graphics-markup="$GRAPHICS_MARKUP" --math-markup="$MATH_MARKUP" --exclude-textcmd="section" --exclude-textcmd="section\*" --exclude-textcmd="footnote" --config="PICTUREENV=(?:picture|DIFnomarkup|table|longtable)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE
+    else
+        CALL="latexdiff -t UNDERLINE --graphics-markup=\"$GRAPHICS_MARKUP\" --math-markup=\"$MATH_MARKUP\" --exclude-textcmd=\"section\" --exclude-textcmd=\"section\*\" --exclude-textcmd=\"footnote\" --config=\"PICTUREENV=(?:picture|DIFnomarkup)[\w\d*@]*\" $OLDFILE $NEWFILE > $DIFFFILE"
+        set -x
+        latexdiff -t UNDERLINE --graphics-markup="$GRAPHICS_MARKUP" --math-markup="$MATH_MARKUP" --exclude-textcmd="section" --exclude-textcmd="section\*" --exclude-textcmd="footnote" --config="PICTUREENV=(?:picture|DIFnomarkup)[\w\d*@]*" $OLDFILE $NEWFILE > $DIFFFILE
+    fi
+fi
+set +x
+
+if [ $? -ne 0 ]; then
+    echo "Latexdiff error. Check log."
+    exit 1
+fi
+
+## Main latexcompile.sh call
 
 if [[ $COMPILE ]]; then
-    echo "Compiling with $COMPILERDIR/latexcompile.sh"
-    COMPILERDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    echo "Compiling with '$(dirname $0)/latexcompile.sh'"
     if [[ $VIEW ]]; then
         if [[ $CLEAN ]]; then
-            $COMPILERDIR/latexcompile.sh $DIFFFILE --view --clean 
+            "$(dirname $0)/latexcompile.sh" $DIFFFILE --view --clean 
         else
-            $COMPILERDIR/latexcompile.sh $DIFFFILE --view
+            "$(dirname $0)/latexcompile.sh" $DIFFFILE --view
         fi
     else
         if [[ $CLEAN ]]; then
-            $COMPILERDIR/latexcompile.sh $DIFFFILE --clean 
+            "$(dirname $0)/latexcompile.sh" $DIFFFILE --clean 
         else
-            $COMPILERDIR/latexcompile.sh $DIFFFILE
+            "$(dirname $0)/latexcompile.sh" $DIFFFILE
         fi
     fi
 fi
 
+echo "Ran with call:"
+echo $CALL
+
 exit 0
-
-
-
-
-
