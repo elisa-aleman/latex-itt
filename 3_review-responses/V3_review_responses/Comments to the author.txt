@@ -1,0 +1,43 @@
+COMMENTS TO THE AUTHOR:
+
+From Editor: please consider a more concise title that reflects the central idea of the paper. 
+
+[From Associate Editor: This further revised version is much better. After addressing the minor comments from Reviewer 1, this paper can be accepted.]
+
+Reviewer #1: I can see that the authors put a great effort on the manuscript revision; the revised paper reads much better.
+
+I believe the greatest contribution of this manuscript to our field is in its rigorous and thorough methodology. While it is quite technical, the authors seem to utilise proper methods to attain the research objectives.
+
+However, I still find this paper has rooms for further development/clarification. Here are some suggestions/comments:
+1. Conceptualisation of satisfaction
+How is satisfaction defined in this paper? Is satisfaction different from "perceived value"? Can a customer be satisfied with one aspect while dissatisfied with other aspect? If so, is the customer a satisfied or dissatisfied customer? Satisfaction is a well-researched topic in the hospitality and tourism field and marketing field. Conceptual discussion of satisfaction is necessary.
+
+2. Conceptualisation of omotenashi (in comparison to hospitality)
+What makes Japanese omotenashi different from hospitality in other countries or even in Japan? Do all service organisations in Japan provide omotenashi (high level of hospitality)? What are the factors of omotenashi that differentiate itself form hospitality? Do all hotels provide omotenashi? If omotenashi is used to describe Japanese hospitality and not all hotels provide omotenashi, I recommend the authors to remove omotenashi from research questions (or replace it with another term like hospitality).
+
+3. WEIRD sample
+The authors argued that WEIRD sample is biased. I would like to know how the samples for this study are not from WEIRD sample. Similarly, the authors are expected to elaborate on how well their sample represent the population (all Chinese and Western hotel guests). If the authors cannot prove, I recommend the authors to delete the WEIRD sample section or not to have discussion about a biased sample from the manuscript. Instead, the authors may want to elaborate on the role of culture in expectation and evaluation. What makes Chinese customers value hard attributes more than soft ones? I believe the value of this research is in the comparison between Chinese and Western customers, rather than a biased (WEIRD) vs. unbiased sample.
+
+4. Discussion
+I feel the discussion section reads like another version of findings/results. I expect more fundamental/theoretical discussions, which are derived from findings/results. What is known about Chinese and Western cultures? How do these known cultural characteristics affect evaluation of service? Are there something similar and/or different between what we know about the culture and what this study found?
+
+Here are minor things:
+1. High level of hospitality (line 127)
+It is recommended to avoid such adjective-noun phrase as "high level" in this manuscript. How is "high level" of hospitality defined? Unless it is objectively measured, such a phrase is subjective and hurts reliability and validity of the paper.
+
+2. Not much value added (lines 130 - 136).
+I am not sure what message these statements try to deliver.
+
+3. Japanese omotenashi factors (line 139)
+Do Japanese omotenashi factors mean hard and soft attributes in Japanese hotels? If so, in what aspects are they (hard and soft attributes in Japanese hotels) different from hard and soft attributes in other countries?
+
+4. Different reaction to Japanese omotenashi factors (line 145)
+How is a reaction defined in this study? Isn't it evaluation, which emphasises cognitive and affective aspects, whereas reaction emphasises a behavioral aspect? 
+
+5. Hotel lodging (line 147)
+It does not sound right. "hotel stay" would be better.
+
+6. Easily changeable if small investments (line 646)
+Again, "easily" and "small" are subjective. How is small investment defined? Getting rid of cigarette smell from rooms (assuming it requires the rooms unoccupied for a long period of time) may cost them more than renovating an entire floor.
+
+__

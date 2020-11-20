@@ -1,0 +1,91 @@
+Reviewer #1 Response
+
+Thank you for your comments. I will enclose them in hyphens and respond below that section for each comment.
+
+In summary, we agreed with all the comments and revised the manuscript to reflect those changes, as well as added to the reviewed literature in the process.
+
+------------
+1. Conceptualisation of satisfaction
+How is satisfaction defined in this paper? Is satisfaction different from "perceived value"? Can a customer be satisfied with one aspect while dissatisfied with other aspect? If so, is the customer a satisfied or dissatisfied customer? Satisfaction is a well-researched topic in the hospitality and tourism field and marketing field. Conceptual discussion of satisfaction is necessary.
+------------
+
+In our study, we consider the definitions by Hunt (1975) that satisfaction is a realization of a customer's expectation, and posit that customers can have different expectations towards different aspects of a service.
+
+We added more discussion on the conceptual definition of satisfaction for the purposes of our study in section "3.2 Customer satisfaction and dissatisfaction towards individual factors during hotel stay", as well as an actual statement of our definition. 
+
+We previously hinged on citing previous definitions and expanding on that, but we agree that it is necessary to state our explicit intentions when discussing satisfaction.
+
+However, we do realize that not knowing the overall satisfaction of each individual customer is a limitation of our study, and thus we added a statement in section "8. Limitations and Future Work.".
+
+------------
+2. Conceptualisation of omotenashi (in comparison to hospitality)
+What makes Japanese omotenashi different from hospitality in other countries or even in Japan? Do all service organisations in Japan provide omotenashi (high level of hospitality)? What are the factors of omotenashi that differentiate itself form hospitality? Do all hotels provide omotenashi? If omotenashi is used to describe Japanese hospitality and not all hotels provide omotenashi, I recommend the authors to remove omotenashi from research questions (or replace it with another term like hospitality).
+------------
+
+In our study, we considered the word Omotenashi to be a cultural aspect in Japan that permeates every business practice. However, we do not intend to measure this influence, or to consider that certain hotels offer more or less omotenashi than others. Rather, our study focuses on the results of that influence: service, staff behavior and hospitality. All of these factors are universal to every kind of hotel, so we removed the word Omotenashi from our research questions. 
+
+We'd like to note that when speaking in Japanese, there is no other word for hospitality rather than omotenashi, so in the sense that we wrote this paper in Japan, we didn't realize there could be a theoretical confusion in this aspect. There is no practical difference of omotenashi and hospitality in Japan in the eyes of our study, and the only difference from other countries, is that the culture in Japan has a strong practice of this hospitality in any service business. 
+
+------------
+3. WEIRD sample
+The authors argued that WEIRD sample is biased. I would like to know how the samples for this study are not from WEIRD sample. Similarly, the authors are expected to elaborate on how well their sample represent the population (all Chinese and Western hotel guests). If the authors cannot prove, I recommend the authors to delete the WEIRD sample section or not to have discussion about a biased sample from the manuscript. Instead, the authors may want to elaborate on the role of culture in expectation and evaluation. What makes Chinese customers value hard attributes more than soft ones? I believe the value of this research is in the comparison between Chinese and Western customers, rather than a biased (WEIRD) vs. unbiased sample.
+------------
+
+Our samples are not from the WEIRD sample simply because we include non-Western subjects in our sample. However, we agree that arguing for biased or unbiased deters from the main objective of our paper, and adds little value to our argument. Therefore we removed it as asked.
+
+We discuss the role of culture in expectation and evaluation a bit more, as we will state in the following comment.
+
+------------
+4. Discussion
+I feel the discussion section reads like another version of findings/results. I expect more fundamental/theoretical discussions, which are derived from findings/results. What is known about Chinese and Western cultures? How do these known cultural characteristics affect evaluation of service? Are there something similar and/or different between what we know about the culture and what this study found?
+------------
+
+A
+
+=======================
+Minor comments:
+
+1. High level of hospitality (line 127)
+It is recommended to avoid such adjective-noun phrase as "high level" in this manuscript. How is "high level" of hospitality defined? Unless it is objectively measured, such a phrase is subjective and hurts reliability and validity of the paper.
+------------
+
+We rephrased to avoid being subjective in this matter.
+
+------------
+2. Not much value added (lines 130 - 136).
+I am not sure what message these statements try to deliver.
+------------
+
+We removed these and rewrote part of this section to better flow into the research questions.
+
+------------
+3. Japanese omotenashi factors (line 139)
+Do Japanese omotenashi factors mean hard and soft attributes in Japanese hotels? If so, in what aspects are they (hard and soft attributes in Japanese hotels) different from hard and soft attributes in other countries?
+------------
+
+We changed this to "hospitality and service factors". The misconstruction here is that the word Omotenashi in the Japanese language includes both hospitality and service, so it was used as an abbreviation for these. We realized this is confusing for people that don't speak Japanese so we removed instances where this happens across the paper (not only in line 139).
+
+------------
+4. Different reaction to Japanese omotenashi factors (line 145)
+How is a reaction defined in this study? Isn't it evaluation, which emphasises cognitive and affective aspects, whereas reaction emphasises a behavioral aspect? 
+------------
+
+We changed this to evaluation, as pointed out. 
+
+------------
+5. Hotel lodging (line 147)
+It does not sound right. "hotel stay" would be better.
+------------
+
+We changed this in the manuscript. 
+
+------------
+6. Easily changeable if small investments (line 646)
+Again, "easily" and "small" are subjective. How is small investment defined? Getting rid of cigarette smell from rooms (assuming it requires the rooms unoccupied for a long period of time) may cost them more than renovating an entire floor.
+------------
+
+We changed the definition of soft and hard attributes to be less subjective. Soft attributes are those that the management and staff can directly influence, such as service factors. hard attributes are those that relate to physical aspects of the hotel, such as facilities, location, infrastructure, environment, etc. Technically speaking, the categories stay the same, but the definition lends itself to be objective in this definition.
+
+------------
+
+Thank you for your commentary, we hope this revised version is to your liking.
