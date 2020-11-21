@@ -40,7 +40,9 @@ We discuss the role of culture in expectation and evaluation a bit more, as we w
 I feel the discussion section reads like another version of findings/results. I expect more fundamental/theoretical discussions, which are derived from findings/results. What is known about Chinese and Western cultures? How do these known cultural characteristics affect evaluation of service? Are there something similar and/or different between what we know about the culture and what this study found?
 ------------
 
-A
+We agree that we hadn't discussed culture and its influence in expectations in as much depths as we could have. We added references to Hofstede's and GLOBAL models of cultural dimensions, and discussed how some of these might influence if customers prefer hard or soft attributes in section "7.2 Hard vs. soft satisfaction factors". 
+
+We mainly found that the individualistic aspect of Western culture had an influence in their expectations towards service, and that the collectivist aspect of Chinese culture lead to a lowered regard for soft attributes.
 
 =======================
 Minor comments:
