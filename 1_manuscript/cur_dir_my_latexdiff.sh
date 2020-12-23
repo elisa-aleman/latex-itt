@@ -1,1 +1,1 @@
-../my_latexdiff.sh itt-emotion_V3.tex itt-emotion.tex --newversion="4" --compile --view --clean 
+../my_latexdiff.sh itt-emotion_V4.tex itt-emotion.tex --newversion="5" --compile --view --clean 

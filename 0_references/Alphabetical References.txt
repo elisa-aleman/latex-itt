@@ -56,6 +56,7 @@ Rajman M, Besançon R (1998) Text mining-knowledge extraction from unstructured 
 Ren G, Hong T (2019) Examining the relationship between specific negative emotions and the perceived helpfulness of online reviews. Information Processing & Management 56(4):1425--1438, DOI 10.1016/j.ipm.2018.04.003
 Romão J, Neuts B, Nijkamp P, Shikida A (2014) Determinants of trip choice, satisfaction and loyalty in an eco-tourism destination: a modelling study on the Shiretoko Peninsula, Japan. Ecological Economics 107:195--205, DOI 10.1016/j.ecolecon.2014.07.019
 Ryan C, Mo X (2001) Chinese visitors to New Zealand - demographics and perceptions. Journal Of Vacation Marketing 8(1):13--27, DOI 10.1177/135676670200800103
+Saulton A, Bülthoff HH, de la Rosa S, Dodds TJ (2017) Cultural differences in room size perception. PLOS ONE 12(4):e0176115, DOI 10.1371/journal.pone.0176115
 Shanka T, Taylor R (2004) An investigation into the perceived importance of service and facility attributes to hotel satisfaction. Journal of Quality Assurance in Hospitality & Tourism 4(3-4):119--134, DOI 10.1300/J162v04n03_08
 Shannon C (1948) A mathematical theory of communication. Bell System Technical Journal 27(3):279--423, DOI 10.1002/j.1538-7305.1948.tb01338.x
 Stone PJ, Dunphy DC, Smith MS (1966) The general inquirer: A computer approach to content analysis. MIT press
