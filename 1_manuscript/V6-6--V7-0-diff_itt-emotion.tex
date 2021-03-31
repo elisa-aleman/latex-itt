@@ -1,4 +1,7 @@
 \RequirePackage{fix-cm}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL itt-emotion_V6-6.tex   Sat Feb 27 18:43:21 2021
+%DIF ADD itt-emotion.tex        Thu Apr  1 04:29:57 2021
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
 %\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
@@ -94,6 +97,84 @@
         \journalname{Information Technology \& Tourism}
 
         \bibliographystyle{spbasic}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
@@ -138,8 +219,8 @@
 
 \begin{abstract}
 
-  With a growing tourism industry in Japan, the importance of analyzing customer expectations and satisfaction factors at a large scale is evident. Furthermore, a cross-culture study is necessary to understand the differences in satisfaction factors of the biggest tourist populations in Japan, Chinese and Western tourists. 
-  Therefore, our study analyzed expectations and satisfaction factors in Chinese and Western cultures, comparing soft attributes, such as service, with hard attributes, such as location and facilities, and studied different price ranges.
+  \DIFdelbegin \DIFdel{We }\DIFdelend \DIFaddbegin \DIFadd{With a growing tourism industry in Japan, the importance of analyzing customer expectations and satisfaction factors at a large scale is evident. Furthermore, a cross-culture study is necessary to understand the differences in satisfaction factors of the biggest tourist populations in Japan, Chinese and Western tourists. 
+  Therefore, our study }\DIFaddend analyzed expectations and satisfaction factors in Chinese and Western cultures, comparing soft attributes, such as service, with hard attributes, such as location and facilities, and studied different price ranges.
   We collected our data with web crawling, labeled a sample, applied Shannon's entropy to extract these factors, and then used them to classify a more extensive data set with an SVM. We then used dependency parsing and part-of-speech tagging to extract the nouns that were tied to positive adjectives. 
   We found that Chinese tourists are concerned more with room quality than hospitality, whereas, Western tourists are delighted more by the staff behavior. We also found that the lack of a Chinese-friendly environment for Chinese customers and the smell of cigarettes for Western ones can be disappointing factors of their stay. 
   As one of the first studies in the tourism field to use the high-standard Japanese hospitality environment for this analysis, our cross-cultural study contributes to both the theoretical understanding of satisfaction and suggests practical applications and strategies for hotel managers.
@@ -155,10 +236,15 @@
   Inbound international tourism has been increasingly affecting Japanese economy \cite[][]{jones2009}. A year-on-year growth rate of 19.3\% was observed in 2017, with \num[group-separator={,}]{28691073} inbound tourists \cite[][]{jnto2003-2019}. 
 
   Japan’s hospitality has been known historically to be of the highest quality. \textit{Omotenashi}, which describes the spirit of Japanese hospitality, with roots in Japanese history and tea ceremony, is celebrated worldwide \cite[][]{al2015characteristics}. Consequently, it would stand to reason that tourists visiting Japan would have this hospitality as their first and foremost satisfaction factor. However, it is known that customers from different countries and cultures have different expectations \cite[][]{engel1990}. Thus, it could be theorized that their satisfaction factors should be different. 
+\DIFaddbegin 
 
-  The Japanese tourist market is gradually becoming diverse because of multicultural tourist populations. This diversity means that the expectations when staying at a hotel will be varied. For a growing industry, it is essential to identify the expectations of customers in order to provide the appropriate services, cater to these expectations to ensure and increase customer satisfaction, maintain a good reputation, and generate positive word-of-mouth. However, with ever increasing customer populations, this is hard to accomplish without extensive studies of the customer base. There is a need for an automated method for identifying these expectations at a large scale. Our study intends to answer to the need for such a methodology utilizing machine learning and natural language processing of large amounts of data. With this methodology we explore the expectations and needs for the two most differing cultures currently interacting with the hospitality industry in Japan.  
+  \DIFaddend The Japanese tourist market is gradually becoming diverse because of multicultural tourist populations. This diversity means that the expectations when staying at a hotel will be varied. \DIFdelbegin \DIFdel{Therefore, hotel management must }\DIFdelend \DIFaddbegin \DIFadd{For a growing industry, it is essential to identify the expectations of customers in order to provide the appropriate services, }\DIFaddend cater to these expectations to \DIFaddbegin \DIFadd{ensure and }\DIFaddend increase customer satisfaction, maintain a good reputation, and generate positive word-of-mouth. \DIFdelbegin %DIFDELCMD < 
 
-  It is known that Western and Asian customers are heavily differentiated\cite[][]{LEVY2010319}. Considering the numbers of inbound tourists in Japan, and the language capabilities of our team, our study focuses on Western and Chinese tourists. Chinese tourists accounted for 25.63\% of the tourist population. On the other hand, Western countries accounted for 11.4\% of the total, and 7.23\% were countries where English is the official or the de facto national language \cite[][]{jnto2003-2019}. The effect of Chinese tourists on international economies is increasing, along with the number of studies on this phenomenon \cite[][]{sun2017}. Despite this, many tourist-behavior analyses have been performed only involving Western subjects. As such, a knowledge gap existed until recent decades.
+%DIFDELCMD <   %%%
+\DIFdel{Our study }\DIFdelend \DIFaddbegin \DIFadd{However, with ever increasing customer populations, this is hard to accomplish without extensive studies of the customer base. There is a need for an automated method for identifying these expectations at a large scale. Our study intends to answer to the need for such a methodology utilizing machine learning and natural language processing of large amounts of data. With this methodology we explore the expectations and needs for the two most differing cultures currently interacting with the hospitality industry in Japan.  
+}
+
+  \DIFadd{It is known that Western and Asian customers are heavily differentiated}\cite[][]{LEVY2010319}\DIFadd{. Considering the numbers of inbound tourists in Japan, and the language capabilities of our team, our study }\DIFaddend focuses on Western and Chinese tourists\DIFdelbegin \DIFdel{, considering their numbers}\DIFdelend . Chinese tourists accounted for 25.63\% of the tourist population. On the other hand, Western countries accounted for 11.4\% of the total, and 7.23\% were countries where English is the official or the de facto national language \cite[][]{jnto2003-2019}. The effect of Chinese tourists on international economies is increasing, along with the number of studies on this phenomenon \cite[][]{sun2017}. Despite this, many tourist-behavior analyses have been performed only involving Western subjects. As such, a knowledge gap existed until recent decades.
 
   In studies involving Asian populations in the analysis, Chinese-tourist behaviors have been evaluated most commonly \cite[e.g.][]{liu2019, chang2010, dongyang2015}. The few studies reporting comparisons between Asian and Western tourists’ behaviors \cite[e.g.][]{choi2000} are typically survey- or interview-based, using small samples. These studies, although valid, can have limitations, namely, the scale and sampling. In the past, survey-based studies have provided a theoretical background for a few specific tourist populations of a single culture or traveling with a single purpose. These studies' limited scope often leads to difficulties in observing cultural and language differences in a single study. This creates a need for large-scale cross-cultural studies for the increasing Asian and Western tourist populations. It could be said that Westerners account for a smaller portion of the tourist population compared to Asians. However, according to \cite{choi2000}, Westerners are known as ``long-haul'' customers, spending more than 45\% of their budget on hotels. In comparison, their Asian counterparts only spend 25\% of their budget on hotels. Therefore, it is essential to study Asian and Western tourist populations, their differences, and the contrast with the existing literature results. For this, we used a data-driven approach to our analysis.
 
@@ -168,57 +254,121 @@
 
 \section{Research objective}\label{research_objective}
 
-  With the knowledge that cultural background influences expectations in customers, which in turn is the basis for satisfaction, it becomes important to know the difference in difference in factors influencing satisfaction and dissatisfaction between the most differing and numerous tourist populations in a given area. 
+  \DIFaddbegin \DIFadd{With the knowledge that cultural background influences expectations in customers, which in turn is the basis for satisfaction, it becomes important to know the difference in difference in factors influencing satisfaction and dissatisfaction between the most differing and numerous tourist populations in a given area. 
+}
 
-  This study aims to determine the difference in factors influencing satisfaction and dissatisfaction between Chinese and English-speaking tourists in the context of high-grade hospitality of Japanese hotels across several price ranges. We use machine learning to classify the sentiment in texts and natural language processing to study commonly used word pairings. More importantly, we also intend to measure how hard and soft attributes influence customer groups' satisfaction and dissatisfaction. We define hard attributes as attributes relating to physical and environmental aspects, such as the hotel's facilities, location, infrastructure, and surrounding real estate. In contrast, soft attributes are the hotel's non-physical attributes related to services, staff, or management.
+  \DIFaddend This study aims to determine the difference in factors influencing satisfaction and dissatisfaction between Chinese and English-speaking tourists in the context of high-grade hospitality of Japanese hotels across several price ranges. We use machine learning to classify the sentiment in texts and natural language processing to study commonly used word pairings. More importantly, we also intend to measure how hard and soft attributes influence customer groups' satisfaction and dissatisfaction. We define hard attributes as attributes relating to physical and environmental aspects, such as the hotel's facilities, location, infrastructure, and surrounding real estate. In contrast, soft attributes are the hotel's non-physical attributes related to services, staff, or management.
 
 \section{Theoretical background and hypothesis development}\label{theory_hypothesis}
 
-  \subsection{Cultural influence in expectation and satisfaction}\label{theory_expectations}
+  \subsection{\DIFdelbegin \DIFdel{Japanese hospitality }\DIFdelend \DIFaddbegin \DIFadd{Cultural influence in expectation }\DIFaddend and \DIFdelbegin \DIFdel{service: }\textit{\DIFdel{Omotenashi}}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{satisfaction}\DIFaddend }\DIFdelbegin %DIFDELCMD < \label{theory_omotenashi}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{theory_expectations}
+\DIFaddend 
 
-    Customer satisfaction in tourism has been analyzed since decades past, \cite{hunt1975} having defined customer satisfaction as the realization or overcoming of expectations towards the service. \cite{oliver1981} defined it as an emotional response to the provided services in retail and other contexts, and \cite{oh1996} reviewed the psychological processes of customer satisfaction for the hospitality industry. It is generally agreed upon that satisfaction and dissatisfaction stem from the individual expectations of the customer. As such, \cite{engel1990} states that each customer's background, therefore, influences satisfaction and dissatisfaction. It can also be said that satisfaction stems from the perceptions of quality in comparison to these expectations. 
+    \DIFdelbegin \DIFdel{The spirit of Japanese hospitality, or }\textit{\DIFdel{Omotenashi}}%DIFAUXCMD
+\DIFdel{, has roots in the country’s history, and to this day, it is regarded as the highest standard }%DIFDELCMD < \cite[][]{ikeda2013omotenashi, al2015characteristics}%%%
+\DIFdel{. There is a famous phrase in customer service in Japan: }\textit{\DIFdel{okyaku-sama wa kami-sama desu}}%DIFAUXCMD
+\DIFdel{, meaning ``The customer is god.'' Some scholars say that }\textit{\DIFdel{omotenashi}} %DIFAUXCMD
+\DIFdel{originated from the old Japanese art of the tea ceremony in the 16th century, while others found that it originates in the form of formal banquets in the 7th-century }%DIFDELCMD < \cite[][]{aishima2015origin}%%%
+\DIFdel{. The practice of high standards in hospitality has survived throughout the years. Presently, it permeates all business practices in Japan, from the cheapest convenience stores to the most expensive ones. Manners, service, and respect towards the customer are taught to workers in their training. High standards are always followed to not fall behind in the competition. In Japanese businesses, including hotels, staff members are trained to speak in }\textit{\DIFdel{sonkeigo}}%DIFAUXCMD
+\DIFdel{, or ``respectful language,'' one of the most formal of the Japanese formality syntaxes. They are also trained to bow differently depending on the situation, where a light bow could be used to say ``Please, allow me to guide you.'' Deep bows are used to apologize for any inconvenience the customer could have faced, followed by a very respectful apology. Although the word }\textit{\DIFdel{omotenashi}} %DIFAUXCMD
+\DIFdel{can be translated directly as ``hospitality,'' it includes both the concepts of hospitality and service }%DIFDELCMD < \cite[][]{Kuboyama2020}%%%
+\DIFdel{. This hospitality culture permeates every type of business with customer interaction in Japan. A simple convenience shop could express all of these hospitality and service standards, which are not exclusive to hotels.  
+}%DIFDELCMD < 
 
-    These differences in customers' backgrounds can be summed up in cultural differences as well. In the past, satisfaction and perceived service quality have been found to be influenced by cultural differences \cite[e.g.][]{mattila1999role, winsted1997service}. Service quality perceptions have been studied via measurements such as SERVQUAL \cite[e.g.][]{armstrong1997importance}. 
+%DIFDELCMD <     %%%
+\DIFdel{It stands to reason that this cultural aspect of hospitality would positively influence customer satisfaction. However, in many cases, other factors such as proximity to a convenience store, transport availability, or room quality might be more critical to a customer.  In this study, we cannot directly determine whether a hotel is practicing the cultural standards of }\textit{\DIFdel{omotenashi}}%DIFAUXCMD
+\DIFdel{. Instead, we consider it as a cultural factor that influences all businesses in Japan. We then observe the customers' evaluations regarding service and hospitality factors and compare them to other places and business practices in the world. In summary, we consider the influence of the cultural aspect of }\textit{\DIFdel{omotenashi}} %DIFAUXCMD
+\DIFdel{while analyzing the evaluations on service and hospitality factors that are universal to all hotels in any country.
+}%DIFDELCMD < 
 
-    Previous studies on the dimensions of culture that influence differences in expectations have been performed in the past as well \cite[e.g.][]{MATTILA201910, LEVY2010319, donthu1998cultural}, such as comparing individualism vs. collectivism, high context vs. low context, uncertainty avoidance, among other factors. While culture as a concept is difficult to quantify, some researchers have tried to use these and more dimensions to measure cultural differences, such as the six dimensions described by \cite{hofstede1984culture}, or the nine dimensions of the GLOBE model \cite[][]{house1999cultural}.
+%DIFDELCMD <     %%%
+\DIFdel{Therefore, we pose the following research question:
+}%DIFDELCMD < 
 
-    These cultural dimensions are more differentiated in Western and Asian cultures \cite[][]{LEVY2010319}. Our study being located in Japan, it stands to reason that the differences in expectations between Western tourists and Asian tourists should be understood in order to provide a good service. However, even though geographically close, Japanese and Chinese cultures are both very different when it comes to customer service. This is why our study focuses on the difference between Chinese and Western customers in Japan. The contrasting cultural backgrounds between Chinese and Western customers will lead to varying expectations of the hotel services, the experiences they want to have while staying at a hotel, and the level of comfort that they will have. In turn, these different expectations will determine the distinct factors of satisfaction and dissatisfaction for each kind of customer and the order in which they prioritize them. 
+%DIFDELCMD <     \begin{subrsq}
+%DIFDELCMD <     \begin{rsq}
+%DIFDELCMD <     \label{rsq:hospitality}
+%DIFDELCMD <     %%%
+\DIFdel{To what degree are Chinese and Western tourists satisfied with Japanese hospitality factors such as staff behavior or service?
+    }%DIFDELCMD < \end{rsq}
+%DIFDELCMD < 
+
+%DIFDELCMD <     %%%
+\DIFdel{However, Japanese hospitality is based on the Japanese culture. Different cultures interacting with it could provide a different evaluation of it. Some might be impressed by it, whereas some might consider other factors more important to their stay in a hotel. This point leads us to a derivative of the aforementioned research question:
+}%DIFDELCMD < 
+
+%DIFDELCMD <     \begin{rsq}
+%DIFDELCMD <     \label{rsq:hospitality_both}
+%DIFDELCMD <     %%%
+\DIFdel{Do Western and Chinese tourists have a different evaluation of Japanese hospitality factors such as staff behavior or service?
+    }%DIFDELCMD < \end{rsq}
+%DIFDELCMD <     \end{subrsq}
+%DIFDELCMD < 
+
+%DIFDELCMD <   %%%
+\subsection{\DIFdel{Customer satisfaction and dissatisfaction towards individual factors during hotel stay}}%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{theory_satisfaction}
+%DIFDELCMD < 
+
+%DIFDELCMD <     %%%
+\DIFdelend Customer satisfaction in tourism has been analyzed since decades past, \cite{hunt1975} having defined customer satisfaction as the realization or overcoming of expectations towards the service. \cite{oliver1981} defined it as an emotional response to the provided services in retail and other contexts, and \cite{oh1996} reviewed the psychological processes of customer satisfaction for the hospitality industry. It is generally agreed upon that satisfaction and dissatisfaction stem from the individual expectations of the customer. As such, \cite{engel1990} states that each customer's background, therefore, influences satisfaction and dissatisfaction. \DIFaddbegin \DIFadd{It can also be said that satisfaction stems from the perceptions of quality in comparison to these expectations. 
+}
+
+    \DIFadd{These differences in customers' backgrounds can be summed up in cultural differences as well. In the past, satisfaction and perceived service quality have been found to be influenced by cultural differences }\cite[e.g.][]{mattila1999role, winsted1997service}\DIFadd{. Service quality perceptions have been studied via measurements such as SERVQUAL }\cite[e.g.][]{armstrong1997importance}\DIFadd{. 
+}
+
+    \DIFaddend Previous studies on the dimensions of culture that influence differences in expectations have been performed in the past \DIFdelbegin %DIFDELCMD < \cite{donthu1998cultural}%%%
+\DIFdel{. Western and Chinese customers then have very different backgrounds and cultures. These varying backgrounds }\DIFdelend \DIFaddbegin \DIFadd{as well }\cite[e.g.][]{MATTILA201910, LEVY2010319, donthu1998cultural}\DIFadd{, such as comparing individualism vs. collectivism, high context vs. low context, uncertainty avoidance, among other factors. While culture as a concept is difficult to quantify, some researchers have tried to use these and more dimensions to measure cultural differences, such as the six dimensions described by }\cite{hofstede1984culture}\DIFadd{, or the nine dimensions of the GLOBE model }\cite[][]{house1999cultural}\DIFadd{.
+}
+
+    \DIFadd{These cultural dimensions are more differentiated in Western and Asian cultures }\cite[][]{LEVY2010319}\DIFadd{. Our study being located in Japan, it stands to reason that the differences in expectations between Western tourists and Asian tourists should be understood in order to provide a good service. However, even though geographically close, Japanese and Chinese cultures are both very different when it comes to customer service. This is why our study focuses on the difference between Chinese and Western customers in Japan. The contrasting cultural backgrounds between Chinese and Western customers }\DIFaddend will lead to varying expectations of the hotel services, the experiences they want to have while staying at a hotel, and the level of comfort that they will have. In turn, these different expectations will determine the distinct factors of satisfaction and dissatisfaction for each kind of customer and the order in which they prioritize them. 
 
     Because of their different origins, expectations, and cultures, it stands to reason Chinese and Western tourists could have completely different factors to one another. Therefore, it could be that some factors do not appear in the other reviews at all. For example, between different cultures, it can be that a single word can express some concept that would take more words in the other language. Therefore, we must measure their differences or similarities at their common ground as well.
 
-    \subsection{Customer satisfaction and dissatisfaction towards individual factors during hotel stay}\label{theory_satisfaction}
+    \DIFdelbegin \DIFdel{However, in }\DIFdelend \DIFaddbegin \subsection{\DIFadd{Customer satisfaction and dissatisfaction towards individual factors during hotel stay}}\label{theory_satisfaction}
 
-    We reviewed the importance of expectations in the development of satisfaction and dissatisfaction, and the influence that cultural backgrounds have in shaping these expectations. This is true for overall satisfaction for the service as a whole, as well as individual elements that contribute to satisfaction.
+    \DIFadd{We reviewed the importance of expectations in the development of satisfaction and dissatisfaction, and the influence that cultural backgrounds have in shaping these expectations. This is true for overall satisfaction for the service as a whole, as well as individual elements that contribute to satisfaction.
+}
 
-    In this study, we study not overall customer satisfaction but the satisfaction and dissatisfaction that stem from individual-specific expectations, be they conscious or unconscious. For example, if a customer has a conscious expectation of a comfortable bed and a wide shower, and it is realized during their visit, they will be satisfied with this matter. However, suppose that same customer with a conscious expectation of a comfortable bed experienced loud noises at night. In that case, they can be dissatisfied with a different aspect, regardless of the satisfaction towards the bed. Then, the same customer might have packed their toiletries, thinking that the amenities might not include those. They can then be pleasantly surprised with good quality amenities and toiletries, satisfying an unconscious expectation. This definition of satisfaction does not allow us to examine overall customer satisfaction. However, it will allow us to examine the factors that a hotel can revise individually and how a population perceives them as a whole. In our study, we consider the definitions in \cite{hunt1975} that satisfaction is a realization of an expectation, and we posit that customers can have different expectations towards different service aspects. Therefore, in our study, we define satisfaction as the emotional response to the realization or overcoming of conscious or unconscious expectations towards an individual aspect or factor of a service. On the other hand, dissatisfaction is the emotional response to the lack of a realization or under-performance of these conscious or unconscious expectations towards specific service aspects.
+    \DIFadd{In }\DIFaddend this study, we study not overall customer satisfaction but the satisfaction and dissatisfaction that stem from individual-specific expectations, be they conscious or unconscious. For example, if a customer has a conscious expectation of a comfortable bed and a wide shower, and it is realized during their visit, they will be satisfied with this matter. However, suppose that same customer with a conscious expectation of a comfortable bed experienced loud noises at night. In that case, they can be dissatisfied with a different aspect, regardless of the satisfaction towards the bed. Then, the same customer might have packed their toiletries, thinking that the amenities might not include those. They can then be pleasantly surprised with good quality amenities and toiletries, satisfying an unconscious expectation. This definition of satisfaction does not allow us to examine overall customer satisfaction. However, it will allow us to examine the factors that a hotel can revise individually and how a population perceives them as a whole. In our study, we consider the definitions in \cite{hunt1975} that satisfaction is a realization of an expectation, and we posit that customers can have different expectations towards different service aspects. Therefore, in our study, we define satisfaction as the emotional response to the realization or overcoming of conscious or unconscious expectations towards an individual aspect or factor of a service. On the other hand, dissatisfaction is the emotional response to the lack of a realization or under-performance of these conscious or unconscious expectations towards specific service aspects.
 
     Studies on customer satisfaction \cite[e.g.][]{truong2009, romao2014, wu2009} commonly use the Likert scale \cite[][]{likert1932technique} (e.g. 1 to 5 scale from strongly dissatisfied to strongly satisfied) to perform statistical analysis of which factors relate most to satisfaction on the same dimension as dissatisfaction \cite[e.g.][]{chan201518, choi2000}. The Likert scale's use leads to correlation analyses where one factor can lead to satisfaction, implying that the lack of it can lead to dissatisfaction. However, a binary distinction (satisfied or dissatisfied) could allow us to analyze the factors that correlate to satisfaction and explore factors that are solely linked to dissatisfaction. There are fewer examples of this approach, but studies have done this in the past \cite[e.g.][]{zhou2014}. This method can indeed decrease the extent to which we can analyze degrees of satisfaction or dissatisfaction. However, it has the benefit that it can be applied to a large sample of text data via automatic sentiment detection techniques using artificial intelligence. 
 
-  \subsection{Japanese hospitality and service: \textit{Omotenashi}}\label{theory_omotenashi}
+  \DIFdelbegin \DIFdel{Previous research has also focused more on soft attributes, with little focus on hard attributes , if only focusing on facilities }%DIFDELCMD < \cite[e.g.][]{shanka2004, choi2001}%%%
+\DIFdel{. However, hard factors, which are }\DIFdelend \DIFaddbegin \subsection{\DIFadd{Japanese hospitality and service: }\textit{\DIFadd{Omotenashi}}}\label{theory_omotenashi}
 
-    The spirit of Japanese hospitality, or \textit{Omotenashi}, has roots in the country’s history, and to this day, it is regarded as the highest standard \cite[][]{ikeda2013omotenashi, al2015characteristics}. There is a famous phrase in customer service in Japan: \textit{okyaku-sama wa kami-sama desu}, meaning ``The customer is god.'' Some scholars say that \textit{omotenashi} originated from the old Japanese art of the tea ceremony in the 16th century, while others found that it originates in the form of formal banquets in the 7th-century \cite[][]{aishima2015origin}. The practice of high standards in hospitality has survived throughout the years. Presently, it permeates all business practices in Japan, from the cheapest convenience stores to the most expensive ones. Manners, service, and respect towards the customer are taught to workers in their training. High standards are always followed to not fall behind in the competition. In Japanese businesses, including hotels, staff members are trained to speak in \textit{sonkeigo}, or ``respectful language,'' one of the most formal of the Japanese formality syntaxes. They are also trained to bow differently depending on the situation, where a light bow could be used to say ``Please, allow me to guide you.'' Deep bows are used to apologize for any inconvenience the customer could have faced, followed by a very respectful apology. Although the word \textit{omotenashi} can be translated directly as ``hospitality,'' it includes both the concepts of hospitality and service \cite[][]{Kuboyama2020}. This hospitality culture permeates every type of business with customer interaction in Japan. A simple convenience shop could express all of these hospitality and service standards, which are not exclusive to hotels.  
+    \DIFadd{The spirit of Japanese hospitality, or }\textit{\DIFadd{Omotenashi}}\DIFadd{, has roots in the country’s history, and to this day, it is regarded as the highest standard }\cite[][]{ikeda2013omotenashi, al2015characteristics}\DIFadd{. There is a famous phrase in customer service in Japan: }\textit{\DIFadd{okyaku-sama wa kami-sama desu}}\DIFadd{, meaning ``The customer is god.'' Some scholars say that }\textit{\DIFadd{omotenashi}} \DIFadd{originated from the old Japanese art of the tea ceremony in the 16th century, while others found that it originates in the form of formal banquets in the 7th-century }\cite[][]{aishima2015origin}\DIFadd{. The practice of high standards in hospitality has survived throughout the years. Presently, it permeates all business practices in Japan, from the cheapest convenience stores to the most expensive ones. Manners, service, and respect towards the customer are taught to workers in their training. High standards are always followed to not fall behind in the competition. In Japanese businesses, including hotels, staff members are trained to speak in }\textit{\DIFadd{sonkeigo}}\DIFadd{, or ``respectful language,'' one of the most formal of the Japanese formality syntaxes. They are also trained to bow differently depending on the situation, where a light bow could be used to say ``Please, allow me to guide you.'' Deep bows are used to apologize for any inconvenience the customer could have faced, followed by a very respectful apology. Although the word }\textit{\DIFadd{omotenashi}} \DIFadd{can be translated directly as ``hospitality,'' it includes both the concepts of hospitality and service }\cite[][]{Kuboyama2020}\DIFadd{. This hospitality culture permeates every type of business with customer interaction in Japan. A simple convenience shop could express all of these hospitality and service standards, which are not exclusive to hotels.  
+}
 
-    It stands to reason that this cultural aspect of hospitality would positively influence customer satisfaction. However, in many cases, other factors such as proximity to a convenience store, transport availability, or room quality might be more critical to a customer.  In this study, we cannot directly determine whether a hotel is practicing the cultural standards of \textit{omotenashi}. Instead, we consider it as a cultural factor that influences all businesses in Japan. We then observe the customers' evaluations regarding service and hospitality factors and compare them to other places and business practices in the world. In summary, we consider the influence of the cultural aspect of \textit{omotenashi} while analyzing the evaluations on service and hospitality factors that are universal to all hotels in any country.
+    \DIFadd{It stands to reason that this cultural aspect of hospitality would positively influence customer satisfaction. However, in many cases, other factors such as proximity to a convenience store, transport availability, or room quality might be more critical to a customer.  In this study, we cannot directly determine whether a hotel is practicing the cultural standards of }\textit{\DIFadd{omotenashi}}\DIFadd{. Instead, we consider it as a cultural factor that influences all businesses in Japan. We then observe the customers' evaluations regarding service and hospitality factors and compare them to other places and business practices in the world. In summary, we consider the influence of the cultural aspect of }\textit{\DIFadd{omotenashi}} \DIFadd{while analyzing the evaluations on service and hospitality factors that are universal to all hotels in any country.
+}
 
-    Therefore, we pose the following research question:
+    \DIFadd{Therefore, we pose the following research question:
+}
 
     \begin{subrsq}
     \begin{rsq}
     \label{rsq:hospitality}
-    To what degree are Chinese and Western tourists satisfied with Japanese hospitality factors such as staff behavior or service?
-    \end{rsq}
+    \DIFadd{To what degree are Chinese and Western tourists satisfied with Japanese hospitality factors such as staff behavior or service?
+    }\end{rsq}
 
-    However, Japanese hospitality is based on the Japanese culture. Different cultures interacting with it could provide a different evaluation of it. Some might be impressed by it, whereas some might consider other factors more important to their stay in a hotel. This point leads us to a derivative of the aforementioned research question:
+    \DIFadd{However, Japanese hospitality is based on the Japanese culture. Different cultures interacting with it could provide a different evaluation of it. Some might be impressed by it, whereas some might consider other factors more important to their stay in a hotel. This point leads us to a derivative of the aforementioned research question:
+}
 
     \begin{rsq}
     \label{rsq:hospitality_both}
-    Do Western and Chinese tourists have a different evaluation of Japanese hospitality factors such as staff behavior or service?
-    \end{rsq}
+    \DIFadd{Do Western and Chinese tourists have a different evaluation of Japanese hospitality factors such as staff behavior or service?
+    }\end{rsq}
     \end{subrsq}
 
-    Staff behavior, hospitality and service are all soft attributes of a hotel. That is, they are non-physical attributes of the hotel, and as such they are practical to change through changes in management. While it is important to know this, it is not known if the cultural differences between Chinese and Western tourists also influences other expectations and satisfaction factors, such as hard factors of a hotel. Hard factors are attributes uncontrollable by the hotel staff, which can play a part in the customers' choice behavior and satisfaction. Examples of these factors include the hotel's surroundings, location, language immersion of the country as a whole, or touristic destinations, and the hotel's integration with tours available nearby, among other factors. Previous research focuses more on these soft attributes, with little focus on hard attributes, if only focusing on facilities \cite[e.g.][]{shanka2004, choi2001}. Because of this gap in knowledge, we decided to analyze the differences in cultures regarding both soft and hard attributes of a hotel.
+    \DIFadd{Staff behavior, hospitality and service are all soft attributes of a hotel. That is, they are non-physical attributes of the hotel, and as such they are practical to change through changes in management. While it is important to know this, it is not known if the cultural differences between Chinese and Western tourists also influences other expectations and satisfaction factors, such as hard factors of a hotel. Hard factors are attributes }\DIFaddend uncontrollable by the hotel staff, \DIFaddbegin \DIFadd{which }\DIFaddend can play a part in the customers' choice behavior and satisfaction. Examples of these factors include the hotel's surroundings, location, language immersion of the country as a whole, or touristic destinations, and the hotel's integration with tours available nearby, among other factors. \DIFaddbegin \DIFadd{Previous research focuses more on these soft attributes, with little focus on hard attributes, if only focusing on facilities }\cite[e.g.][]{shanka2004, choi2001}\DIFadd{. Because of this gap in knowledge, we decided to analyze the differences in cultures regarding both soft and hard attributes of a hotel.
+}\DIFaddend 
 
-    This leads to two of our research questions:
+    This leads to \DIFdelbegin \DIFdel{another couple of }\DIFdelend \DIFaddbegin \DIFadd{two of our }\DIFaddend research questions:
 
     \begin{subrsq}
     \begin{rsq}
@@ -2186,7 +2336,7 @@
     For research questions \ref{rsq:hard_soft} and \ref{rsq:hard_soft_diff}, we considered how customers of both cultural backgrounds evaluated the hard and soft attributes of hotels. Our study discovered that Chinese tourists mostly positively react to the hotel's hard attributes, albeit the negative evaluations are more uniform than the positive evaluations, with a tendency of 53 \% towards hard attributes. On the other hand, English-speaking tourists were more responsive to soft attributes, either positively or negatively. In the case of negative keywords, they were more concerned about the hotel's soft attributes.
 
     One factor that both populations had in common is that, when perceiving the hotel negatively, the ``\begin{CJK}{UTF8}{gbsn}老\end{CJK} (old),'' ``dated,'' ``outdated,'' or ``\begin{CJK}{UTF8}{gbsn}陈旧\end{CJK} (obsolete)'' aspects of the room or the hotel were surprisingly criticized across most price ranges. However, this is a hard attribute and is unlikely to change for most hotels.
-    
+
   \subsection{Chinese tourists: A big and clean space}\label{disc:zh}
 
     We found that mainland Chinese tourists were mainly satisfied by big and clean spaces in Japanese hotels. The adjectival pairings extracted with dependency parsing and POS tagging (Table \ref{tab:adj_zh_pos})  imply big and clean rooms. Other mentions included big markets nearby or a big bed. Across different price ranges, the usage of the word ``\begin{CJK}{UTF8}{gbsn}大\end{CJK} (big)'' increased with the increasing price of the hotel. When inspecting closer by taking random samples of the pairs of ``\begin{CJK}{UTF8}{gbsn}大 空间\end{CJK} (big space)'' or ``\begin{CJK}{UTF8}{gbsn}大 面积\end{CJK} (large area),'' we notice that there were also many references to the public bathing facilities in the hotel. Such references were also implied by a word pairing ``\begin{CJK}{UTF8}{gbsn}棒 温泉\end{CJK} (great hot spring).'' 
