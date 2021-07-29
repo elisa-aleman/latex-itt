@@ -1,0 +1,17 @@
+Kindly check and confirm the inserted publisher location for the reference Hofstede 1984, Stone et al. 1966
+Hofstede 1984 seems to be mistaken, publisher: SAGE, London.
+
+Stone et al. 1966 is published by MIT press, but upon checking again, I could not find a reference to the published location.
+AQ5
+Kindly provide the volume number and page range for the reference Likert 1932, Mattila 1999, Oliver 1981
+This paper is in the APA database as "Likert, R. (1932). A technique for the measurement of attitudes. Archives of Psychology, 22 140, 55." So the Volume is 22 and the page is 55, but I wasn't sure what the 140 means in this citation.
+
+
+Mattila 1999 I found in APA style as. "Mattila, A. S. (1999). The role of culture and purchase motivation in service encounter evaluations. Journal of Services Marketing, 13, 376-389". So the volume is 13 and pages 376-389.
+
+Oliver 1981 I found in the APA database as "
+Oliver, R. L. (1981). Measurement and evaluation of satisfaction processes in retail settings. Journal of Retailing, 57(3), 25–48". So it is Volume 57, Issue 3, pages 25-48.
+
+AQ6
+Kindly provide the editor details for the reference Rajman and Besançon 1998
+I found in APA style: "Rajman, M., & Besançon, R. (1998). Text mining-knowledge extraction from unstructured textual data. In Advances in data science and classification (pp. 473-480). Springer, Berlin, Heidelberg."

@@ -1,0 +1,1 @@
+../my_latexdiff.sh itt-emotion_blind_V4.tex itt-emotion_blind.tex -d --newversion="5" --compile --view --clean

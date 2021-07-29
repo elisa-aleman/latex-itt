@@ -1,0 +1,9 @@
+Vitae
+
+Elisa Claire Alemán Carreón received the B.S. and M.S. degree and is currently pursuing a Ph.D in Information Science and Control Engineering in the Nagaoka University of Technology, Nagaoka, Japan under the instruction of Hirofumi Nonaka. Her research interests are Text/Data mining for management data and multilingual endeavors.
+
+Hugo Alberto Mendoza España received the B.S. and is currently pursuing a M.S. degree in Information and Management Systems Engineering in the Nagaoka University  of Technology, Nagaoka, Japan under the instruction of Hirofumi Nonaka. His research interests are machine learning for data analysis and computer vision.
+
+Hirofumi Nonaka received the B.S., M.S. and Ph.D. degrees in Engineering from Toyohashi University of Technology, Aichi, in 2003, 2005 and 2011, respectively. He was a research fellow at Nagoya University in 2011. He joined the Department of Information Engineering, Oita National College of Technology, Oita, Japan from 2012 to 2015 and was an Associate Professor. He has been an Associate Professor at the Department of Information Management System Engineering, Nagaoka University of Technology since 2015. His recent research interests are Text/Data mining for management data and application of spatial statics.
+
+Toru Hiraoka received B.S. and M.S. degrees in design (1995 and 1997), and a Ph.D. degree in engineering (2005) from Kyushu Institute of Design, Fukuoka, Japan. In 1997 he joined TOA Construction Engineering Co. for research on digital photogrammetry and geographic information systems. In 2009 he conducted research on flood discharge. In 2011 he was an associate professor at the Department of Information Engineering, Oita National College of Technology. Since 2016 he has been a professor at the Department of Information Systems, Faculty of Information Systems, University of Nagasaki. His current research interests are non-photorealistic rendering and disaster prevention.
